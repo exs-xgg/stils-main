@@ -169,7 +169,7 @@ echo $usn . '<br>' . $pw;
         $_SESSION['user_name'] = $row['login_token'];
         $_SESSION['user_priv'] = $row['user_priv'];
 
-        header("location: portal/dashboard.php");
+        header("location: admin/dashboard.php");
         }
     }else{
         header("location: login.php?grant=false");

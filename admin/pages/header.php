@@ -1,3 +1,12 @@
+<?php
+session_start();
+if (isset($_SESSION['user_priv'])) {
+    if (!($_SESSION['user_priv']=="1")) {
+            header("location: ../login.php");
+
+    }
+}
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -90,9 +99,3 @@
             </ul>
     	</div>
     </div>
-<?php
-session_start();
-if (!isset($_SESSION['user'])) {
-    header("location: ../login.php");
-}
-?>
