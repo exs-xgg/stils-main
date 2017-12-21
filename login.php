@@ -167,9 +167,15 @@ echo $usn . '<br>' . $pw;
     if ($result->num_rows > 0) {
        while($row = $result->fetch_assoc()) {
         $_SESSION['user_name'] = $row['login_token'];
-        $_SESSION['user_priv'] = $row['user_priv'];
-
-        header("location: admin/dashboard.php");
+        $_SESSION['id'] = $row['id'];
+        $_SESSION['user_priv'] = $row['priv'];
+        
+        if ($row['priv']=="1") {
+            header("location: admin/dashboard.php");
+        }else{
+             header("location: portal/dashboard.php");
+        }
+        
         }
     }else{
         header("location: login.php?grant=false");

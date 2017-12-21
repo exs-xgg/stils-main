@@ -1,5 +1,19 @@
 <?php 
 include 'pages/header.php';
+include '../genfunctions/db_con.php';
+
+$suppliers = "";
+$sum = "0";
+$pending = "0";
+$sql = "select (select Count(*) from users where priv=0) as suppliers, (select sum(qty) from item where rcvd=1 and qty > 0) as sum, (select Count(*) from item where rcvd=0) as pending";
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()){
+        $suppliers = $row['suppliers'];
+        $sum = $row['sum'];
+        $pending = $row['pending'];
+    }
+}
  ?>
     <div class="main-panel">
         <nav class="navbar navbar-default">
@@ -18,7 +32,7 @@ include 'pages/header.php';
 
                     
 												<li>
-                            <a href="#">
+                            <a href="../genfunctions/logout.php">
 														<i class="ti-close"></i>
 														<p>Log Out</p>
                             </a>
@@ -75,8 +89,10 @@ include 'pages/header.php';
                                     </div>
                                     <div class="col-xs-7">
                                         <div class="numbers">
-                                            <p>Total Items</p>
-                                            243
+                                            <p>Items on Hand</p>
+                                            <?php
+                                            echo $sum;
+                                            ?>
                                         </div>
                                     </div>
                                 </div>
@@ -89,7 +105,7 @@ include 'pages/header.php';
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-sm-6">
+                    <div class="col-lg-3 col-sm-6" onclick="window.location.href = 'suppliers.php';">
                         <div class="card">
                             <div class="content">
                                 <div class="row">
@@ -101,7 +117,9 @@ include 'pages/header.php';
                                     <div class="col-xs-7">
                                         <div class="numbers">
                                             <p>Suppliers</p>
-                                            16
+                                             <?php
+                                            echo $suppliers;
+                                            ?>
                                         </div>
                                     </div>
                                 </div>
@@ -119,7 +137,7 @@ include 'pages/header.php';
                             <div class="content">
                                 <div class="row">
                                     <div class="col-xs-5">
-                                        <div class="icon-big icon-primary text-center">
+                                        <div class="icon-big icon-success text-center">
                                             <i class="ti-truck"></i>
                                         </div>
 
@@ -134,7 +152,7 @@ include 'pages/header.php';
                                 <div class="footer">
                                     <hr />
                                                                         <div class="stats">
-                                        <i class="ti-reload"></i> Updated <span> date here </span>
+                                        Add Account
                                     </div>
                                 </div>
                             </div>
@@ -152,7 +170,9 @@ include 'pages/header.php';
 									<div class="col-xs-7">
 											<div class="numbers">
 													<p>Pending Items</p>
-                                                    <span class="icon-danger">14</span>
+                                                    <span class="icon-danger"> <?php
+                                            echo $pending;
+                                            ?></span>
 											</div>
 									</div>
 								</div>
@@ -170,107 +190,66 @@ include 'pages/header.php';
 
 
             </div>
-            <div id="body_content">
-					<div class="col-md-12">
-							<div class="card card-plain">
-									<div class="header">
-											<h4 class="title">Items that are <span class="icon-danger">Below</span> Average Stock Levels</h4>
-											<p class="category">Here is a subtitle for this table</p>
-									</div>
-									<div class="content table-responsive table-full-width">
-											<table class="table table-hover">
-													<thead>
+            
+<div id="body_content">
+															
+<?php
+ini_set('error_reporting', E_ALL & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED);
+$sql = "select * from items  inner join users on items.supplier = users.id where ((qty <= (init_qty*0.10)) or (qty=5) and rcvd=1)";
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+    ?>
 
-														<th>Name</th>
-														<th>Quantity</th>
-														<th>Store Name</th>
 
-													</tr></thead>
-													<tbody>
-															<tr>
 
-																<td>Green Lipstick</td>
-																<td>12</td>
-																<td><a href="#">Ivon</a></td>
 
-															</tr>
-															<tr>
-
-																<td>Rainbow Dress</td>
-																<td>8</td>
-																<td>Pochi</td>
-
-															</tr>
-															<tr>
-
-																<td>Pink Pants</td>
-																<td>11</td>
-																<td>Alligator</td>
-
-															</tr>
-															<tr>
-
-																<td>Blue Blouse</td>
-																<td>7</td>
-																<td>RDD</td>
-
-															</tr>
-
-													</tbody>
-											</table>
-
-									</div>
-							</div>
-					</div>
                     <div class="col-md-12">
-                        <div class="card">
-                            <div class="header">
-                                <h4 class="title">Best Selling Suppliers</h4>
-                                <p class="category">Here are the best selling stores</p>
+                            <div class="card card-plain">
+                                    <div class="header">
+                                            <h4 class="title">Items that are <span class="icon-danger">Below</span> Average Stock Levels</h4>
+                                            <p class="category">Here is a subtitle for this table</p>
+                                    </div>
+                                    <div class="content table-responsive table-full-width">
+                                            <table class="table table-hover">
+                                                    <thead>
+
+                                                        <th>Name</th>
+                                                        <th>Quantity</th>
+                                                        <th>Store Name</th>
+
+                                                    </tr></thead>
+                                                    <tbody>
+
+
+
+
+    <?php
+
+
+
+    while ($row = $result->fetch_assoc()) {
+        echo '<tr>';
+        echo '<td>' . $row['item_name'] . '</tr>';
+        echo '<td>' . $row['qty'] . '</tr>';
+        echo '<td>' . $row['store'] . '</tr>';
+    }
+
+     ?>
+
+</tbody>
+                                            </table>
+
+                                    </div>
                             </div>
-                            <div class="content table-responsive table-full-width">
-                                <table class="table table-striped">
-                                    <thead>
-                                    	<th>Name</th>
-                                    	<th>Total Items Sold</th>
-                                    	<th>Best Seller</th>
-                                    </tr></thead>
-                                    <tbody>
-																			<tr>
-																				<td>Sage Rodriguez</td>
-																				<td>56,142</td>
-																				<td>Netherlands Shirt</td>
-																			</tr>
-                                        <tr>
-                                        	<td>Dakota Rice</td>
-                                        	<td>36,738</td>
-                                        	<td>Niger Dress</td>
-                                        </tr>
-                                        <tr>
-                                        	<td>Minerva Hooper</td>
-                                        	<td>23,789</td>
-                                        	<td>Curaçao Clips</td>
-                                        </tr>
+                  
+    <?php
+}
 
-
-                                    </tbody>
-                                </table>
-
-                            </div>
-                        </div>
-                    </div>
+?>									
+  </div>        
 </div>
 
-
-
-
-
         </div>
-
-
-
-        
-
     </div>
 </div>
 
@@ -343,7 +322,7 @@ if (isset($_REQUEST['action'])) {
       ?>
             $.notify({
                
-                message: "Action Successful!"
+                message: "<p><h4>Action Successful!</h4></p>"
 
                 },{
                     type: 'success',

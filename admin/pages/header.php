@@ -76,7 +76,7 @@ if (isset($_SESSION['user_priv'])) {
                     </a>
                 </li>
 				<li>
-                    <a href="suppliers.html">
+                    <a href="suppliers.php">
                         <i class="ti-truck"></i>
                         <p>Suppliers List</p>
                     </a>
