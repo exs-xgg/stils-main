@@ -97,12 +97,16 @@ if ($result->num_rows > 0) {
 											</tr></thead>
 											<tbody>
 <?php
-$sql = "select * from item inner join users on item.suppliers=users.id where rcvd = 0";
+$sql = "select * from item inner join users on item.supplier=users.id where rcvd = 0";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         echo '<tr>';
-        echo '<td>' . ;
+        echo '<td>' . $row['item_name'] . '</td>';
+        echo '<td>' . $row['init_qty'] . '</td>';
+        echo '<td>' . $row['store'] . '</td>';
+        echo '<td>' . $row['date_last_update'] . '</td>';
+        echo '</tr>';
     }
 }
 ?>
