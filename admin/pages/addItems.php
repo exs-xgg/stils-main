@@ -27,7 +27,7 @@
 <br>
             <div class="content">
                 <div class="col-lg-6">
-                    <p id="help" class="sppp" onclick="$(this).hide(500)">Input the details of the next item you want to add to your store. Request will be approved once the store manager recieves and confirms the item delivery. Item status can be viewed here: <a href="google.com" class="btn btn-warning btn-fill">Inventory Status</a></p>
+                    <p id="help" class="sppp" onclick="$(this).hide(500)">Input the details of the next item you want to add to your store. Request will be approved once the store manager recieves and confirms the item delivery. Item status can be viewed here: <a href="items.php" class="btn btn-warning btn-fill">Inventory Status</a></p>
                 </div>
 
                 <form id="items" action="function/addItemAPI.php" method="post" class="col-lg-12" autocomplete="off">

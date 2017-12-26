@@ -158,7 +158,7 @@ if ($result->num_rows > 0) {
                             </div>
                         </div>
                     </div>
-					<div class="col-lg-3 col-sm-6">
+					<div class="col-lg-3 col-sm-6" onclick="window.location.href = 'pending.php'">
 						<div class="card">
 							<div class="content">
 								<div class="row">

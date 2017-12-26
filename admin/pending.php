@@ -1,6 +1,7 @@
 <?php
 
-include 'pages/header.php';include '../genfunctions/db_con.php';
+include 'pages/header.php';
+include '../genfunctions/db_con.php';
 
 $suppliers = "";
 $sum = "0";
@@ -31,7 +32,7 @@ if ($result->num_rows > 0) {
                     <ul class="nav navbar-nav navbar-right">
 
                         <<li>
-                            <a href="../genfuntions/logout.php">
+                            <a href="../genfunctions/logout.php">
 								<i class="ti-close"></i>
 								<p>Log Out</p>
                             </a>
@@ -81,6 +82,7 @@ if ($result->num_rows > 0) {
                 </div>
 
             </div>
+            <h3>Sorted by Last Entry</h3>
 			<div class="col-md-12">
                 
 					<div class="card card-plain">
@@ -97,14 +99,14 @@ if ($result->num_rows > 0) {
 											</tr></thead>
 											<tbody>
 <?php
-$sql = "select * from item inner join users on item.supplier=users.id where rcvd = 0";
+$sql = "select *, users.id as dd from item inner join users on item.supplier=users.id where rcvd = 0 order by date_last_update desc";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         echo '<tr>';
         echo '<td>' . $row['item_name'] . '</td>';
         echo '<td>' . $row['init_qty'] . '</td>';
-        echo '<td>' . $row['store'] . '</td>';
+        echo '<td><a href ="supplier.php?id='. $row['dd'] . '">' . $row['store'] . '</a></td>';
         echo '<td>' . $row['date_last_update'] . '</td>';
         echo '</tr>';
     }

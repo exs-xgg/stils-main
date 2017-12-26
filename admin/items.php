@@ -31,7 +31,7 @@ if ($result->num_rows > 0) {
                     <ul class="nav navbar-nav navbar-right">
 
                         <<li>
-                            <a href="../genfuntions/logout.php">
+                            <a href="../genfunctions/logout.php">
 								<i class="ti-close"></i>
 								<p>Log Out</p>
                             </a>
@@ -143,7 +143,7 @@ if ($result->num_rows > 0) {
 <?php
 
 if (!(isset($_REQUEST['cat']))) {
-    $sql = "select * from item  inner join users on item.supplier = users.id where rcvd=1 order by date_last_update desc limit 20";
+    $sql = "select *, item.id as itid from item  inner join users on item.supplier = users.id where rcvd=1 order by date_last_update desc limit 20";
 }else{
     $cat = $_REQUEST['cat'];
     $sql1= "select * from item inner join users on item.supplier = users.id where rcvd=1 and ";
@@ -187,7 +187,7 @@ ini_set('error_reporting', E_ALL & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED);
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        echo '<tr onclick="window.location.href='. "'i.php?s=" . $row['id'] . "'" .'">';
+        echo '<tr onclick="window.location.href='. "'i.php?s=" . $row['itid'] . "'" .'">';
         echo '<td>' . $row['item_name'] . '</td>';
         echo '<td>' . $row['qty'] . '</td>';
         echo '<td>' . $row['store'] . '</td>';
