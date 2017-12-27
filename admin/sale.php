@@ -57,14 +57,21 @@ include '../genfunctions/db_con.php';
                                                 </thead>
                                              </table>
                                         </div>
-                                        Item ID: <b><span id="rs"></span></b><br>
-                                        <span>Quantity </span><input class="btn" type="number" name="" id="item" onkeypress='return event.charCode >= 48 && event.charCode <= 57' placeholder="Quantity" value="1" width="100" min="1">
-                                        <button class="btn btn-success" onclick="sink()">Go</button>
+                                        <hr>
+                                        Item ID:&nbsp;&nbsp;&nbsp;&nbsp;<b><pre id="rs" ></pre></b><br>
+                                        <span>Quantity:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><input class="numer" type="number" name="" id="itemQty" onkeypress='return event.charCode >= 48 && event.charCode <= 57' placeholder="Quantity" value="1" width="100" min="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <button id="btnsink" class="btn btn-success" onclick="sink()">Go</button>
                                         </div>
                                     
                                 </div>
                             </div>
-                    </div>    
+                    </div>
+                    <style>
+                        .numer{
+                            padding: 5px;
+                            max-width: 100px;
+                        }
+                    </style>
                    <script>
                     var s = 0;
                     function sink(){
@@ -80,20 +87,40 @@ include '../genfunctions/db_con.php';
                                
                             });
                         }else{
-                            $.notify({
-
-               
-                                message: "<p><h3>No Item Selected</h3></p>"
-
-                                },{
-                                    type: 'success',
-                                    timer: 3000
-                               
+                            $("#btnsink").text("Please Wait");
+                            $("#btnsink").disabled = true;
+                            var i = $("#rs").html();
+                            var q = $("#itemQty").val();
+                            $.ajax({
+                                url: "function/saleAPI.php?i=" + i + "&q=" + q,
+                                timeout: 5000,
+                                success: function(result){
+                                    if(result){
+                                        var rr = JSON.parse(result);
+                                        if(rr.return){
+                                            $.notify({ message: "<p><h3>Item Added to Container</h3></p>" },{type: 'success',timer: 3000});
+                                            $("#btnsink").text("Go");
+                                            $("#btnsink").disabled = false;
+                                        }else{
+                                            $.notify({ message: "<p><h4>Request failed. The website may be experiencing errors or the internet is down.</h4></p>" },{type: 'danger',timer: 3000});
+                                            $("#btnsink").text("Go");
+                                            $("#btnsink").disabled = false;
+                                        }
+                                        
+                                    }
+                                },
+                                error: function(xhr){
+                                    $.notify({ message: "<p><h4>Request failed. The website may be experiencing errors or the internet is down.</h4></p>" },{type: 'danger',timer: 3000});
+                                    $("#btnsink").text("Go");
+                                    $("#btnsink").disabled = false;
+                                }
                             });
+                            
                         }
                     }
                        function search(){
                         $("#itemTbl tbody tr").empty();
+                        var keyw = $("#item").val();
                         // var x = document.getElementById("itemTbl").rows.length;
                         // var table = document.getElementById("itemTbl");
                         // var row = table.insertRow(x);
@@ -106,7 +133,8 @@ include '../genfunctions/db_con.php';
                         // cell3.innerHTML = "Cell" + s;
                         // cell4.innerHTML = "Cell" + s;
                         // s+=1;
-                        $('#itemTbl').append('<tr><td>COL'+ s +'</td><td>COL'+ s +'</td><td>COL'+ s +'</td><td>COL2</td><td><button onclick="fsa(1'+ s +')">Select</button></tr>');
+                        
+                        $('#itemTbl').append('<tr><td>COL'+ s +'</td><td>COL'+ keyw +'</td><td>COL'+ s +'</td><td>COL2</td><td><button onclick="fsa(1'+ s +')">Select</button></tr>');
                         s+=1;
                        }
                        function fsa(e){
