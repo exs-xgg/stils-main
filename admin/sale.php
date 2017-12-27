@@ -2,13 +2,7 @@
 
 include 'pages/header.php';
 include '../genfunctions/db_con.php';
-if (isset($_REQUEST['s'])) {
-    $s = strip_tags($_REQUEST['s']);
-    $s =  mysql_real_escape_string($s);
-   $sql = "select *, users.id as dd from item  inner join users on item.supplier = users.id where item.id=" . $s;
-}else{
-    header("location: items.php");
-}
+
 
 ?>
     <div class="main-panel">
@@ -46,51 +40,13 @@ if (isset($_REQUEST['s'])) {
                             <div class="content">
                                 <div class="row">
                                     <div class="col-xs-7">
-                                        <h3>Item Information</h3>
-                                     
-<?php 
+                                    <h1>asdasd</h1>
 
-ini_set('error_reporting', E_ALL & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED);
-$result = $conn->query($sql);
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {?>
-<form method="post" action="function/updateItem.php?id=<?php echo $_REQUEST['s']; ?>" autocomplete="off">
-<table class="table">
-    <tr><th>Item Name</th><td><input type="text" name="item_name" value="<?php echo $row['item_name']; ?>"></td></tr>
-    <tr><th>Item Price</th><td><input type="text" name="unit_price" value="<?php echo $row['unit_price']; ?>"></td></tr>
-    <tr><th>Initial Quantity</th><td><input type="text" name="init_qty" value="<?php echo $row['init_qty']; ?>"></td></tr>
-    <tr><th>Current Quantity</th><td><input type="text" name="qty" value="<?php echo $row['qty']; ?>"></td></tr>
-    <tr><th>Supplier</th><td><?php echo '<a href ="user.php?id='. $row['dd'] . '">' . $row['store']; ?></a></td></tr>
-    <tr><th>Status</th><td><?php 
-    if($row['rcvd']=="0"){
-        echo "Not Yet Received";
-    }else{
-        echo("Received");
-    }
-    ?></td></tr>
-    <tr><th>Date Last Updated</th><td><?php echo $row['date_last_update']; ?></td></tr>
-    <tr><th></th><td><input type="submit" name="submit" value="Update"></td></tr>
-</form>
-</table>
-<h4>Actions</h4>
-<table class="table">
-    <tr><th>Received?</th><td><a class="btn btn-success">Yes</a></td><td><a class="btn btn-danger">No</a></td></tr>
-    <tr><th>Delete Item</th><td><a class="btn btn-warning">Delete</a></td><td></td></tr>     
-
-
-    <?php
-    }
-}else{
-    echo "No such item is found.";
-}
-?>
-                                     
                                     </div>
                                 </div>
-                                
                             </div>
-                        </div>
-
+                    </div>    
+                   
 					
 
                 </div>

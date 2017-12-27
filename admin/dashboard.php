@@ -5,7 +5,7 @@ include '../genfunctions/db_con.php';
 $suppliers = "";
 $sum = "0";
 $pending = "0";
-$sql = "select (select Count(*) from users where priv=0) as suppliers, (select sum(qty) from item where rcvd=1 and qty > 0) as sum, (select Count(*) from item where rcvd=0) as pending";
+$sql = "select (select Count(*) from users where priv=0 and user_lock = 0) as suppliers, (select sum(qty) from item where rcvd=1 and qty > 0) as sum, (select Count(*) from item where rcvd=0) as pending";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()){

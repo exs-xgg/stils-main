@@ -1,6 +1,21 @@
-<?php 
+<?php
+
 include 'pages/header.php';
- ?>
+include '../genfunctions/db_con.php';
+
+$suppliers = "";
+$sum = "0";
+$pending = "0";
+$sql = "select (select Count(*) from users where priv=0 and user_lock = 0) as suppliers, (select sum(qty) from item where rcvd=1 and qty > 0) as sum, (select Count(*) from item where rcvd=0) as pending";
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()){
+        $suppliers = $row['suppliers'];
+        $sum = $row['sum'];
+        $pending = $row['pending'];
+    }
+}
+?>
     <div class="main-panel">
         <nav class="navbar navbar-default">
             <div class="container-fluid">
@@ -11,29 +26,16 @@ include 'pages/header.php';
                         <span class="icon-bar bar2"></span>
                         <span class="icon-bar bar3"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Dashboard</a>
+                    <a class="navbar-brand" href="#">Suppliers</a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
 
-                        <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="ti-bell"></i>
-                                    <p>Notifications</p>
-									<b class="caret"></b>
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li><a href="#">Notification 1</a></li>
-                                <li><a href="#">Notification 2</a></li>
-                                <li><a href="#">Notification 3</a></li>
-                                <li><a href="#">Notification 4</a></li>
-                                <li><a href="#">Another notification</a></li>
-                              </ul>
-                        </li>
-												<li>
-                            <a href="#">
-														<i class="ti-close"></i>
-														<p>Log Out</p>
+                        
+						<li>
+                            <a href="../genfunctions/logout.php">
+                                <i class="ti-close"></i>
+                                <p>Log Out</p>
                             </a>
                         </li>
                     </ul>
@@ -59,7 +61,9 @@ include 'pages/header.php';
                                     <div class="col-xs-7">
                                         <div class="numbers">
                                             <p>Suppliers</p>
-                                            16
+                                            <?php
+                                            echo $suppliers;
+                                            ?>
                                         </div>
                                     </div>
                                 </div>
@@ -88,31 +92,20 @@ include 'pages/header.php';
                                 <table class="table table-striped">
                                     <thead>
                                     	<th>Name</th>
-                                    	<th>Total Items Sold</th>
-                                    	<th>Items in Stock</th>
                                     </tr></thead>
                                     <tbody>
-										<tr>
-                                            <td><a href="">Sage Rodriguez</a></td>
-											<td>5142</td>
-											<td>243</td>
-										</tr>
-                                        <tr>
-                                            <td><a href="">Dakota Rice</a></td>
-                                        	<td>3738</td>
-                                        	<td>656</td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="">Minerva Hooper</a></td>
-                                        	<td>2789</td>
-                                        	<td>213</td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="">Sage Rodriguez</a></td>
-                                            <td>5142</td>
-                                            <td>243</td>
-                                        </tr>
-                                        
+										
+<?php
+$sql = "select * from  users where priv=0 and user_lock = 0";
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+         echo '<tr onclick="window.location.href='. "'user.php?id=" . $row['id'] . "'" .'">';
+         echo '<td>' . $row['store'] . '</td>';
+         echo '</tr>';
+    }
+}
+?> 
 
 
                                     </tbody>

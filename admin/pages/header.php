@@ -86,6 +86,12 @@ if (isset($_SESSION['user_priv'])) {
                     </a>
                 </li>
                 <li>
+                    <a href="sale.php">
+                        <i class="ti-shopping-cart"></i>
+                        <p>Sale</p>
+                    </a>
+                </li>
+                <li>
                     <a href="reportbug.html" target="blank">
                         <i class="ti-target"></i>
                         <p>Report Bug</p>
