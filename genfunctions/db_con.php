@@ -5,7 +5,7 @@ $password = "";
 
 $conn = mysqli_connect($servername, $username, $password,'stils');
 if ($conn->connect_error) {
-    error_log("[ X ] Connection failed: " . $conn->connect_error, 0);
+    echo "<h1> CONNECTION ERROR</h1>";
 } 
 
 // $servername = "43.243.118.1:3306";
