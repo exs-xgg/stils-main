@@ -3,7 +3,6 @@ include 'pages/header.php';
 include '../genfunctions/db_con.php';
 if (isset($_REQUEST['id'])) {
     $id = strip_tags($_REQUEST['id']);
-    $id = mysql_real_escape_string($id);
    $sql = "select * from users where id=" . $id;
 }else{
     $sql = "select * from users where id=" . $_SESSION['id'];
@@ -154,7 +153,7 @@ if ($result->num_rows > 0) {
 
 
                                     <div class="text-center">
-                                        <button type="submit" class="btn btn-info btn-fill btn-wd">Update Profile</button>
+                                        <button type="submit" class="btn btn-success">Update Profile</button>&nbsp;&nbsp;<button type="submit" class="btn btn-info">Reset Pin</button>&nbsp;&nbsp;<button type="submit" class="btn btn-warning">Lock User</button>
                                     </div>
                                     <div class="clearfix"></div>
                                 </form>

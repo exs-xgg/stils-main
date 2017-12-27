@@ -1,8 +1,39 @@
 <?php
-
 session_start();
-?>
+if (isset($_SESSION['user_priv'])) {
+    if ($_SESSION['user_priv']==1) {
+        header("location: admin/dashboard.php");
+    }else{
+         header("location: portal/dashboard.php");
+    }
+}
 
+
+include 'genfunctions/db_con.php';
+
+if (isset($_POST['submit'])) {
+    $usn = $_POST['usn'];
+    $pw = $_POST['pw'];
+    $sql = "select * from users where login_token='$usn' and pin='$pw' limit 1";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+       while($row = $result->fetch_assoc()) {
+        $_SESSION['user_name'] = $row['login_token'];
+        $_SESSION['id'] = $row['id'];
+        $_SESSION['user_priv'] = $row['priv'];
+        
+        if ($row['priv']=="1") {
+            header("location: admin/dashboard.php");
+        }else{
+             header("location: portal/dashboard.php");
+        }
+        
+        }
+    }else{
+        header("location: login.php?grant=false");
+    }
+}
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -117,23 +148,7 @@ session_start();
         
 
 
-<?php
-if (isset($_REQUEST['grant'])) {
-    ?>
 
-$.notify({
-                message: '<p id="w"><h4>Wrong Credentials</h4></p>'
-
-            },{
-                type: 'danger',
-                timer: 5000
-            });
-
-$("#w").addClass("w");
-
-    <?php
-}
-?>
         	
     	});
 	</script>
@@ -146,39 +161,3 @@ $("#w").addClass("w");
 
 
 
-<?php
-if (isset($_SESSION['user_priv'])) {
-    if ($_SESSION['user_priv']==1) {
-        header("location: admin/dashboard.php");
-    }else{
-         header("location: portal/dashboard.php");
-    }
-}
-
-
-include 'genfunctions/db_con.php';
-
-if (isset($_POST['submit'])) {
-    $usn = $_POST['usn'];
-    $pw = $_POST['pw'];
-echo $usn . '<br>' . $pw;
-    $sql = "select * from users where login_token='$usn' and pin='$pw' limit 1";
-    $result = $conn->query($sql);
-    if ($result->num_rows > 0) {
-       while($row = $result->fetch_assoc()) {
-        $_SESSION['user_name'] = $row['login_token'];
-        $_SESSION['id'] = $row['id'];
-        $_SESSION['user_priv'] = $row['priv'];
-        
-        if ($row['priv']=="1") {
-            header("location: admin/dashboard.php");
-        }else{
-             header("location: portal/dashboard.php");
-        }
-        
-        }
-    }else{
-        header("location: login.php?grant=false");
-    }
-}
-?>

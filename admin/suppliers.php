@@ -92,16 +92,24 @@ if ($result->num_rows > 0) {
                                 <table class="table table-striped">
                                     <thead>
                                     	<th>Name</th>
+                                        <th>Status</th>
                                     </tr></thead>
                                     <tbody>
 										
 <?php
-$sql = "select * from  users where priv=0 and user_lock = 0";
+$sql = "select * from  users where priv=0 order by user_lock,store";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
          echo '<tr onclick="window.location.href='. "'user.php?id=" . $row['id'] . "'" .'">';
          echo '<td>' . $row['store'] . '</td>';
+         echo '<td>';
+         if ($row['user_lock']=="0") {
+             echo 'Active';
+         }else{
+            echo 'Locked';
+         }
+         echo '</td>';
          echo '</tr>';
     }
 }

@@ -4,7 +4,6 @@ include 'pages/header.php';
 include '../genfunctions/db_con.php';
 if (isset($_REQUEST['s'])) {
     $s = strip_tags($_REQUEST['s']);
-    $s =  mysql_real_escape_string($s);
    $sql = "select *, users.id as dd from item  inner join users on item.supplier = users.id where item.id=" . $s;
 }else{
     header("location: items.php");
