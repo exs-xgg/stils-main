@@ -44,10 +44,10 @@ include '../genfunctions/db_con.php';
                                        
                                         <div class="input-group">
 
-                                             <input class="form form-control" type="text" name="" id="item" placeholder="Item code here..." onkeypress="search()">
+                                             <input class="form form-control" type="text" name="" id="item" placeholder="Item code here..." onkeyup="search()">
                                              
 
-                                            <span class="input-group-addon"><i class="fa fa-search"></i> Search</span>
+                                            <span class="input-group-addon" onclick="search()"><i class="fa fa-search"></i> Search</span>
 
                                         </div>
                                         <div>
@@ -90,9 +90,13 @@ include '../genfunctions/db_con.php';
                             $("#btnsink").text("Please Wait");
                             $("#btnsink").disabled = true;
                             var i = $("#rs").html();
+                            
                             var q = $("#itemQty").val();
+
                             $.ajax({
+                                
                                 url: "function/saleAPI.php?i=" + i + "&q=" + q,
+
                                 timeout: 5000,
                                 success: function(result){
                                     if(result){
@@ -101,6 +105,7 @@ include '../genfunctions/db_con.php';
                                             $.notify({ message: "<p><h3>Item Added to Container</h3></p>" },{type: 'success',timer: 3000});
                                             $("#btnsink").text("Go");
                                             $("#btnsink").disabled = false;
+                                            search();
                                         }else{
                                             $.notify({ message: "<p><h4>Request failed. The website may be experiencing errors or the internet is down.</h4></p>" },{type: 'danger',timer: 3000});
                                             $("#btnsink").text("Go");
@@ -120,25 +125,29 @@ include '../genfunctions/db_con.php';
                     }
                        function search(){
                         $("#itemTbl tbody tr").empty();
-                        var keyw = $("#item").val();
-                        // var x = document.getElementById("itemTbl").rows.length;
-                        // var table = document.getElementById("itemTbl");
-                        // var row = table.insertRow(x);
-                        // var cell1 = row.insertCell(0);
-                        // var cell2 = row.insertCell(1);
-                        // var cell3 = row.insertCell(2);
-                        // var cell4 = row.insertCell(3);
-                        // cell1.innerHTML = "Cell " + s;
-                        // cell2.innerHTML = "Cell" + s;
-                        // cell3.innerHTML = "Cell" + s;
-                        // cell4.innerHTML = "Cell" + s;
-                        // s+=1;
+                        var itemBox = document.getElementById("item");
+                        var keyw = itemBox.value;
+                         $.ajax({
+                                
+                                url: "function/itemAPI.php?i=" + keyw,
+
+                                timeout: 5000,
+                                success: function(result){
+                                    var rss = JSON.parse(result);
+                                    for(var i = 0; i < rss.length; i++) {
+                                        var obj = rss[i];
+
+                                        $('#itemTbl').append('<tr><td>'+ obj.serial_no +'</td><td>'+ obj.item_name +'</td><td>'+ obj.qty +'</td>' + obj.store + '<td></td><td><button onclick="fsa('+ obj.ids +',' + obj.qty +')">Select</button></tr>');
+                                    }
+                                }
+                            });
                         
-                        $('#itemTbl').append('<tr><td>COL'+ s +'</td><td>COL'+ keyw +'</td><td>COL'+ s +'</td><td>COL2</td><td><button onclick="fsa(1'+ s +')">Select</button></tr>');
-                        s+=1;
                        }
-                       function fsa(e){
+                       function fsa(e,g){
                         $("#rs").text(e);
+                        $("#itemQty").attr({
+                           "max" : g 
+                        });
                        }
                    </script>
 					
