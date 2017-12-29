@@ -48,7 +48,7 @@ if ($result->num_rows > 0) {
             <div class="container-fluid">
                 <div class="row">
                     
-                    <div class="col-lg-6 col-sm-6" >
+                    <div class="col-lg-5 col-sm-5" >
                         <div class="card">
                             <div class="content">
                                 <div class="row">
@@ -95,19 +95,20 @@ if ($result->num_rows > 0) {
 												<th>Quantity</th>
 												<th>Store Name</th>
                                                 <th>Last Updated</th>
-
+                                                <th></th>
 											</tr></thead>
 											<tbody>
 <?php
-$sql = "select *, users.id as dd from item inner join users on item.supplier=users.id where rcvd = 0 order by date_last_update desc";
+$sql = "select *, item.id as idd, users.id as dd from item inner join users on item.supplier=users.id where rcvd = 0 order by date_last_update desc";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         echo '<tr>';
         echo '<td>' . $row['item_name'] . '</td>';
         echo '<td>' . $row['init_qty'] . '</td>';
-        echo '<td><a href ="supplier.php?id='. $row['dd'] . '">' . $row['store'] . '</a></td>';
+        echo '<td><a href ="user.php?id='. $row['dd'] . '">' . $row['store'] . '</a></td>';
         echo '<td>' . $row['date_last_update'] . '</td>';
+        echo '<td><button onclick="conf('. $row['idd'] .')">Received</button></td>';
         echo '</tr>';
     }
 }
@@ -123,7 +124,35 @@ if ($result->num_rows > 0) {
                    
 
 
+<script>
+    function conf(e){
+        $.ajax({
+            url: "function/rcvItemAPI.php?id=" + e,
+            timeout: 5000,
+            success: function(result){
+                var r = JSON.parse(result);
+                if(r.result){
+                    $.notify({
+                        message:"<p><h4>Item Received!</h4></p>" 
 
+                    },{
+                        type: 'success',
+                        timer: 2000
+                    });
+                }
+            },
+            error: function(xhr){
+                $.notify({
+                message:"<p><h4>Request failed. The website may be experiencing errors or the internet is down.</h4></p>" 
+
+            },{
+                type: 'danger',
+                timer: 2000
+            });
+            }
+        });
+    }
+</script>
 
 
         </div>

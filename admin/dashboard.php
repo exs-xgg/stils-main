@@ -61,7 +61,7 @@ if ($result->num_rows > 0) {
                                     
                                     <div class="col-xs-12">
                                         
-                                            <h3>A very nice announcement</h3><span>Date</span>
+                                            <h3>A very nice announcement</h3><span>12-29-2017 12:08</span>
                                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                                             tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
                                             quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -99,6 +99,32 @@ if ($result->num_rows > 0) {
                                     <hr />
                                     <div class="stats">
                                         Add Items
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6" onclick="addAccount()">
+                        <div class="card">
+                            <div class="content">
+                                <div class="row">
+                                    <div class="col-xs-5">
+                                        <div class="icon-big icon-success text-center">
+                                            <i class="ti-truck"></i>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-xs-7">
+                                        <div class="numbers">
+                                            <p>Add Account</p>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="footer">
+                                    <hr />
+                                    <div class="stats">
+                                        Add Account
                                     </div>
                                 </div>
                             </div>
@@ -158,32 +184,7 @@ if ($result->num_rows > 0) {
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-sm-6" onclick="addAccount()">
-                        <div class="card">
-                            <div class="content">
-                                <div class="row">
-                                    <div class="col-xs-5">
-                                        <div class="icon-big icon-success text-center">
-                                            <i class="ti-truck"></i>
-                                        </div>
-
-                                    </div>
-                                    <div class="col-xs-7">
-                                        <div class="numbers">
-                                            <p>Add Account</p>
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="footer">
-                                    <hr />
-                                                                        <div class="stats">
-                                        Add Account
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    
 					<div class="col-lg-3 col-sm-6" onclick="window.location.href = 'pending.php'">
 						<div class="card">
 							<div class="content">
@@ -229,7 +230,7 @@ if ($result->num_rows > 0) {
 
 
 
-                    <div class="col-md-12">
+                    <div class="col-lg-12 col-md-12">
                             <div class="card card-plain">
                                     <div class="header">
                                             <h4 class="title">Items that are <span class="icon-danger">Below</span> Average Stock Levels</h4>

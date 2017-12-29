@@ -63,3 +63,10 @@ _to int,
 body varchar(255),
 _time timestamp default now()
 );
+
+create table bulletin(
+bul_id int primary key not null auto_increment,
+ bul_title varchar(200),
+  bul_body varchar(65536),
+  bul_date timestamp default now()
+);
