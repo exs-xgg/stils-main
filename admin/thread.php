@@ -43,10 +43,10 @@ if (isset($_REQUEST['id'])) {
                 <div class="row">
                 	<div class="col-lg-12 col-sm-12">
                         <div class="card">
-                            <div class="content s"> 
+                            <div class="content"> 
                                 <h5><?php echo $r['fname'] . " " . $r['lname'] . " (" . $r['store'] . ")";	?></h5>
                                
-                                <div class="footer">
+                                <div class="">
                                     <hr />
                                     <div class="stats">
 
@@ -70,9 +70,9 @@ $sql = "select * from msg inner join users on msg.user_id = users.id where user_
 
 ?>
                                       <!--   START USER MESSAGE CARDS HERE -->
-
+                                      
                                          <div class="col-lg-12 col-sm-12">
-                                            <div class="card sender">
+                                            <div class="card rcvr">
 
                                                 <div class="content" >
                                                     <div class="footer">
@@ -99,14 +99,13 @@ $sql = "select * from msg inner join users on msg.user_id = users.id where user_
 ?>
 
                                       <!--   START ADMIN MESSAGE CARDS HERE -->
-
                                         <div class="col-lg-12 col-sm-12">
                                             <div class="card sender">
 
                                                 <div class="content" >
                                                     <div class="footer">
                                                         <div class="statsi">
-                                                             <span> You </span> 
+                                                             <span> <b>You</b> </span> 
                                                         </div>
                                                     </div>
                                                     <h5><?php echo $row['body'];	?></h5>
@@ -129,17 +128,24 @@ $sql = "select * from msg inner join users on msg.user_id = users.id where user_
                                       <!--   END MESSAGE CARDS HERE -->
                                       
                                                     
-                                                             <span> Reply </span> 
+                                                             <br><span class="col-lg-12"> Reply </span> 
                                                         
                                                     </div>
-                                                        <input class="form form-control" type="text" value="Hello, we have no vacancies right now" style="background-color: beige">
+                                                        <input class="form form-control" type="text" placeholder="Text here..." style="background-color: beige">
                                                         <input class="btn btn-primary" type="submit" name="">
                                                    
                                                     
                                                 
                                                 </div>
                                           
-                                    
+                                    <style type="text/css">
+                                    	.sender{
+                                    		background-color: #ffdea4;
+                                    	}
+                                    	.rcvr{
+                                    		background-color: #CBFFA1;
+                                    	}
+                                    </style>
 
                                 </div>
 
