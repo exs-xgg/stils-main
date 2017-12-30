@@ -58,8 +58,8 @@ actor int
 
 create table msg(
 id int primary key not null auto_increment,
-_from int,
-_to int,
+sw int,
+user_id int,
 body varchar(255),
 _time timestamp default now()
 );

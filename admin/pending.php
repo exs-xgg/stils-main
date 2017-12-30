@@ -103,7 +103,7 @@ $sql = "select *, item.id as idd, users.id as dd from item inner join users on i
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        echo '<tr>';
+        echo '<tr id="itemRow' . $row['idd'] . '">';
         echo '<td>' . $row['item_name'] . '</td>';
         echo '<td>' . $row['init_qty'] . '</td>';
         echo '<td><a href ="user.php?id='. $row['dd'] . '">' . $row['store'] . '</a></td>';
@@ -131,7 +131,7 @@ if ($result->num_rows > 0) {
             timeout: 5000,
             success: function(result){
                 var r = JSON.parse(result);
-                if(r.result){
+                if(r.return){
                     $.notify({
                         message:"<p><h4>Item Received!</h4></p>" 
 
@@ -139,6 +139,9 @@ if ($result->num_rows > 0) {
                         type: 'success',
                         timer: 2000
                     });
+                    $("#itemRow" + e).remove();
+
+
                 }
             },
             error: function(xhr){

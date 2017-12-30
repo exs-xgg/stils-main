@@ -14,7 +14,7 @@ include '../../genfunctions/crypto.php';
 	if (isset($_REQUEST['i'])) {
 		$rsj = array();
 		$i = str_replace("'", "", $_REQUEST['i']);
-		$sql = "select item.id as ids, serial_no, item_name, qty, store from item inner join users on users.id=item.supplier where rcvd=1 and qty > 0 and serial_no like '%". $i . "%' limit 20" ;
+		$sql = "select item.id as ids, serial_no, item_name, qty, store from item inner join users on users.id=item.supplier where rcvd=1 and qty > 0 and serial_no like '%". $i . "%' order by item_name limit 20" ;
 		$result = $conn->query($sql);
 		if ($result->num_rows > 0) {
 			while ($row = $result->fetch_assoc()) {

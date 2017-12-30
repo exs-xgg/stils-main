@@ -31,15 +31,15 @@
                 </div>
 
                 <form id="items" action="function/addItemAPI.php" method="post" class="col-lg-12" autocomplete="off">
+                    <label>Item Serial Number</label><br>
+                    <input class="ft" type="text" name="serial" id="serial" required><br>
+                    <label>Item Price</label><br>
+                    <input class="ft" type="text" name="item_price" id="item_price" required><br>
+                    <label>Item Quantity</label><br>
+                    <input class="ft" type="text" name="item_qty" required onkeypress='return event.charCode >= 48 && event.charCode <= 57' onfocus="showWarn()"><span id="warn" class="stpp">Numbers only</span><br>
+                    
                     <label>Item Name</label><br>
                     <input class="ft" type="text" name="item_name"><br>
-                    <label>Item Price</label><br>
-                    <input class="ft" type="text" name="item_price" id="item_price"><br>
-                    <label>Item Quantity</label><br>
-                    <input class="ft" type="text" name="item_qty" onkeypress='return event.charCode >= 48 && event.charCode <= 57' onfocus="showWarn()"><span id="warn" class="stpp">Numbers only</span><br>
-                    <label>Item Serial Number</label><br>
-                    <input class="ft" type="text" name="serial" id="item_price"><br>
-                   
                 <input id="subb" type="submit" class="btn btn-info" name="submit" value="Submit">
                 </form>
             </div>

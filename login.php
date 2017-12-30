@@ -101,7 +101,7 @@ if (isset($_POST['submit'])) {
         <div class="logo">
           <b>  Stilustrata Online Inventory Management Portal </b>
         </div><br><br>
-            <form action="login.php" method="post">
+            <form action="login.php" method="post" autocomplete="off">
                 <p><span>Username</span></p>
                     <input class="form form-control" type="text" name="usn" placeholder="Username"><br>
             <p><span>Password</span></p>

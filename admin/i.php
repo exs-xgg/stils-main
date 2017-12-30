@@ -55,10 +55,11 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {?>
 <form method="post" action="function/updateItem.php?id=<?php echo $_REQUEST['s']; ?>" autocomplete="off">
 <table class="table">
-    <tr><th>Item Name</th><td><input type="text" name="item_name" value="<?php echo $row['item_name']; ?>"></td></tr>
-    <tr><th>Item Price</th><td><input type="text" name="unit_price" value="<?php echo $row['unit_price']; ?>"></td></tr>
-    <tr><th>Initial Quantity</th><td><input type="text" name="init_qty" value="<?php echo $row['init_qty']; ?>"></td></tr>
-    <tr><th>Current Quantity</th><td><input type="text" name="qty" value="<?php echo $row['qty']; ?>"></td></tr>
+    <tr><th>Item Serial No.</th><td><input class="form form-control" type="text" name="item_serial" value="<?php echo $row['serial_no']; ?>"></td></tr>
+    <tr><th>Item Name</th><td><input class="form form-control" type="text" name="item_name" value="<?php echo $row['item_name']; ?>"></td></tr>
+    <tr><th>Item Price</th><td><input class="form form-control" type="text" name="unit_price" value="<?php echo $row['unit_price']; ?>"></td></tr>
+    <tr><th>Initial Quantity</th><td><input class="form form-control" readonly type="text" name="init_qty" value="<?php echo $row['init_qty']; ?>"></td></tr>
+    <tr><th>Current Quantity</th><td><input class="form form-control" readonly type="text" name="qty" value="<?php echo $row['qty']; ?>"></td></tr>
     <tr><th>Supplier</th><td><?php echo '<a href ="user.php?id='. $row['dd'] . '">' . $row['store']; ?></a></td></tr>
     <tr><th>Status</th><td><?php 
     if($row['rcvd']=="0"){

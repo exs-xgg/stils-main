@@ -80,7 +80,7 @@ if (isset($_SESSION['user_priv'])) {
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="messages.php">
                         <i class="ti-comment-alt"></i>
                         <p>Messages</p>
                     </a>
