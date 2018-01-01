@@ -3,10 +3,10 @@ include 'pages/header.php';
 include '../genfunctions/db_con.php';
 if (isset($_REQUEST['id'])) {
     $id = strip_tags($_REQUEST['id']);
-   $sql = "select * from users where id=" . $id;
 }else{
-    $sql = "select * from users where id=" . $_SESSION['id'];
+    $id = $_SESSION['id'];
 }
+ $sql = "select * from users where id=" . $id;
 $fname = "";
 $lname = "";
 $store = "";
@@ -162,6 +162,29 @@ if ($result->num_rows > 0) {
                     </div>
 
 
+                </div>
+                <div class="col-lg-12 col-md-12">
+                    <h4>Items Currently on Hand</h4>
+                    <hr>
+                    <table class="table">
+                        <thead><tr><th>Item ID</th><th>Item Name</th><th>Quantity(Initial/Present)</th><th>Item Price</th></tr></thead>
+                        <tbody>
+<?php
+$sql = "select * from item where supplier=" .  $id . " order by date_last_update desc";
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+    while ($row=$result->fetch_assoc()) {
+         echo '<tr onclick="window.location.href='. "'i.php?s=" . $row['id'] . "'" .'">';
+        echo '<td>' . $row['id'] . "</td>";
+        echo '<td>' . $row['item_name'] . "</td>";
+        echo '<td>' . $row['init_qty'] . ' / ' . $row['qty'] . "</td>";
+        echo '<td>' . $row['unit_price'] . "</td>";
+        echo '</tr>';
+    }
+}
+?>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
