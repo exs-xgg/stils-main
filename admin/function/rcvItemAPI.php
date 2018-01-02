@@ -12,7 +12,7 @@ function doMe(){
 	if (isset($_REQUEST['id'])) {
 		$q = fin($_REQUEST['id']);
 		
-		$sql = "update item set rcvd=1 where id=" . $q;
+		$sql = "update item set date_last_update = now(), rcvd=1 where id=" . $q;
 		if ($conn->query($sql) === true) {
 		   $return = true;
 		} else {

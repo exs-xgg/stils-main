@@ -15,7 +15,7 @@ function doMe(){
 		if ($i <= 0) {
 			$return = false;
 		}else{
-			$sql = "update item set qty=qty-" . $q . " where id=" . $i;
+			$sql = "update item set date_last_update = now(), qty=qty-" . $q . " where id=" . $i;
 			if ($conn->query($sql) === true) {
 			   $return = true;
 			} else {
