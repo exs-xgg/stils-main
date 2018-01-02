@@ -15,6 +15,7 @@ $sms2 = "";
 $email = "";
 $tel = "";
 $token = "";
+$lock = "";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
@@ -26,6 +27,7 @@ if ($result->num_rows > 0) {
         $tel = $row['tel'];
         $email = $row['email'];
         $token = $row['login_token'];
+        $lock = $row['user_lock'];
     }
 }
  ?>
@@ -153,7 +155,23 @@ if ($result->num_rows > 0) {
 
 
                                     <div class="text-center">
-                                        <button type="submit" class="btn btn-success">Update Profile</button>&nbsp;&nbsp;<button type="submit" class="btn btn-info">Reset Pin</button>&nbsp;&nbsp;<button type="submit" class="btn btn-warning">Lock User</button>
+                                        <button type="submit" class="btn btn-success" disabled>Update Profile</button>&nbsp;&nbsp;<a class="btn btn-info" onclick="resetPin(<?php echo $id; ?>)">Reset Pin</a><?php
+                                        if (isset($_REQUEST['id'])) {
+                                            ?>
+                                            &nbsp;&nbsp;<a class="btn btn-warning" 
+                                        <?php
+                                        if($lock == "0"){
+                                           echo 'onclick="lockUser(' . $_REQUEST['id'] . ')">Lock User</a>'; 
+                                       }else{
+                                            echo 'onclick="unlockUser(' . $_REQUEST['id'] . ')">Unlock User</a>';
+                                       }
+                                        
+                                        ?>
+                                        
+
+                                        <?php
+                                         }
+                                        ?>
                                     </div>
                                     <div class="clearfix"></div>
                                 </form>
@@ -167,7 +185,7 @@ if ($result->num_rows > 0) {
                     <h4>Items Currently on Hand</h4>
                     <hr>
                     <table class="table">
-                        <thead><tr><th>Item ID</th><th>Item Name</th><th>Quantity(Initial/Present)</th><th>Item Price</th></tr></thead>
+                        <thead><tr><th>Item ID</th><th>Item Name</th><th>Quantity(Initial/Present)</th><th>Item Price</th><th>Date Last Updated</th></tr></thead>
                         <tbody>
 <?php
 $sql = "select * from item where supplier=" .  $id . " order by date_last_update desc";
@@ -179,6 +197,7 @@ if ($result->num_rows > 0) {
         echo '<td>' . $row['item_name'] . "</td>";
         echo '<td>' . $row['init_qty'] . ' / ' . $row['qty'] . "</td>";
         echo '<td>' . $row['unit_price'] . "</td>";
+        echo '<td>' . $row['date_last_update'] . "</td>";
         echo '</tr>';
     }
 }
@@ -202,22 +221,43 @@ if ($result->num_rows > 0) {
     <script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
 	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
 
-	<!--  Checkbox, Radio & Switch Plugins -->
-	<script src="assets/js/bootstrap-checkbox-radio.js"></script>
-
-	<!--  Charts Plugin -->
-	<script src="assets/js/chartist.min.js"></script>
 
     <!--  Notifications Plugin    -->
     <script src="assets/js/bootstrap-notify.js"></script>
 
-    <!--  Google Maps Plugin    -->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
 
     <!-- Paper Dashboard Core javascript and methods for Demo purpose -->
 	<script src="assets/js/paper-dashboard.js"></script>
-
-	<!-- Paper Dashboard DEMO methods, don't include it in your project! -->
-	<script src="assets/js/demo.js"></script>
-
+<script>
+    function lockUser(e){
+        $.ajax({
+            url: "function/lockUser.php?l=1&id=" + e,
+            success: function(result){
+                if(result){
+                    $.notify({ message: "<p><h3>User Locked</h3></p>" },{type: 'success',timer: 3000});
+                }
+            }
+        });
+    }
+    function unlockUser(e){
+        $.ajax({
+            url: "function/lockUser.php?l=0&id=" + e,
+            success: function(result){
+                if(result){
+                    $.notify({ message: "<p><h3>User Unlocked</h3></p>" },{type: 'success',timer: 3000});
+                }
+            }
+        });
+    }
+    function resetPin(e){
+        $.ajax({
+            url: "function/resetPin.php?id=" + e,
+            success: function(result){
+                if(result){
+                    $.notify({ message: "<p><h3>User Pin Reset Complete</h3></p>" },{type: 'success',timer: 3000});
+                }
+            }
+        });
+    }
+</script>
 </html>

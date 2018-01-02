@@ -133,6 +133,7 @@ if ($result->num_rows > 0) {
 											<thead>
 
 												<th>Name</th>
+                                                <th>Serial No</th>
 												<th>Quantity</th>
 												<th>Store Name</th>
                                                 <th>Last Updated</th>
@@ -189,6 +190,7 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         echo '<tr onclick="window.location.href='. "'i.php?s=" . $row['itid'] . "'" .'">';
         echo '<td>' . $row['item_name'] . '</td>';
+        echo '<td>' . $row['serial_no'] . '</td>';
         echo '<td>' . $row['qty'] . '</td>';
         echo '<td>' . $row['store'] . '</td>';
         echo '<td>' . $row['date_last_update'] . '</td>';

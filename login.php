@@ -21,7 +21,9 @@ if (isset($_POST['submit'])) {
         $_SESSION['user_name'] = $row['login_token'];
         $_SESSION['id'] = $row['id'];
         $_SESSION['user_priv'] = $row['priv'];
-        
+        if ($row['user_lock']=="1") {
+             header("location: login.php?grant=false");
+        }
         if ($row['priv']=="1") {
             header("location: admin/dashboard.php");
         }else{

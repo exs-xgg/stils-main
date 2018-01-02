@@ -54,14 +54,14 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         ?>
-    <form id="form"  action="" method="post">
+    <form id="form"  action="function/updateItem.php" method="post">
 <table class="table">
-    <tr><th>Item ID</th><td><input class="form form-control" type="text" name="item_id" id="serial" value="<?php echo $row['did']; ?>"></td></tr>
+    <tr><th>Item ID</th><td><input class="form form-control" type="text" name="item_id" id="serial" readonly value="<?php echo $row['did']; ?>"></td></tr>
     <tr><th>Item Serial No.</th><td><input class="form form-control" type="text" name="item_serial" id="serial" value="<?php echo $row['serial_no']; ?>"></td></tr>
     <tr><th>Item Name</th><td><input class="form form-control" type="text" name="item_name" id="item_name" value="<?php echo $row['item_name']; ?>"></td></tr>
     <tr><th>Item Price</th><td><input class="form form-control" type="text" name="unit_price" id="price" value="<?php echo $row['unit_price']; ?>"></td></tr>
     <tr><th>Initial Quantity</th><td><input class="form form-control" readonly type="text" name="init_qty" value="<?php echo $row['init_qty']; ?>"></td></tr>
-    <tr><th>Current Quantity</th><td><input class="form form-control" readonly type="text" name="qty" value="<?php echo $row['qty']; ?>"></td></tr></form>
+    <tr><th>Current Quantity</th><td><input class="form form-control" readonly type="text" name="qty" value="<?php echo $row['qty']; ?>"></td></tr>
     <tr><th>Supplier</th><td><?php echo '<a href ="user.php?id='. $row['dd'] . '">' . $row['store']; ?></a></td></tr>
     <tr><th>Status</th><td><?php 
     if($row['rcvd']=="0"){
@@ -71,13 +71,13 @@ if ($result->num_rows > 0) {
     }
     ?></td></tr>
     <tr><th>Date Last Updated</th><td><?php echo $row['date_last_update']; ?></td></tr>
-    <tr><th></th><td><span class="btn btn-primary" onclick="itemChange()">Update</span></td></tr>
-
+    <tr><th></th><td><input type="submit" class="btn btn-primary" value="Update"></td></tr>
+</form>
 </table>
 <h4>Actions</h4>
 <table class="table">
-    <tr><th>Received?</th><td><a class="btn btn-success">Yes</a></td><td><a class="btn btn-danger">No</a></td></tr>
-    <tr><th>Delete Item</th><td><a class="btn btn-warning">Delete</a></td><td></td></tr>     
+    
+    <tr><th>Delete Item (Dont Click this for "Testing Purposes". <br>This Action cant be undone YET.)</th><td><a href="function/deleteItem.php?id=<?php echo $_REQUEST['s']; ?>" class="btn btn-warning">Delete</a></td><td></td></tr>     
 
 
     <?php
@@ -101,7 +101,6 @@ if ($result->num_rows > 0) {
             
 
         </div>
-
 
 
         
@@ -131,44 +130,42 @@ if ($result->num_rows > 0) {
 	<!-- Paper Dashboard DEMO methods, don't include it in your project! -->
 	<script src="assets/js/demo.js"></script>
     <script>
-        function getUrlParameter(sParam) {
-            var sPageURL = decodeURIComponent(window.location.search.substring(1)),
-                sURLVariables = sPageURL.split('&'),
-                sParameterName,
-                i;
+<?php
 
-            for (i = 0; i < sURLVariables.length; i++) {
-                sParameterName = sURLVariables[i].split('=');
+if (isset($_REQUEST['done'])) {
+    if (($_REQUEST['done']) == 'true') {
+        ?>
+$.notify({ message: "<p><h3>Item Updated</h3></p>" },{type: 'success',timer: 3000});
+        <?php
+    }else{
+        ?>
+$.notify({ message: "<p><h4>Request failed. The website may be experiencing errors or the internet is down.</h4></p>" },{type: 'danger',timer: 3000});
+        <?php
+    }
+}
 
-                if (sParameterName[0] === sParam) {
-                    return sParameterName[1] === undefined ? true : sParameterName[1];
-                }
-            }
-        };
-        function itemChange(){
-           
+?>
+        $("input[id*='unit_price']").keydown(function (event) {
 
-        $.ajax({
-                            
-                url : "function/updateItem.php",
-                data: $("#form").serialize(),
-                datatype: "json",
-                success: function(result){
-                    var rss = JSON.parse(result);
-                    if (rss.return) {}
-                    $.notify({ 
-                    message: "<p><h3>Item Added to Container</h3></p>" 
-                    },{
-                        type: 'success',
-                        timer: 3000
-                        }
-                    );
-                                
-                            }
-                        });
-                    
-                   }
-        
+
+                                if (event.shiftKey == true) {
+                                    event.preventDefault();
+                                }
+
+                                if ((event.keyCode >= 48 && event.keyCode <= 57) || 
+                                    (event.keyCode >= 96 && event.keyCode <= 105) || 
+                                    event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 37 ||
+                                    event.keyCode == 39 || event.keyCode == 46 || event.keyCode == 190) {
+
+                                } else {
+                                    event.preventDefault();
+                                }
+
+                                if($(this).val().indexOf('.') !== -1 && event.keyCode == 190)
+                                    event.preventDefault(); 
+                                //if a decimal has been added, disable the "."-button
+
+                            });
     </script>
 	
 

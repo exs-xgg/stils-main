@@ -151,7 +151,7 @@ if ($result->num_rows > 0) {
                                 <div class="footer">
                                     <hr />
                                     <div class="stats">
-                                        <i class="ti-reload"></i> Updated <span> date here </span>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -178,7 +178,7 @@ if ($result->num_rows > 0) {
                                 <div class="footer">
                                     <hr />
 																		<div class="stats">
-                                        <i class="ti-reload"></i> Updated <span> date here </span>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -206,7 +206,7 @@ if ($result->num_rows > 0) {
 								<div class="footer">
 									<hr />
 									<div class="stats">
-                                        <i class="ti-reload"></i> Updated <span> date here </span>
+                                        
                                     </div>
 								</div>
 							</div>
@@ -299,13 +299,11 @@ if ($result->num_rows > 0) {
     <!-- Paper Dashboard Core javascript and methods for Demo purpose -->
 	<script src="assets/js/paper-dashboard.js"></script>
 
-	<!-- Paper Dashboard DEMO methods, don't include it in your project! -->
-	<script src="assets/js/demo.js"></script>
 
      <script type="text/javascript">
         $(document).ready(function(){
 
-            demo.initChartist();
+          
 
 <?php
 if (!(isset($_SESSION['first']))) {
