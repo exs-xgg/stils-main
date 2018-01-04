@@ -1,22 +1,24 @@
 <?php
-include 'db_con.php';
-include 'crypto.php';
-$supplier_id = 1;
+include '../../genfunctions/db_con.php';
+include '../../genfunctions/crypto.php';
+$uri = strtok($_SERVER['HTTP_REFERER'],'?');
+session_start();
+$supplier_id = $_SESSION['id'];
 if (isset($_POST['submit'])) {
 	if (isset($_POST['item_name'])) {
 		$item_name = $_POST['item_name'];
 		$item_price = $_POST['item_price'];
 		$item_qty = $_POST['item_qty'];
-		$rds = generateRandomString();
-		$sql = "insert into item (supplier, serial_no, item_name, unit_price, init_qty, qty) values($supplier_id,'$rds',$item_price,$item_qty,$item_qty)";
+		$serial = $_POST['serial'];
+		$sql = "insert into item (supplier, serial_no, item_name, unit_price, init_qty, qty) values($supplier_id,'$serial','$item_name',$item_price,$item_qty,$item_qty)";
 		$result = $conn->query($sql);
-		
-	}
+		header("location:". $uri . "?action=done");
+			
 }else{
-	header("location: ../dashboard.php")
+	header("location: ../dashboard.php");
 }
 
-
+}
 //CONTINUE FORM SUBMIT COMPLETOIN
 /*
 create table item(

@@ -27,18 +27,19 @@
 <br>
             <div class="content">
                 <div class="col-lg-6">
-                    <p id="help" class="sppp" onclick="$(this).hide(500)">Input the details of the next item you want to add to your store. Request will be approved once the store manager recieves and confirms the item delivery. Item status can be viewed here: <a href="google.com" class="btn btn-warning btn-fill">Inventory Status</a></p>
+                    <p id="help" class="sppp" onclick="$(this).hide(500)">Input the details of the next item you want to add to your store. Request will be approved once the store manager recieves and confirms the item delivery. Item status can be viewed here: <a href="items.php" class="btn btn-warning btn-fill">Inventory Status</a></p>
                 </div>
 
-                <form id="items" action="functions/addItemAPI.php" method="post" class="col-lg-12" autocomplete="off">
+                <form id="items" action="function/addItemAPI.php" method="post" class="col-lg-12" autocomplete="off">
+                    <label>Item Serial Number</label><br>
+                    <input class="ft" type="text" name="serial" id="serial" required><br>
+                    <label>Item Price</label><br>
+                    <input class="ft" type="text" name="item_price" id="item_price" required><br>
+                    <label>Item Quantity</label><br>
+                    <input class="ft" type="text" name="item_qty" required onkeypress='return event.charCode >= 48 && event.charCode <= 57' onfocus="showWarn()"><span id="warn" class="stpp">Numbers only</span><br>
+                    
                     <label>Item Name</label><br>
                     <input class="ft" type="text" name="item_name"><br>
-                    <label>Item Price</label><br>
-                    <input class="ft" type="text" name="item_price" id="item_price"><br>
-                    <label>Item Quantity</label><br>
-                    <input class="ft" type="text" name="item_qty" onkeypress='return event.charCode >= 48 && event.charCode <= 57' onfocus="showWarn()"><span id="warn" class="stpp">Numbers only</span><br>
-                    <label>Notes</label><br>
-                    <textarea class="ft" type="text" name="item_note" cols="30" rows="5"></textarea><br>
                 <input id="subb" type="submit" class="btn btn-info" name="submit" value="Submit">
                 </form>
             </div>

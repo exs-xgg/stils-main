@@ -1,6 +1,18 @@
 <?php
 
-include 'pages/header.php'; ?>
+include 'pages/header.php';include '../genfunctions/db_con.php';
+
+$sum = "0";
+$pending = "0";
+$sql = "select  (select sum(qty) from item where rcvd=1 and qty > 0 and supplier=$user_id) as sum, (select Count(*) from item where rcvd=0 and supplier=$user_id) as pending";
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()){
+        $sum = $row['sum'];
+        $pending = $row['pending'];
+    }
+}
+?>
     <div class="main-panel">
         <nav class="navbar navbar-default">
             <div class="container-fluid">
@@ -16,24 +28,10 @@ include 'pages/header.php'; ?>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
 
-                        <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="ti-bell"></i>
-                                    <p>Notifications</p>
-									<b class="caret"></b>
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li><a href="#">Notification 1</a></li>
-                                <li><a href="#">Notification 2</a></li>
-                                <li><a href="#">Notification 3</a></li>
-                                <li><a href="#">Notification 4</a></li>
-                                <li><a href="#">Another notification</a></li>
-                              </ul>
-                        </li>
-												<li>
-                            <a href="#">
-														<i class="ti-close"></i>
-														<p>Log Out</p>
+                        <<li>
+                            <a href="../genfunctions/logout.php">
+								<i class="ti-close"></i>
+								<p>Log Out</p>
                             </a>
                         </li>
                     </ul>
@@ -57,21 +55,26 @@ include 'pages/header.php'; ?>
                                     </div>
                                     <div class="col-xs-7">
                                         <div class="numbers">
-                                            <p>Total Items</p>
-                                            243
+                                            <p>Total Items on Hand</p>
+                                           <?php
+                                            echo $sum;
+                                            ?>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="footer">
                                     <hr />
                                     <div class="stats">
-                                        <i class="ti-reload"></i> Updated <span> date here </span>
+                                        <i class="ti-reload"></i> Updated <span> <?php
+                                            echo date("m-d-Y H:i:s");
+                                            ?> </span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-sm-6" onclick="viewPending()">
+                    <script type="text/javascript"></script>
+                    <div class="col-lg-6 col-sm-6" onclick="window.location.href = 'pending.php'">
                         <div class="card">
                             <div class="content">
                                 <div class="row">
@@ -83,14 +86,18 @@ include 'pages/header.php'; ?>
                                     <div class="col-xs-7">
                                             <div class="numbers">
                                                     <p>Pending Items</p>
-                                                    <span class="icon-danger">14</span>
+                                                    <span class="icon-danger"><?php
+                                            echo $pending;
+                                            ?></span>
                                             </div>
                                     </div>
                                 </div>
                                 <div class="footer">
                                         <hr />
                                         <div class="stats">
-                                            <i class="ti-reload"></i> Updated <span> date here </span>
+                                            <i class="ti-reload"></i> Updated <span> <?php
+                                            echo date("m-d-Y H:i:s");
+                                            ?> </span>
                                         </div>
                                 </div>
                             </div>
@@ -107,102 +114,89 @@ include 'pages/header.php'; ?>
 							<div class="header">
 									<h4 class="title">Items on Inventory</h4>
                                     <ul class="pagination">
-                                      <li><a href="#">A-C</a></li>
-                                      <li><a href="#">D-F</a></li>
-                                      <li><a href="#">G-I</a></li>
-                                      <li><a href="#">J-L</a></li>
-                                      <li><a href="#">M-O</a></li>
-                                      <li><a href="#">P-S</a></li>
-                                      <li><a href="#">T-V</a></li>
-                                      <li><a href="#">W-Z</a></li>
-                                      <li><a href="#">#</a></li>
-                                      <li><a href="#">%</a></li>
+                                      <li><a href="?cat=ac">A-C</a></li>
+                                      <li><a href="?cat=df">D-F</a></li>
+                                      <li><a href="?cat=gi">G-I</a></li>
+                                      <li><a href="?cat=jl">J-L</a></li>
+                                      <li><a href="?cat=mo">M-O</a></li>
+                                      <li><a href="?cat=ps">P-S</a></li>
+                                      <li><a href="?cat=tv">T-V</a></li>
+                                      <li><a href="?cat=wz">W-Z</a></li>
+                                      <li><a href="?cat=num">#</a></li>
                                       
                                     </ul>
 							</div>
 							<div class="content table-responsive table-full-width">
-									<table class="table table-hover">
+									<table class="table table-striped">
 											<thead>
 
 												<th>Name</th>
+                                                <th>Serial No</th>
 												<th>Quantity</th>
 												<th>Store Name</th>
                                                 <th>Last Updated</th>
 
 											</tr></thead>
 											<tbody>
-												<tr>
-													<td>Green Lipstick</td>
-													<td>12</td>
-													<td><a href="#">Ivon</a></td>
-                                                    <td>12/11/2018 09:87 PM</td>
-												</tr>
-												<tr>
-													<td>Rainbow Dress</td>
-													<td>8</td>
-													<td>Pochi</td>
-                                                    <td>12/11/2018 09:87 PM</td>
-												</tr>
-												<tr>
-													<td>Pink Pants</td>
-													<td>11</td>
-													<td>Alligator</td>
-                                                    <td>12/11/2018 09:87 PM</td>
-												</tr>
-												<tr>
-													<td>Blue Blouse</td>
-													<td>7</td>
-													<td>RDD</td>
-                                                    <td>12/11/2018 09:87 PM</td>
-												</tr>
-                                                <tr>
-                                                    <td>Green Lipstick</td>
-                                                    <td>12</td>
-                                                    <td><a href="#">Ivon</a></td>
-                                                    <td>12/11/2018 09:87 PM</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Rainbow Dress</td>
-                                                    <td>8</td>
-                                                    <td>Pochi</td>
-                                                    <td>12/11/2018 09:87 PM</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Pink Pants</td>
-                                                    <td>11</td>
-                                                    <td>Alligator</td>
-                                                    <td>12/11/2018 09:87 PM</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Blue Blouse</td>
-                                                    <td>7</td>
-                                                    <td>RDD</td>
-                                                    <td>12/11/2018 09:87 PM</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Green Lipstick</td>
-                                                    <td>12</td>
-                                                    <td><a href="#">Ivon</a></td>
-                                                    <td>12/11/2018 09:87 PM</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Rainbow Dress</td>
-                                                    <td>8</td>
-                                                    <td>Pochi</td>
-                                                    <td>12/11/2018 09:87 PM</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Pink Pants</td>
-                                                    <td>11</td>
-                                                    <td>Alligator</td>
-                                                    <td>12/11/2018 09:87 PM</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Blue Blouse</td>
-                                                    <td>7</td>
-                                                    <td>RDD</td>
-                                                    <td>12/11/2018 09:87 PM</td>
-                                                </tr>
+												
+<?php
+
+if (!(isset($_REQUEST['cat']))) {
+    $sql = "select *, item.id as itid from item  inner join users on item.supplier = users.id where qty > 0 and rcvd=1 and supplier=$user_id order by date_last_update desc limit 20";
+}else{
+    $cat = $_REQUEST['cat'];
+    $sql1= "select *, item.id as itid  from item inner join users on item.supplier = users.id where rcvd=1 and ";
+    switch ($cat) {
+        case 'ac':
+            $sql2 = " ( (item_name like 'a%') or (item_name like 'b%') or (item_name like 'c%'))";
+            break;
+        case 'df':
+            $sql2 = " ( (item_name like 'd%') or (item_name like 'e%') or (item_name like 'f%'))";
+            break;
+        case 'gi':
+            $sql2 = " ( (item_name like 'g%') or (item_name like 'h%') or (item_name like 'i%'))";
+            break;
+        case 'jl':
+            $sql2 = " ( (item_name like 'j%') or (item_name like 'k%') or (item_name like 'l%'))";
+            break;
+        case 'mo':
+            $sql2 = " ( (item_name like 'm%') or (item_name like 'n%') or (item_name like 'o%'))";
+            break;
+        case 'ps':
+            $sql2 = " ( (item_name like 'p%') or (item_name like 'q%') or (item_name like 'r%') or (item_name like 's%'))";
+            break;
+        case 'tv':
+            $sql2 = " ( (item_name like 't%') or (item_name like 'u%') or (item_name like 'v%'))";
+            break;
+        case 'wz':
+            $sql2 = " ( (item_name like 'w%') or (item_name like 'x%') or (item_name like 'y%') or (item_name like 'z%'))";
+            break;
+        case 'num':
+            $sql2 = " ( (item_name like '0%') or (item_name like '1%') or (item_name like '2%') or (item_name like '3%') or (item_name like '4%')) or (item_name like '5%') or (item_name like '6%') or (item_name like '7%') or (item_name like '8%') or (item_name like '9%'))";
+            break;
+        default:
+            $sql2 = "1=1";
+            break;
+    }
+    $sql = $sql1.$sql2." and supplier=$user_id order by date_last_update desc";
+
+
+}
+ini_set('error_reporting', E_ALL & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED);
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        echo '<tr onclick="window.location.href='. "'i.php?s=" . $row['itid'] . "'" .'">';
+        echo '<td>' . $row['item_name'] . '</td>';
+        echo '<td>' . $row['serial_no'] . '</td>';
+        echo '<td>' . $row['qty'] . '</td>';
+        echo '<td>' . $row['store'] . '</td>';
+        echo '<td>' . $row['date_last_update'] . '</td>';
+        echo "</tr>";
+    }
+}
+?>
+                                               
 
 											</tbody>
 									</table>
