@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 if (isset($_SERVER['HTTP_REFERER'])) {
 	doMe();
 }else{
@@ -8,8 +8,8 @@ if (isset($_SERVER['HTTP_REFERER'])) {
 function doMe(){
 		include '../../genfunctions/db_con.php';
 	include '../../genfunctions/crypto.php';
-	if (isset($_REQUEST['to'])) {
-		$q = fin($_REQUEST['to']);
+	
+		$q = $_SESSION['id'];
 		$msg = $_POST['msg'];
 		$sql = "insert into msg(sw,user_id,body) values(0,$q,'$msg')";
 		if ($conn->query($sql) === true) {
@@ -19,5 +19,5 @@ function doMe(){
 		}	
 		
 		
-	}
+	
 }
