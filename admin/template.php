@@ -20,7 +20,7 @@ include '../genfunctions/db_con.php';
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
 
-                        <<li>
+                        <li>
                             <a href="../genfunctions/logout.php">
 								<i class="ti-close"></i>
 								<p>Log Out</p>

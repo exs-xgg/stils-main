@@ -1,8 +1,8 @@
-<manifest alg="2" build="2018.0.0.379" opt="false" iceEnabled="true" iceMarkupVersion="2" iceEnabledOptions="link,responsive,cachebuster,textStyling" exportTarget="other" domain="stilustrata.com" resolutions="1x" timestamp="1514306236414">
+<manifest alg="2" build="2018.0.0.379" opt="false" iceEnabled="true" iceMarkupVersion="2" iceEnabledOptions="link,responsive,cachebuster,textStyling" exportTarget="other" domain="stilustrata.com" resolutions="1x" timestamp="1515042844346">
   <folder name="css">
     <file name="site_global.css" crc="373709799"/>
-    <file name="master_a-master.css" crc="121690607" ref="index"/>
-    <file name="index.css" crc="474222259" ref="index"/>
+    <file name="master_a-master.css" crc="356250944" ref="index"/>
+    <file name="index.css" crc="3906819344" ref="index"/>
   </folder>
   <folder name="scripts">
     <file name="jquery-1.8.3.min.js" crc="209076791" ref="index"/>
@@ -34,9 +34,13 @@
     <file name="menu 3.png" crc="345537581" seo="true" ref="index">
       <caption webpage="index" alt=""/>
     </file>
-    <file name="cityscape_night-wallpaper-1920x1080.jpg" crc="3922222349" ref="index">
+    <file name="u687-4.png" crc="4254461293" ref="index"/>
+    <file name="u692-4.png" crc="3959128980" ref="index"/>
+    <file name="u750-4.png" crc="3854389554" ref="index"/>
+    <file name="u749-4.png" crc="363541745" ref="index"/>
+    <file name="stilbgr.jpg" crc="212155871" ref="index">
       <caption webpage="index" alt=""/>
     </file>
   </folder>
-  <file name="index.html" crc="3930209516" seo="true" mt="1514306207119" redirect="true"/>
+  <file name="index.html" crc="4098745221" seo="true" mt="1515042672394" redirect="true"/>
 </manifest>

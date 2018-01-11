@@ -68,6 +68,12 @@ if (isset($_SESSION['user_priv'])) {
                     </a>
                 </li>
                 <li>
+                    <a href="reports.php">
+                        <i class="ti-stats-up"></i>
+                        <p>Reports</p>
+                    </a>
+                </li>
+                <li>
                     <a href="items.php">
                         <i class="ti-view-list-alt"></i>
                         <p>Inventory List</p>

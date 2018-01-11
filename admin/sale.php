@@ -137,7 +137,7 @@ include '../genfunctions/db_con.php';
                                     for(var i = 0; i < rss.length; i++) {
                                         var obj = rss[i];
 
-                                        $('#itemTbl').append('<tr><td>'+ obj.serial_no +'</td><td>'+ obj.item_name +'</td><td>'+ obj.qty +'</td>' + obj.store + '<td></td><td><button onclick="fsa('+ obj.ids +',' + obj.qty +')">Select</button></tr>');
+                                        $('#itemTbl').append('<tr><td>'+ obj.serial_no +'</td><td>'+ obj.item_name +'</td><td>'+ obj.qty +'</td><td>' + obj.store + '</td><td><button onclick="fsa('+ obj.ids +',' + obj.qty +')">Select</button></tr>');
                                     }
                                 }
                             });

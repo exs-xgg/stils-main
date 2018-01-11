@@ -15,7 +15,7 @@ include '../genfunctions/db_con.php';
                         <span class="icon-bar bar2"></span>
                         <span class="icon-bar bar3"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Messages</a>
+                    <a class="navbar-brand" href="#">New Message</a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -36,47 +36,19 @@ include '../genfunctions/db_con.php';
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-12 col-sm-12">
-                        <div class="card" onclick="window.location.href = 'newmessage.php'">
+                    
+                   <div class="col-lg-12 col-sm-12">
+                        <div class="card">
                             <div class="content"> 
                                 <h5> Create new Message </h5>
-                               
+                                <p>Send to:</p>
+                                
                                 
                             </div>
                         </div>
                     </div>
-<?php
-$sql = "select distinct(user_id) from msg";
-$rs = $conn->query($sql);
-if ($rs->num_rows > 0) {
-    while ($row = $rs->fetch_assoc()) {
-        $sql2 = "select * from msg inner join users on msg.user_id=users.id where user_id =" .$row['user_id'] . " order by _time desc limit 1 ";
-        $res = $conn->query($sql2);
-        while ($rw = $res->fetch_assoc()) {
-            ?>
+					
 
-                    <div class="col-lg-12 col-sm-12">
-                        <div class="card" onclick="window.location.href = 'thread.php?id=<?php  echo $row['user_id'];  ?>'">
-                            <div class="content"> 
-                                <h5><?php echo $rw['store'] . "" ;?> </h5>
-                               
-                                <div class="footer">
-                                    <hr />
-                                    <div class="stats">
-                                         <span><b>[<?php echo $rw['_time'] . "" ;?>]</b></span>&nbsp;&nbsp;&nbsp;<?php echo $rw['body'] . "" ;?>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-   <?php
-        }
-   
-    }
-}
-
-?>
                 </div>
 
             </div>

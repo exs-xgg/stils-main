@@ -10,7 +10,7 @@ function doMe(){
 	include '../../genfunctions/crypto.php';
 	$return = false;
 	if (isset($_REQUEST['id'])) {
-		$q = fin($_REQUEST['id']);
+		$q = ($_REQUEST['id']);
 		
 		$sql = "update item set date_last_update = now(), rcvd=1 where id=" . $q;
 		if ($conn->query($sql) === true) {
@@ -19,7 +19,7 @@ function doMe(){
 		   $return = false;
 		}	
 		
-		
+		 
 	}
 	die(json_encode(array('return' => $return)));	
 }

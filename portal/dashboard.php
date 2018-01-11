@@ -55,14 +55,22 @@ if ($result->num_rows > 0) {
                                 <div class="row">
                                     
                                     <div class="col-xs-12">
-                                        
-                                            <h3>A very nice announcement</h3><span>12-29-2017 12:08</span>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<?php
+$title = "";
+$date = "";
+$content = "";
+$ssql = "select * from bulletin order by bul_id desc limit 1";
+$rst = $conn->query($ssql);
+if ($rst->num_rows > 0) {
+    while ($rw = $rst->fetch_assoc()) {
+        $title = $rw['bul_title'];
+        $content = $rw['bul_body'];
+        $date = $rw['bul_date'];
+    }
+}
+?>                                        
+                                            <h4><?php echo $title ?></h4>
+                                            <p class="form form-control"><?php echo $content ?></p><span><?php echo $date ?></span>
                                         
                                     </div>
                                 </div>
@@ -166,7 +174,7 @@ if ($result->num_rows > 0) {
 															
 <?php
 ini_set('error_reporting', E_ALL & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED);
-$sql = "select * from items  inner join users on items.supplier = users.id where ((qty <= (init_qty*0.10)) or (qty=5) and rcvd=1)";
+$sql = "select * from items  inner join users on items.supplier = users.id where ((qty <= (init_qty*0.10)) or (qty=5) and rcvd=1) and supplier = $user_id";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     ?>

@@ -15,9 +15,12 @@ function doMe(){
 		if ($i <= 0) {
 			$return = false;
 		}else{
-			$sql = "update item set date_last_update = now(), qty=qty-" . $q . " where id=" . $i;
+			$sql = "update item set date_last_update = now(), qty=qty-$q where id=$i";
 			if ($conn->query($sql) === true) {
-			   $return = true;
+			   $ssql = "insert into sale(item_id,qty) values($i, $q)";
+			   if ($conn->query($ssql) === true) {
+			   		$return = true;
+			   }
 			} else {
 			   $return = false;
 			}	
@@ -35,6 +38,9 @@ create table cont(
 	ack int default 0,
 	user_id int
 );
+insert into sale(item_id,qty) values($i, $q)
+
+update item set date_last_update = now(), qty=qty-2 where id=7; insert into sale(item_id,qty) values(7, 2)
 */
 
 ?>

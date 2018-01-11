@@ -15,11 +15,6 @@ user_lock int default 0,
 priv int default 0
 );
 
-create table item_cat(
-id int primary key not null auto_increment,
-cat_name varchar(20)
-);
-
 create table item(
 id int primary key not null auto_increment,
 supplier int not null,
@@ -33,28 +28,6 @@ date_added datetime default now(),
 date_last_update timestamp default current_timestamp()
 );
 
-create table item_to_add(
-id int primary key not null auto_increment,
-item_id int,
-qty int,
-date_added timestamp default now(),
-rcvd int default 0
-);
-
-create table item_trans(
-id int primary key not null auto_increment,
-item int,
-actor int,
-time_ timestamp default now()
-);
-
-create table payment(
-id int primary key not null auto_increment,
-user_id int,
-amt decimal(19,4),
-pay_date date default now(),
-actor int
-);
 
 create table msg(
 id int primary key not null auto_increment,

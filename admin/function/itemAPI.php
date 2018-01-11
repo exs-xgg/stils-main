@@ -1,11 +1,11 @@
 <?php
 
 
-// if (isset($_SERVER['HTTP_REFERER'])) {
-// 	doMe();
-// }else{
-// 	header("location: ../dashboard.php");
-// }
+if (isset($_SERVER['HTTP_REFERER'])) {
+	doMe();
+}else{
+	header("location: ../dashboard.php");
+}
 
 doMe();
 function doMe(){

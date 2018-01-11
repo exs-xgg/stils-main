@@ -2,8 +2,6 @@
 
 
 if (isset($_SERVER['HTTP_REFERER'])) {
-	session_start();
-	$id_ = $_SESSION['id'];
 	doMe();
 }else{
 	header("location: ../dashboard.php");
@@ -13,10 +11,11 @@ doMe();
 function doMe(){
 	include '../../genfunctions/db_con.php';
 include '../../genfunctions/crypto.php';
-	if (isset($_REQUEST['i'])) {
+	if (isset($_REQUEST['f']) && isset($_REQUEST['t'])) {
 		$rsj = array();
-		$i = str_replace("'", "", $_REQUEST['i']);
-		$sql = "select item.id as ids, serial_no, item_name, qty, store from item inner join users on users.id=item.supplier and supplier=$id_ where rcvd=1 and qty > 0 and serial_no like '%". $i . "%' order by item_name limit 20" ;
+		$f = $_REQUEST['f'];
+		$t = $_REQUEST['t'];
+		$sql = "select serial_no,item_name,sale.qty as qty,time_sale from sale inner join item on item.id=sale.item_id where date('$f') <= date(time_sale) <= date('$t')" ;
 		$result = $conn->query($sql);
 		if ($result->num_rows > 0) {
 			while ($row = $result->fetch_assoc()) {

@@ -60,16 +60,45 @@ if ($result->num_rows > 0) {
                                 <div class="row">
                                     
                                     <div class="col-xs-12">
-                                        
-                                            <h3>A very nice announcement</h3><span>12-29-2017 12:08</span>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<?php
+$title = "";
+$date = "";
+$content = "";
+$ssql = "select * from bulletin order by bul_id desc limit 1";
+$rst = $conn->query($ssql);
+if ($rst->num_rows > 0) {
+    while ($rw = $rst->fetch_assoc()) {
+        $title = $rw['bul_title'];
+        $content = $rw['bul_body'];
+        $date = $rw['bul_date'];
+    }
+}
+?>                                        
+                                            <span>Title</span><input type="text" class="form form-control" id="title" value="<?php echo $title ?>"><span>Content</span>
+                                            <textarea class="form form-control" rows="5" id="con"><?php echo $content ?></textarea><br>
+                                            <button class="btn btn-primary pull-right" onclick="updateBul()">Update Bulletin</button>
                                         
                                     </div>
+                                    <script>
+                                        function updateBul(){
+                                            $.ajax({
+                                                url: "function/bul.php?t=" + $("#title").val() + "&c=" + $("#con").val(),
+                                                timeout: 5000,
+                                                success: function(result){
+                                                    if(result){
+                                                        $.notify({
+                                                            
+                                                            message: "Announcement updated!"
+
+                                                        },{
+                                                            type: 'success',
+                                                            timer: 4000
+                                                        });
+                                                    }
+                                                }
+                                            });
+                                        }
+                                    </script>
                                 </div>
                                 <div class="footer">
                                     <hr />

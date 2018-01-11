@@ -5,6 +5,7 @@ include '../genfunctions/db_con.php';
 
 
 ?>
+
     <div class="main-panel">
         <nav class="navbar navbar-default">
             <div class="container-fluid">
@@ -15,7 +16,7 @@ include '../genfunctions/db_con.php';
                         <span class="icon-bar bar2"></span>
                         <span class="icon-bar bar3"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Messages</a>
+                    <a class="navbar-brand" href="#">Reports</a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -36,47 +37,46 @@ include '../genfunctions/db_con.php';
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-12 col-sm-12">
-                        <div class="card" onclick="window.location.href = 'newmessage.php'">
-                            <div class="content"> 
-                                <h5> Create new Message </h5>
-                               
+                    
+                   <div class="col-lg-12" ">
+                        <div class="card">
+                            <div class="content">
+                                <h4>View Inventory Report</h4>
+From: <input type="date" name="" id="datefrom"> To: <input type="date" name="" id="dateto"> <button class="btn btn-primary" onclick="getReport()">Submit</button>
+                                    <table class="table" id="itemTbl">
+                                        <thead>
+                                            <tr><th>Item Serial #</th><th>Item Name</th><th>Quantity</th><th>Date & Time</th></tr>
+                                        </thead>
+                                        <tbody>
+                                            
+                                        </tbody>
+                                    </table>
+                            </div>
+                        </div>
+                    </div>
+					
+<script>
+    function getReport(){
+        var from = $("#datefrom").val();
+        var to = $("#dateto").val();
+        $("#itemTbl tbody tr").empty();
+        $.ajax({
                                 
-                            </div>
-                        </div>
-                    </div>
-<?php
-$sql = "select distinct(user_id) from msg";
-$rs = $conn->query($sql);
-if ($rs->num_rows > 0) {
-    while ($row = $rs->fetch_assoc()) {
-        $sql2 = "select * from msg inner join users on msg.user_id=users.id where user_id =" .$row['user_id'] . " order by _time desc limit 1 ";
-        $res = $conn->query($sql2);
-        while ($rw = $res->fetch_assoc()) {
-            ?>
+            url: "function/reportAPI.php?f=" + from + '&t=' + to,
 
-                    <div class="col-lg-12 col-sm-12">
-                        <div class="card" onclick="window.location.href = 'thread.php?id=<?php  echo $row['user_id'];  ?>'">
-                            <div class="content"> 
-                                <h5><?php echo $rw['store'] . "" ;?> </h5>
-                               
-                                <div class="footer">
-                                    <hr />
-                                    <div class="stats">
-                                         <span><b>[<?php echo $rw['_time'] . "" ;?>]</b></span>&nbsp;&nbsp;&nbsp;<?php echo $rw['body'] . "" ;?>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            timeout: 5000,
+            success: function(result){
+                var rss = JSON.parse(result);
+                for(var i = 0; i < rss.length; i++) {
+                    var obj = rss[i];
 
-   <?php
-        }
-   
+                    $('#itemTbl').append('<tr><td>'+ obj.serial_no +'</td><td>'+ obj.item_name +'</td><td>'+ obj.qty +'</td><td>' + obj.time_sale + '</td></tr>');
+                }
+            }
+        });
+
     }
-}
-
-?>
+</script>
                 </div>
 
             </div>

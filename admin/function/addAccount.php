@@ -1,5 +1,5 @@
 <?php
-include 'db_con.php';
+include '../../genfunctions/db_con.php';
 $uri = strtok($_SERVER['HTTP_REFERER'],'?');
 $fname = $_POST['fname'];
 $lname = $_POST['lname'];
