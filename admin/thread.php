@@ -46,7 +46,7 @@ if (isset($_REQUEST['id'])) {
                             <div class="content"> 
                                 <h5><?php echo $r['fname'] . " " . $r['lname'] . " (" . $r['store'] . ")";	?></h5>
                                
-                                <div class="">
+                                <div class="" style="overflow-y: scroll; height:450px;">
                                     <hr />
                                     <div class="stats">
 

@@ -38,14 +38,30 @@ include '../genfunctions/db_con.php';
                 <div class="row">
                     
                    <div class="col-lg-12 col-sm-12">
-                        <div class="card">
+                        <form action="" method="post">
                             <div class="content"> 
                                 <h5> Create new Message </h5>
                                 <p>Send to:</p>
-                                
-                                
+                                <select class="form form-control" id="receiver" onchange="sendMsg()">
+                                    <option>--</option>
+<?php
+include '../genfunctions/db_con.php';
+$sql = "select * from users where user_lock = 0 and priv = 0";
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        echo '<option id="' . $row['id'] . '">';
+        echo $row['store'] . ' - ' . $row['lname'];
+        echo '</option>';
+    }
+}
+?>
+                                </select>
+                                <span>Message Body</span><br>                                
+                                <textarea class="form form-control" maxlength="200" id="msgbody" name="msg"></textarea><br>
+                                <button class="btn btn-success btn-fill"><i class="ti ti-check"></i> Send</button>
                             </div>
-                        </div>
+                        </form>
                     </div>
 					
 
@@ -58,7 +74,12 @@ include '../genfunctions/db_con.php';
 
 
 
-        
+<script type="text/javascript">
+    function sendMsg(){
+        var id = $("#receiver").children(":selected").attr("id");
+        $('form').attr('action', 'function/sendMsg.php?to=' + id);
+    }
+</script>
 
     </div>
 </div>
