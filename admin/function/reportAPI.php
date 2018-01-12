@@ -7,7 +7,6 @@ if (isset($_SERVER['HTTP_REFERER'])) {
 	header("location: ../dashboard.php");
 }
 
-doMe();
 function doMe(){
 	include '../../genfunctions/db_con.php';
 include '../../genfunctions/crypto.php';

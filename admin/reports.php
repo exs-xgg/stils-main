@@ -138,10 +138,18 @@ From: <input type="date" name="" id="datefrom"> To: <input type="date" name="" i
         </div>
 
 
-
+<footer class="footer">
+    <div class="container-fluid">
+        
+        <div class="copyright pull-right">
+            &copy; <script>document.write(new Date().getFullYear())</script>, developed with <i class="fa fa-heart heart"></i> by <a href="http://www.exs-innovations.co.nf" target="blank">Existence IT Research and Development</a>
+        </div>
+    </div>
+</footer>
         
 
     </div>
+
 </div>
 
 <style>
@@ -155,6 +163,7 @@ table{
     }
 </style>
 </body>
+
 
     <!--   Core JS Files   -->
     <script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
