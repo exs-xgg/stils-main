@@ -11,19 +11,23 @@ doMe();
 function doMe(){
 	include '../../genfunctions/db_con.php';
 include '../../genfunctions/crypto.php';
+$rsj = array();
 	if (isset($_REQUEST['f']) && isset($_REQUEST['t'])) {
-		$rsj = array();
+		
 		$f = $_REQUEST['f'];
 		$t = $_REQUEST['t'];
-		$sql = "select serial_no,item_name,sale.qty as qty,time_sale from sale inner join item on item.id=sale.item_id where date('$f') <= date(time_sale) <= date('$t')" ;
-		$result = $conn->query($sql);
-		if ($result->num_rows > 0) {
-			while ($row = $result->fetch_assoc()) {
-				array_push($rsj, $row);
-			}
-		}
+		$sql = "select serial_no,item_name,sale.qty as qty,time_sale,unit_price as price,(unit_price * sale.qty) as total from sale inner join item on item.id=sale.item_id where date('$f') < date(time_sale) <= date('$t')" ;
+		
+	}elseif (isset($_REQUEST['today'])) {
+		$sql = "select serial_no,item_name,sale.qty as qty,time_sale,unit_price as price,(unit_price * sale.qty) as total from sale inner join item on item.id=sale.item_id where date(time_sale) = curdate()" ;
 	}
+	$result = $conn->query($sql);
+	if ($result->num_rows > 0) {
+		while ($row = $result->fetch_assoc()) {
+			array_push($rsj, $row);
+		}
 
+	}
 	die(json_encode($rsj));	
 }
 /**
