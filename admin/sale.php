@@ -102,7 +102,7 @@ include '../genfunctions/db_con.php';
                                     if(result){
                                         var rr = JSON.parse(result);
                                         if(rr.return){
-                                            $.notify({ message: "<p><h3>Item Added to Container</h3></p>" },{type: 'success',timer: 3000});
+                                            $.notify({ message: "<p><h3>Item Added to Sales</h3></p>" },{type: 'success',timer: 3000});
                                             $("#btnsink").text("Go");
                                             $("#btnsink").disabled = false;
                                             search();
@@ -161,7 +161,14 @@ include '../genfunctions/db_con.php';
 
 
 
+        <footer class="footer">
+    <div class="container-fluid">
         
+        <div class="copyright pull-right">
+            &copy; <script>document.write(new Date().getFullYear())</script>, developed with <i class="fa fa-heart heart"></i> by <a href="http://www.exs-innovations.co.nf" target="blank">Existence IT Research and Development</a>
+        </div>
+    </div>
+</footer>
 
     </div>
 </div>

@@ -86,7 +86,7 @@ if ($result->num_rows > 0) {
     echo "No such item is found.";
 }
 ?>
-                                     
+                                     </table>
                                     </div>
                                 </div>
                                 
@@ -104,7 +104,14 @@ if ($result->num_rows > 0) {
 
 
         
-
+<footer class="footer">
+    <div class="container-fluid">
+        
+        <div class="copyright pull-right">
+            &copy; <script>document.write(new Date().getFullYear())</script>, developed with <i class="fa fa-heart heart"></i> by <a href="http://www.exs-innovations.co.nf" target="blank">Existence IT Research and Development</a>
+        </div>
+    </div>
+</footer>
     </div>
 </div>
 
