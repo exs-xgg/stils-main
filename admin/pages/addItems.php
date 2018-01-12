@@ -31,7 +31,7 @@
                 </div>
 
                 <form id="items" action="function/addItemAPI.php" method="post" class="col-lg-12" autocomplete="off">
-                    <label>Item Serial Number</label><br>
+                    <label>Item Code</label><br>
                     <input class="ft" type="text" name="serial" id="serial" required><br>
                     <label>Item Price</label><br>
                     <input class="ft" type="text" name="item_price" id="item_price" required><br>

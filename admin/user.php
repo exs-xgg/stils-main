@@ -185,7 +185,7 @@ if ($result->num_rows > 0) {
                     <h4>Items Currently on Hand</h4>
                     <hr>
                     <table class="table">
-                        <thead><tr><th>Item ID</th><th>Item Name</th><th>Quantity(Initial/Present)</th><th>Item Price</th><th>Date Last Updated</th></tr></thead>
+                        <thead><tr><th>Item ID</th><th>Item Code</th><th>Item Name</th><th>Quantity(Initial/Present)</th><th>Item Price</th><th>Date Last Updated</th></tr></thead>
                         <tbody>
 <?php
 $sql = "select * from item where supplier=" .  $id . " order by date_last_update desc";
@@ -194,6 +194,7 @@ if ($result->num_rows > 0) {
     while ($row=$result->fetch_assoc()) {
          echo '<tr onclick="window.location.href='. "'i.php?s=" . $row['id'] . "'" .'">';
         echo '<td>' . $row['id'] . "</td>";
+        echo '<td>' . $row['serial_no'] . "</td>";
         echo '<td>' . $row['item_name'] . "</td>";
         echo '<td>' . $row['init_qty'] . ' / ' . $row['qty'] . "</td>";
         echo '<td>' . $row['unit_price'] . "</td>";

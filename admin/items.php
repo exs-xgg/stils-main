@@ -133,7 +133,7 @@ if ($result->num_rows > 0) {
 											<thead>
 
 												<th>Name</th>
-                                                <th>Serial No</th>
+                                                <th>Item Code</th>
 												<th>Quantity</th>
 												<th>Store Name</th>
                                                 <th>Last Updated</th>

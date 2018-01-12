@@ -57,7 +57,7 @@ if ($result->num_rows > 0) {
     <form id="form"  action="function/updateItem.php" method="post">
 <table class="table">
     <tr><th>Item ID</th><td><input class="form form-control" type="text" name="item_id" id="serial" readonly value="<?php echo $row['did']; ?>"></td></tr>
-    <tr><th>Item Serial No.</th><td><input class="form form-control" type="text" name="item_serial" id="serial" value="<?php echo $row['serial_no']; ?>"></td></tr>
+    <tr><th>Item Code</th><td><input class="form form-control" type="text" name="item_serial" id="serial" value="<?php echo $row['serial_no']; ?>"></td></tr>
     <tr><th>Item Name</th><td><input class="form form-control" type="text" name="item_name" id="item_name" value="<?php echo $row['item_name']; ?>"></td></tr>
     <tr><th>Item Price</th><td><input class="form form-control" type="text" name="unit_price" id="price" value="<?php echo $row['unit_price']; ?>"></td></tr>
     <tr><th>Initial Quantity</th><td><input class="form form-control" readonly type="text" name="init_qty" value="<?php echo $row['init_qty']; ?>"></td></tr>
@@ -70,13 +70,13 @@ if ($result->num_rows > 0) {
     }
     ?></td></tr>
     <tr><th>Date Last Updated</th><td><?php echo $row['date_last_update']; ?></td></tr>
-    <tr><th></th><td><input type="submit" class="btn btn-primary" value="Update"></td></tr>
+    <tr><th></th><td><!-- <input type="submit" class="btn btn-primary" value="Update" disabled> --></td></tr>
 </form>
 </table>
-<h4>Actions</h4>
+<!-- <h4>Actions</h4> -->
 <table class="table">
     
-    <tr><th>Delete Item (Dont Click this for "Testing Purposes". <br>This Action cant be undone YET.)</th><td><a href="function/deleteItem.php?id=<?php echo $_REQUEST['s']; ?>" class="btn btn-warning">Delete</a></td><td></td></tr>     
+    <!-- <tr><th>Delete Item (Dont Click this for "Testing Purposes". <br>This Action cant be undone YET.)</th><td><a href="function/deleteItem.php?id=<?php echo $_REQUEST['s']; ?>" class="btn btn-warning">Delete</a></td><td></td></tr>      -->
 
 
     <?php
