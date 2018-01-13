@@ -70,7 +70,7 @@ if (isset($_SESSION['user_priv'])) {
                 <li>
                     <a href="reports.php">
                         <i class="ti-stats-up"></i>
-                        <p>Reports</p>
+                        <p>Sales Report</p>
                     </a>
                 </li>
                 <li>

@@ -72,7 +72,7 @@ $user_id = $_SESSION['id'];
                 <li>
                     <a href="reports.php">
                         <i class="ti-stats-up"></i>
-                        <p>Reports</p>
+                        <p>Sales Report</p>
                     </a>
                 </li>
                 <li>

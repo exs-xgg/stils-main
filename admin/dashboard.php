@@ -159,6 +159,31 @@ if ($rst->num_rows > 0) {
                             </div>
                         </div>
                     </div>
+                    <div class="col-lg-3 col-sm-6" onclick="window.location.href = 'reports.php'">
+                        <div class="card">
+                            <div class="content">
+                                <div class="row">
+                                    <div class="col-xs-5">
+                                            <div class="icon-big icon-default text-center">
+                                                    <i class="ti-stats-up"></i>
+                                            </div>
+                                    </div>
+                                    <div class="col-xs-7">
+                                            <div class="numbers">
+                                                    <p>Sales Report</p>
+                                                    
+                                            </div>
+                                    </div>
+                                </div>
+                                <div class="footer">
+                                    <hr />
+                                    <div class="stats">
+                                        View Sales Reports
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="col-lg-3 col-sm-6" onclick="window.location.href = 'items.php';">
                         <div class="card">
                             <div class="content">
@@ -170,17 +195,18 @@ if ($rst->num_rows > 0) {
                                     </div>
                                     <div class="col-xs-7">
                                         <div class="numbers">
-                                            <p>Items on Hand</p>
-                                            <?php
-                                            echo $sum;
-                                            ?>
+                                            <p>Inventory Report</p>
                                         </div>
+                                        
                                     </div>
                                 </div>
                                 <div class="footer">
                                     <hr />
                                     <div class="stats">
-                                        
+                                        <span class="icon-info"> 
+                                        <?php
+                                            echo $sum;
+                                            ?> items</span>
                                     </div>
                                 </div>
                             </div>
@@ -198,16 +224,17 @@ if ($rst->num_rows > 0) {
                                     <div class="col-xs-7">
                                         <div class="numbers">
                                             <p>Suppliers</p>
-                                             <?php
-                                            echo $suppliers;
-                                            ?>
+                                             
                                         </div>
                                     </div>
                                 </div>
                                 <div class="footer">
                                     <hr />
-																		<div class="stats">
-                                        
+									<div class="stats">
+                                        <span class="icon-success"> 
+                                        <?php
+                                            echo $suppliers;
+                                            ?> active supplier accounts</span>
                                     </div>
                                 </div>
                             </div>
@@ -226,22 +253,22 @@ if ($rst->num_rows > 0) {
 									<div class="col-xs-7">
 											<div class="numbers">
 													<p>Pending Items</p>
-                                                    <span class="icon-danger"> <?php
-                                            echo $pending;
-                                            ?></span>
+                                                    
 											</div>
 									</div>
 								</div>
 								<div class="footer">
 									<hr />
 									<div class="stats">
-                                        
+                                        <span class="icon-danger"> <?php
+                                            echo $pending;
+                                            ?> item pending</span>
                                     </div>
 								</div>
 							</div>
 						</div>
 					</div>
-
+                    
                 </div>
 
 

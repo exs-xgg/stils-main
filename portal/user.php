@@ -183,7 +183,7 @@ if ($result->num_rows > 0) {
                     <h4>Items Currently on Hand</h4>
                     <hr>
                     <table class="table">
-                        <thead><tr><th>Item ID</th><th>Item Code</th><th>Item Name</th><th>Quantity(Initial/Present)</th><th>Item Price</th><th>Date Last Updated</th></tr></thead>
+                        <thead><tr><th>Item ID</th><th>Item Code</th><th>Item Name</th><th>Quantity(Initial/Present)</th><th>Item Price</th><th>Status</th><th>Date Last Updated</th></tr></thead>
                         <tbody>
 <?php
 $sql = "select * from item where supplier=" .  $id . " and supplier=$user_id order by date_last_update desc";
@@ -196,6 +196,11 @@ if ($result->num_rows > 0) {
         echo '<td>' . $row['item_name'] . "</td>";
         echo '<td>' . $row['init_qty'] . ' / ' . $row['qty'] . "</td>";
         echo '<td>' . $row['unit_price'] . "</td>";
+        if ($row['rcvd']=="0") {
+            echo '<td class="icon-danger">Pending</td>';
+        }else{
+            echo '<td class="icon-success">Recieved</td>';
+        }
         echo '<td>' . $row['date_last_update'] . "</td>";
         echo '</tr>';
     }
