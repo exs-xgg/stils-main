@@ -133,7 +133,7 @@ if ($result->num_rows > 0) {
 												<th>Name</th>
                                                 <th>Item Code</th>
 												<th>Quantity</th>
-												<th>Store Name</th>
+												<th>Partner Name</th>
                                                 <th>Last Updated</th>
 
 											</tr></thead>

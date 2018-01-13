@@ -223,7 +223,7 @@ if ($rst->num_rows > 0) {
                                     </div>
                                     <div class="col-xs-7">
                                         <div class="numbers">
-                                            <p>Suppliers</p>
+                                            <p>Partners</p>
                                              
                                         </div>
                                     </div>

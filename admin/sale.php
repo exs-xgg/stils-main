@@ -53,7 +53,7 @@ include '../genfunctions/db_con.php';
                                         <div>
                                             <table class="table" id="itemTbl">
                                                 <thead>
-                                                 <tr><th>Item Code</th><th>Item Name</th><th>Quantity</th><th>Supplier</th><th></th></tr>
+                                                 <tr><th>Item Code</th><th>Item Name</th><th>Quantity</th><th>Partner</th><th></th></tr>
                                                 </thead>
                                              </table>
                                         </div>

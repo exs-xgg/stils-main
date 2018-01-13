@@ -86,7 +86,7 @@ if ($result->num_rows > 0) {
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">Suppliers</h4>
+                                <h4 class="title">Partners</h4>
                             </div>
                             <div class="content table-responsive table-full-width">
                                 <table class="table table-striped">

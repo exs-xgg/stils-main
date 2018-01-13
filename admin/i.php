@@ -62,7 +62,7 @@ if ($result->num_rows > 0) {
     <tr><th>Item Price</th><td><input class="form form-control" type="text" name="unit_price" id="price" value="<?php echo $row['unit_price']; ?>"></td></tr>
     <tr><th>Initial Quantity</th><td><input class="form form-control" readonly type="text" name="init_qty" value="<?php echo $row['init_qty']; ?>"></td></tr>
     <tr><th>Current Quantity</th><td><input class="form form-control" readonly type="text" name="qty" value="<?php echo $row['qty']; ?>"></td></tr>
-    <tr><th>Supplier</th><td><?php echo '<a href ="user.php?id='. $row['dd'] . '">' . $row['store']; ?></a></td></tr>
+    <tr><th>Partner</th><td><?php echo '<a href ="user.php?id='. $row['dd'] . '">' . $row['store']; ?></a></td></tr>
     <tr><th>Status</th><td><?php 
     if($row['rcvd']=="0"){
         echo "Not Yet Received";
