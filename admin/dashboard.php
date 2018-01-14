@@ -268,13 +268,13 @@ if ($rst->num_rows > 0) {
 							</div>
 						</div>
 					</div>
-                    <div class="col-lg-3 col-sm-6" onclick="window.location.href = 'https://docs.google.com/file/d/1caIETozFNeC8oiEsRoSW2pm73Zs2dgTH/edit?filetype=msword';">
+                    <div class="col-lg-3 col-sm-6" onclick="window.location.href = '../guidelines.html';">
                         <div class="card">
                             <div class="content">
                                 <div class="row">
                                     <div class="col-xs-5">
                                         <div class="icon-big icon-primary text-center">
-                                            <i class="ti-truck"></i>
+                                            <i class="ti-paper"></i>
                                         </div>
                                     </div>
                                     <div class="col-xs-7">

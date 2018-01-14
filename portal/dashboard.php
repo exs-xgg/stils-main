@@ -195,7 +195,7 @@ if ($rst->num_rows > 0) {
                                 <div class="row">
                                     <div class="col-xs-5">
                                         <div class="icon-big icon-primary text-center">
-                                            <i class="ti-truck"></i>
+                                            <i class="ti-paper"></i>
                                         </div>
                                     </div>
                                     <div class="col-xs-7">
