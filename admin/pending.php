@@ -6,7 +6,7 @@ include '../genfunctions/db_con.php';
 $suppliers = "";
 $sum = "0";
 $pending = "0";
-$sql = "select (select Count(*) from users where priv=0) as suppliers, (select sum(qty) from item where rcvd=1 and qty > 0) as sum, (select Count(*) from item where rcvd=0) as pending";
+$sql = "select (select Count(*) from users where priv=0) as suppliers, (select sum(qty) from item where rcvd=1 and qty > 0) as sum, (select sum(qty) from item where rcvd=0) as pending";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()){
@@ -92,8 +92,7 @@ if ($result->num_rows > 0) {
 											<thead>
 
 												<th>Partner Name</th>
-												<th>Number of Items Pending</th>
-												
+												<th>Number of Items</th
 											</tr></thead>
 											<tbody>
 <?php
@@ -101,15 +100,24 @@ $sql = "select distinct(supplier) from item where rcvd=0 ";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        $sql2 = "select count(*) as ct, store from item inner join users on item.supplier=users.id where rcvd=0 order by date_last_update desc";
+        $sql2 = "select * from users where id=".$row['supplier'];
         $res2 = $conn->query($sql2);
         if ($res2->num_rows > 0) {
             while ($rw = $res2->fetch_assoc()) {
-                echo '<tr onclick="gotopending(' . $row['supplier'] . ')">';
-                echo '<td>' . $rw['store'] . '</td>';
-                echo '<td>' . $rw['ct'] . '</td>';
+
+
+                $sql3 = "select sum(qty) as ct from item where rcvd=0 and supplier=".$row['supplier'];
+                $res3 = $conn->query($sql3);
+                if ($res3->num_rows > 0) {
+                    while ($rw3 = $res3->fetch_assoc()) {
+                        echo '<tr onclick="gotopending(' . $row['supplier'] . ')">';
+                        echo '<td>' . $rw['store'] . '</td>';
+                        echo '<td>' . $rw3['ct'] . '</td>';
+                        
+                        echo '</tr>';
+                    }
+                }
                 
-                echo '</tr>';
             }
         }
     }
