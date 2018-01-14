@@ -12,7 +12,7 @@
             	function getUsername(){
             		var sl = $("#store").val().toLowerCase().split(" ");
             		
-            		$("#token").val($("#lname").val().toLowerCase() + "_" + sl[0] );
+            		$("#token").val($("#lname").val().toLowerCase().replace(/[ `~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/\w\s],/gi, '') + "_" + sl[0].replace(/[ `~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/\w\s]/gi, '') );
             	}
             </script>
    

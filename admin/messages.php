@@ -46,7 +46,7 @@ include '../genfunctions/db_con.php';
                         </div>
                     </div>
 <?php
-$sql = "select distinct(user_id) from msg";
+$sql = "select distinct(user_id) from msg order by _time desc";
 $rs = $conn->query($sql);
 if ($rs->num_rows > 0) {
     while ($row = $rs->fetch_assoc()) {

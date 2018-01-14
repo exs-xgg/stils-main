@@ -190,11 +190,11 @@ if ($result->num_rows > 0) {
   <div id="home" class="tab-pane fade in active">
     <div class="col-lg-12 col-md-12">
         
-        <table class="table">
+        <table class="table table-striped">
             <thead><tr><th>Item Code</th><th>Item Name</th><th>Quantity(Initial/Present)</th><th>Item Price</th><th>Date Last Updated</th></tr></thead>
             <tbody>
     <?php
-    $sql = "select * from item where supplier=" .  $id . " and qty>0 order by date_last_update desc";
+    $sql = "select * from item where supplier=" .  $id . " and qty>0 and rcvd=1 order by date_last_update desc";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
     while ($row=$result->fetch_assoc()) {
@@ -215,7 +215,7 @@ if ($result->num_rows > 0) {
   <div id="menu1" class="tab-pane fade">
     <div class="col-lg-12 col-md-12">
        
-        <table class="table">
+        <table class="table table-striped">
             <thead><tr><th></th><th>Item Code</th><th>Item Name</th><th>Quantity</th><th>Item Price</th><th>Date Added</th></tr></thead>
             <tbody>
     <?php
@@ -224,7 +224,7 @@ if ($result->num_rows > 0) {
     if ($result->num_rows > 0) {
     while ($row=$result->fetch_assoc()) {
     echo '<tr id="item_' . $row['id'] . '">';
-    echo '<td><button class="btn btn-success" onclick="conf(' . $row['id'] . ')">I received this</button></td>';
+    echo '<td><button class="btn btn-success btn-fill" onclick="conf(' . $row['id'] . ')">I received this</button></td>';
     echo '<td>' . $row['serial_no'] . "</td>";
     echo '<td>' . $row['item_name'] . "</td>";
     echo '<td>' . $row['init_qty'] . "</td>";

@@ -9,7 +9,8 @@ function doMe(){
 		include '../../genfunctions/db_con.php';
 	include '../../genfunctions/crypto.php';
 	if (isset($_REQUEST['to'])) {
-		$q = fin($_REQUEST['to']);
+		$q = ($_REQUEST['to']);
+		$q = $conn->real_escape_string($q);
 		$msg = $_POST['msg'];
 		$sql = "insert into msg(sw,user_id,body) values(1,$q,'$msg')";
 		if ($conn->query($sql) === true) {
