@@ -1,8 +1,8 @@
-<manifest alg="2" build="2018.0.0.379" opt="false" iceEnabled="true" iceMarkupVersion="2" iceEnabledOptions="link,responsive,cachebuster,textStyling" exportTarget="other" domain="stilustrata.com" resolutions="1x" timestamp="1515816035975">
+<manifest alg="2" build="2018.0.0.379" opt="false" iceEnabled="true" iceMarkupVersion="2" iceEnabledOptions="link,responsive,cachebuster,textStyling" exportTarget="other" domain="stilustrata.com" resolutions="1x" timestamp="1515853218232">
   <folder name="css">
     <file name="site_global.css" crc="373709799"/>
     <file name="master_a-master.css" crc="387496549" ref="index"/>
-    <file name="index.css" crc="4271043369" ref="index"/>
+    <file name="index.css" crc="47101234" ref="index"/>
   </folder>
   <folder name="scripts">
     <file name="jquery-1.8.3.min.js" crc="209076791" ref="index"/>
@@ -44,8 +44,8 @@
     <file name="u1050-4.png" crc="3895911899" ref="index"/>
     <file name="u773-4.png" crc="3922752163" ref="index"/>
     <file name="u500-4.png" crc="3875078108" ref="index"/>
-    <file name="u511-4.png" crc="297173965" ref="index"/>
-    <file name="u977-4.png" crc="407269736" ref="index"/>
+    <file name="u511-4.png" crc="205468984" ref="index"/>
+    <file name="u977-4.png" crc="394249490" ref="index"/>
     <file name="u710_states.png" crc="161042004" ref="index"/>
     <file name="u710_states-r.png" crc="34875646" ref="index"/>
     <file name="u622_states.png" crc="4161040617" ref="index"/>
@@ -56,10 +56,10 @@
     <file name="u641_states-r.png" crc="33548014" ref="index"/>
     <file name="u653_states.png" crc="4104854568" ref="index"/>
     <file name="u653_states-r.png" crc="386815727" ref="index"/>
-    <file name="u981-4.png" crc="3846424728" ref="index"/>
-    <file name="u996-4.png" crc="218497182" ref="index"/>
+    <file name="u981-4.png" crc="4004675377" ref="index"/>
+    <file name="u996-4.png" crc="4006376459" ref="index"/>
     <file name="u1013-4.png" crc="393626521" ref="index"/>
     <file name="u1023-4.png" crc="516201573" ref="index"/>
   </folder>
-  <file name="index.html" crc="4279889575" seo="true" mt="1515816016714" redirect="true"/>
+  <file name="index.html" crc="522321380" seo="true" mt="1515853210347" redirect="true"/>
 </manifest>
