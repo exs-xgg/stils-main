@@ -141,7 +141,7 @@ if ($result->num_rows > 0) {
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Phone Number 1</label>
-                                                <input type="text" class="form-control border-input" placeholder="City" value="<?php echo $sms1; ?>">
+                                                <input type="text" class="form-control" placeholder="City" value="<?php echo $sms1; ?>">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
@@ -181,36 +181,66 @@ if ($result->num_rows > 0) {
 
 
                 </div>
-                <div class="col-lg-12 col-md-12">
-                    <h4>Items Currently on Hand</h4>
-                    <hr>
-                    <table class="table">
-                        <thead><tr><th>Item ID</th><th>Item Code</th><th>Item Name</th><th>Quantity(Initial/Present)</th><th>Item Price</th><th>Status</th><th>Date Last Updated</th></tr></thead>
-                        <tbody>
-<?php
-$sql = "select * from item where supplier=" .  $id . " order by date_last_update desc";
-$result = $conn->query($sql);
-if ($result->num_rows > 0) {
+                <ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" href="#home">Items Currently Active</a></li>
+  <li><a data-toggle="tab" href="#menu1">Pending Items</a></li>
+</ul>
+
+<div class="tab-content">
+  <div id="home" class="tab-pane fade in active">
+    <div class="col-lg-12 col-md-12">
+        
+        <table class="table">
+            <thead><tr><th>Item Code</th><th>Item Name</th><th>Quantity(Initial/Present)</th><th>Item Price</th><th>Date Last Updated</th></tr></thead>
+            <tbody>
+    <?php
+    $sql = "select * from item where supplier=" .  $id . " and qty>0 order by date_last_update desc";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
     while ($row=$result->fetch_assoc()) {
-         echo '<tr onclick="window.location.href='. "'i.php?s=" . $row['id'] . "'" .'">';
-        echo '<td>' . $row['id'] . "</td>";
-        echo '<td>' . $row['serial_no'] . "</td>";
-        echo '<td>' . $row['item_name'] . "</td>";
-        echo '<td>' . $row['init_qty'] . ' / ' . $row['qty'] . "</td>";
-        echo '<td>' . $row['unit_price'] . "</td>";
-        if ($row['rcvd']=="0") {
-            echo '<td class="icon-danger">Pending</td>';
-        }else{
-            echo '<td class="icon-success">Recieved</td>';
-        }
-        echo '<td>' . $row['date_last_update'] . "</td>";
-        echo '</tr>';
+    echo '<tr onclick="window.location.href='. "'i.php?s=" . $row['id'] . "'" .'">';
+    echo '<td>' . $row['serial_no'] . "</td>";
+    echo '<td>' . $row['item_name'] . "</td>";
+    echo '<td>' . $row['init_qty'] . ' / ' . $row['qty'] . "</td>";
+    echo '<td>' . $row['unit_price'] . "</td>";
+    echo '<td>' . $row['date_last_update'] . "</td>";
+    echo '</tr>';
     }
-}
-?>
-                        </tbody>
-                    </table>
-                </div>
+    }
+    ?>
+            </tbody>
+        </table>
+    </div>
+  </div>
+  <div id="menu1" class="tab-pane fade">
+    <div class="col-lg-12 col-md-12">
+       
+        <table class="table">
+            <thead><tr><th></th><th>Item Code</th><th>Item Name</th><th>Quantity</th><th>Item Price</th><th>Date Added</th></tr></thead>
+            <tbody>
+    <?php
+    $sql = "select * from item where supplier=" .  $id . " and rcvd=0 order by date_last_update desc";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+    while ($row=$result->fetch_assoc()) {
+    echo '<tr id="item_' . $row['id'] . '">';
+    echo '<td><button class="btn btn-success" onclick="conf(' . $row['id'] . ')">I received this</button></td>';
+    echo '<td>' . $row['serial_no'] . "</td>";
+    echo '<td>' . $row['item_name'] . "</td>";
+    echo '<td>' . $row['init_qty'] . "</td>";
+    echo '<td>' . $row['unit_price'] . "</td>";
+    echo '<td>' . $row['date_added'] . "</td>";
+    echo '</tr>';
+    }
+    }
+    ?>
+            </tbody>
+        </table>
+    </div>
+  </div>
+  
+</div>
+                
             </div>
         </div>
 
@@ -242,6 +272,36 @@ if ($result->num_rows > 0) {
     <!-- Paper Dashboard Core javascript and methods for Demo purpose -->
 	<script src="assets/js/paper-dashboard.js"></script>
 <script>
+    function conf(e){
+        $.ajax({
+            url: "function/rcvItemAPI.php?id=" + e,
+            timeout: 5000,
+            success: function(result){
+                var r = JSON.parse(result);
+                if(r.return){
+                    $.notify({
+                        message:"<p><h4>Item Received!</h4></p>" 
+
+                    },{
+                        type: 'success',
+                        timer: 2000
+                    });
+                    $("#item_" + e).remove();
+
+
+                }
+            },
+            error: function(xhr){
+                $.notify({
+                message:"<p><h4>Request failed. The website may be experiencing errors or the internet is down.</h4></p>" 
+
+            },{
+                type: 'danger',
+                timer: 2000
+            });
+            }
+        });
+    }
     function lockUser(e){
         $.ajax({
             url: "function/lockUser.php?l=1&id=" + e,

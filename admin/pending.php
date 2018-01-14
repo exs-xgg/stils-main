@@ -91,25 +91,27 @@ if ($result->num_rows > 0) {
 									<table class="table table-striped">
 											<thead>
 
-												<th>Name</th>
-												<th>Quantity</th>
-												<th>Store Name</th>
-                                                <th>Last Updated</th>
-                                                <th></th>
+												<th>Partner Name</th>
+												<th>Number of Items Pending</th>
+												
 											</tr></thead>
 											<tbody>
 <?php
-$sql = "select *, item.id as idd, users.id as dd from item inner join users on item.supplier=users.id where rcvd = 0 order by date_last_update desc";
+$sql = "select distinct(supplier) from item where rcvd=0 ";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        echo '<tr id="itemRow' . $row['idd'] . '">';
-        echo '<td>' . $row['item_name'] . '</td>';
-        echo '<td>' . $row['init_qty'] . '</td>';
-        echo '<td><a href ="user.php?id='. $row['dd'] . '">' . $row['store'] . '</a></td>';
-        echo '<td>' . $row['date_last_update'] . '</td>';
-        echo '<td><button onclick="conf('. $row['idd'] .')">Received</button></td>';
-        echo '</tr>';
+        $sql2 = "select count(*) as ct, store from item inner join users on item.supplier=users.id where rcvd=0 order by date_last_update desc";
+        $res2 = $conn->query($sql2);
+        if ($res2->num_rows > 0) {
+            while ($rw = $res2->fetch_assoc()) {
+                echo '<tr onclick="gotopending(' . $row['supplier'] . ')">';
+                echo '<td>' . $rw['store'] . '</td>';
+                echo '<td>' . $rw['ct'] . '</td>';
+                
+                echo '</tr>';
+            }
+        }
     }
 }
 ?>
@@ -125,6 +127,9 @@ if ($result->num_rows > 0) {
 
 
 <script>
+    function gotopending(e){
+        window.location.href = "user.php?id=" + e + "#menu1";
+    }
     function conf(e){
         $.ajax({
             url: "function/rcvItemAPI.php?id=" + e,

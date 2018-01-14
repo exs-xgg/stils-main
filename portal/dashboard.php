@@ -68,9 +68,10 @@ if ($rst->num_rows > 0) {
         $date = $rw['bul_date'];
     }
 }
-?>                                        
+?>                                          
+                                            <h2>Admin's Bulletin</h2>
                                             <h4><?php echo $title ?></h4>
-                                            <p class="form form-control"><?php echo $content ?></p><span><?php echo $date ?></span>
+                                            <p ><?php echo $content ?></p><span><?php echo $date ?></span>
                                         
                                     </div>
                                 </div>
@@ -188,6 +189,32 @@ if ($rst->num_rows > 0) {
 							</div>
 						</div>
 					</div>
+                    <div class="col-lg-3 col-sm-6" onclick="window.location.href = 'https://goo.gl/cgN6iW';">
+                        <div class="card">
+                            <div class="content">
+                                <div class="row">
+                                    <div class="col-xs-5">
+                                        <div class="icon-big icon-primary text-center">
+                                            <i class="ti-truck"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-7">
+                                        <div class="numbers">
+                                            <p>Guidelines</p>
+                                             
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="footer">
+                                    <hr />
+                                    <div class="stats">
+                                        <span class="icon-success"> 
+                                        Store Guidelines</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
 

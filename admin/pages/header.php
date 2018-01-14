@@ -1,10 +1,12 @@
 <?php
 session_start();
-if (isset($_SESSION['user_priv'])) {
+if (isset($_SESSION['user_priv']) && isset($_SESSION['id'])) {
     if (!($_SESSION['user_priv']=="1")) {
             header("location: ../login.php");
 
     }
+}else{
+    header("location: ../login.php");
 }
 ?>
 <!doctype html>
