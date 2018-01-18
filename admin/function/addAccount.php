@@ -10,7 +10,8 @@ $sms2 = $_POST['sms2'];
 $tel = $_POST['tel'];
 $token = $_POST['token'];
 $pin = $_POST['pin'];
-$sql = "insert into users(lname,fname,store,email,sms1,sms2,tel,login_token,pin) values('$lname','$fname','$store','$email','$sms1','$sms2','$tel','$token','$pin')";
+$tag = $_POST['tag'];
+$sql = "insert into users(lname,fname,store,email,sms1,sms2,tel,login_token,pin,tag) values('$lname','$fname','$store','$email','$sms1','$sms2','$tel','$token','$pin'.'$tag')";
 $result = $conn->query($sql);
 
    

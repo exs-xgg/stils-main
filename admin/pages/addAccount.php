@@ -34,6 +34,8 @@
                     <input class="ft" type="text" name="tel"><br>
                     <label>Login Token</label><br>
                     <input id="token" class="ft" type="text" name="token"> &nbsp; <span class="btn btn-info" onclick="getUsername()">Generate Login Token</span><br>
+                    <label>Unique Tag</label><br>
+                    <input class="ft" type="text" name="tag"><br>
                     <label>Pin</label><br>
                     <input class="ft" type="text" name="pin" value="000000"><br><br>
 
