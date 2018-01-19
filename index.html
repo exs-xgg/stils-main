@@ -1,194 +1,555 @@
 <!DOCTYPE html>
-<html class="nojs html css_verticalspacer" lang="en-US">
- <head>
+<html lang="en">
 
-  <meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
-  <meta name="generator" content="2018.0.0.379"/>
-  
-  <script type="text/javascript">
-   // Update the 'nojs'/'js' class on the html node
-document.documentElement.className = document.documentElement.className.replace(/\bnojs\b/g, 'js');
+<head>
 
-// Check that all required assets are uploaded and up-to-date
-if(typeof Muse == "undefined") window.Muse = {}; window.Muse.assets = {"required":["museutils.js", "museconfig.js", "jquery.watch.js", "webpro.js", "musewpslideshow.js", "jquery.museoverlay.js", "touchswipe.js", "jquery.musepolyfill.bgsize.js", "require.js", "index.css"], "outOfDate":[]};
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:image" content="img/bgstils.jpg">
+    <meta property="og:title" content="Stilustrata Fashion Store">
+    <meta property="og:description" content="Stilustrata Fashion Store's Official Website">
+    <meta name="author" content="Existence IT Research and Development 2018">
+    <link rel="shortcut icon" href="img/bgstils.jpg" ; />
+    <title>Stilustrata Fashion Store</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/stylish-portfolio.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    
+
+
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+    <nav class="navbar navbar-inverse navbar-fixed-top" id="navv">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#top" style="background-color: black;font-family: 'Porter',Arial,sans-serif">STILUSTRATA</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="#services">About Us</a></li>
+                <li><a href="#partners">Brand Partners</a></li>
+                <li><a href="#foots">Contact Us</a></li>
+                <li><a href="login.php">Login</a></li>
+
+            </ul>
+        </div>
+    </nav>
+    <!-- Navigation -->
+    <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-angle-double-left"></i></a>
+    <nav id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-angle-double-right"></i></a>
+            <li class="sidebar-brand">
+                <a href="#top" onclick=$( "#menu-close").click();>Stilustrata</a>
+            </li>
+            <li><a href="#services" onclick=$( "#menu-close").click();>About Us</a></li>
+            <li><a href="#partners" onclick=$( "#menu-close").click();>Brand Partners</a></li>
+            <li><a href="#foots" onclick=$( "#menu-close").click();>Contact Us</a></li>
+            <li><a href="login.php">Login</a></li>
+        </ul>
+    </nav>
+<p id="paddd">&nbsp;</p>
+    <!-- Header -->
+    <header id="top" class="header">
+        <div class="text-vertical-center" style="font-family: 'Porter',Arial,sans-serif">
+            <p class="main_h">S T I L U S T R A T A</p>
+            <p style="white-space: nowrap;">· F A S H I O N &nbsp;&nbsp;S T O R E ·</p>
+            <br>
+           
+        </div>
+    </header>
+    <style type="text/css">
+    .main_h{
+        font-size: 20px; 
+    font-size: 4vw;
+        white-space: nowrap;
+    }
+        .text-vertical-center{
+           -webkit-animation: fadein 3s; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: fadein 3s; /* Firefox < 16 */
+        -ms-animation: fadein 3s; /* Internet Explorer */
+         -o-animation: fadein 3s; /* Opera < 12.1 */
+            animation: fadein 3s;
+        }
+        @keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Opera < 12.1 */
+@-o-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+    </style>
+
+<script>
+    
 </script>
-  
-  <title>Welcome to Stilustrata!</title>
-  <!-- CSS -->
-  <link rel="stylesheet" type="text/css" href="css/site_global.css?crc=373709799"/>
-  <link rel="stylesheet" type="text/css" href="css/master_a-master.css?crc=387496549"/>
-  <link rel="stylesheet" type="text/css" href="css/index.css?crc=47101234" id="pagesheet"/>
-  <!-- JS includes -->
-  <script src="https://use.typekit.net/ik/1ktuC8scj9iT5qk8N93pc47gjGFsb3BuPSGqYiwFwcbfeT6gfJOqT3bPH2q3F2MD52ZLjD9ojcB8jQquF2JtFQsqwDbUFRIujcj3jQqajRSkwR9-FPG0SasTdYmDiY4yieI0jhNlOYFX-AUuSaskjWsyOcFzdPUaiaS0SasTdYmDiY4yieI0jhNlJ6lkdh4zievlShUyjKGHf5DyMsMMeMb6MKGHf5zyMsMMeMw6MqGIQWmDZZMgGEzGX69.js" type="text/javascript"></script>
-  <!-- Other scripts -->
-  <script type="text/javascript">
-   try {Typekit.load();} catch(e) {}
-</script>
-   </head>
- <body class="museBGSize">
 
-  <div class="clearfix" id="page"><!-- group -->
-   <div class="clearfix grpelem" id="pu704"><!-- column -->
-    <div class="clearfix colelem" id="u704"><!-- column -->
-     <img class="colelem" id="u687-4" alt="STILUSTRATA" width="920" height="44" src="images/u687-4.png?crc=151842995"/><!-- rasterized frame -->
-     <div class="clearfix colelem" id="pu698"><!-- group -->
-      <div class="rounded-corners grpelem" id="u698"><!-- simple frame --></div>
-      <img class="grpelem" id="u692-4" alt="FASHION STORE" width="268" height="24" src="images/u692-4.png?crc=329173433"/><!-- rasterized frame -->
-      <div class="rounded-corners grpelem" id="u701"><!-- simple frame --></div>
-     </div>
-    </div>
-    <div class="browser_width colelem" id="u974-bw">
-     <div class="rgba-background" id="u974"><!-- column -->
-      <div class="clearfix" id="u974_align_to_page">
-       <a class="anchor_item colelem" id="brand-partners"></a>
-       <img class="colelem" id="u773-4" alt="Brand Partners" width="920" height="72" src="images/u773-4.png?crc=3922752163"/><!-- rasterized frame -->
-       <img class="colelem" id="u1050-4" alt="TO BE ANNOUNCED!" width="867" height="77" src="images/u1050-4.png?crc=3895911899"/><!-- rasterized frame -->
-      </div>
-     </div>
-    </div>
-    <a class="anchor_item colelem" id="about-us"></a>
-    <img class="colelem" id="u500-4" alt="About Us" width="921" height="72" src="images/u500-4.png?crc=3875078108"/><!-- rasterized frame -->
-    <div class="clearfix colelem" id="u827-8"><!-- content -->
-     <p>Stilustrata Fashion Store is a lifestyle and concept store established by two young and professional entrepreneurs.</p>
-     <p>&nbsp;</p>
-     <p>Located in the heart of Tarlac City, it is strategically situated in the biggest food park in the city with its neighboring establishments such as, schools, colleges, universities, government offices, and malls.</p>
-     <p>&nbsp;</p>
-     <p>With its subtle and conservative interior design, Stilustrata is an exquisite space with various array of the latest fashion trend from the country's favorite online shops, as well as emerging entrepreneurs. </p>
-     <p>&nbsp;</p>
-     <p>Stilustrata will take your shopping to another level from the otherwise conventional department stores</p>
-    </div>
-    <div class="browser_width colelem" id="u499-bw">
-     <div class="rgba-background" id="u499"><!-- column -->
-      <div class="clearfix" id="u499_align_to_page">
-       <div class="clearfix colelem" id="ppu511-4"><!-- group -->
-        <div class="clearfix grpelem" id="pu511-4"><!-- group -->
-         <img class="grpelem" id="u511-4" alt="Location" width="250" height="72" src="images/u511-4.png?crc=205468984"/><!-- rasterized frame -->
-         <a class="anchor_item grpelem" id="contact-us"></a>
+    <aside id="services" class="call-to-action bg-primary" style="background-color: #212121">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center" id="about_p">
+                    <h2>About Us</h2>
+                    <hr class="small">
+                    <p style="font-size: 15px" >
+                        Stilustrata Fashion Store is a lifestyle and concept store established by two young and professional entrepreneurs.
+                    Located in the heart of Tarlac City, it is strategically situated in the biggest food park in the city with its neighboring establishments such as, schools, colleges, universities, government offices, and malls. </p><p>With its subtle and conservative interior design, Stilustrata is an exquisite space with various array of the latest fashion trend from the country's favorite online shops, as well as emerging entrepreneurs. Stilustrata will take your shopping to another level from the otherwise conventional department stores</p>
+                    
+
+                </div>
+            </div>
         </div>
-        <img class="grpelem" id="u977-4" alt="Contact Us!" width="354" height="72" src="images/u977-4.png?crc=394249490"/><!-- rasterized frame -->
-        <a class="anchor_item grpelem" id="location"></a>
-       </div>
-       <div class="clearfix colelem" id="ppu980"><!-- group -->
-        <div class="clearfix grpelem" id="pu980"><!-- column -->
-         <div class="clearfix colelem" id="u980"><!-- group -->
-          <a class="nonblock nontext clip_frame grpelem" id="u982" href="https://www.facebook.com/stilustrata/"><!-- image --><img class="block" id="u982_img" src="images/fb%20white.png?crc=3848084864" alt="" width="45" height="45"/></a>
-          <a class="nonblock nontext grpelem" id="u981-4" href="https://www.facebook.com/stilustrata/"><!-- rasterized frame --><img id="u981-4_img" alt="Stilustrata Fashion Store" width="288" height="29" src="images/u981-4.png?crc=4004675377"/></a>
-         </div>
-         <div class="clearfix colelem" id="u1076"><!-- group -->
-          <div class="clip_frame grpelem" id="u1006"><!-- image -->
-           <img class="block" id="u1006_img" src="images/1674-200-crop-u955.png?crc=4029249176" alt="" width="45" height="45"/>
-          </div>
-          <img class="grpelem" id="u1013-4" alt="stilustrata@gmail.com" width="253" height="29" src="images/u1013-4.png?crc=393626521"/><!-- rasterized frame -->
-         </div>
-         <div class="clearfix colelem" id="u993"><!-- group -->
-          <a class="nonblock nontext clip_frame grpelem" id="u994" href="https://www.instagram.com/stilustratafashionstore/"><!-- image --><img class="block" id="u994_img" src="images/420243-crop-u1006.png?crc=439946477" alt="" width="46" height="46"/></a>
-          <a class="nonblock nontext grpelem" id="u996-4" href="https://www.instagram.com/stilustratafashionstore/"><!-- rasterized frame --><img id="u996-4_img" alt="@stilustratafashionstore" width="287" height="29" src="images/u996-4.png?crc=4006376459"/></a>
-         </div>
-         <div class="clearfix colelem" id="u1079"><!-- group -->
-          <div class="clip_frame grpelem" id="u1016"><!-- image -->
-           <img class="block" id="u1016_img" src="images/phone-icon-946.png?crc=3980270169" alt="" width="34" height="46"/>
-          </div>
-          <img class="grpelem" id="u1023-4" alt="0917-857-4461 / 0997-633-5391" width="305" height="27" src="images/u1023-4.png?crc=516201573"/><!-- rasterized frame -->
-         </div>
+    </aside>
+
+    <section id="partners" class="services bg-primary">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-lg-10 col-lg-offset-1">
+                    <h2>Our Brand Partners</h2><br>
+                    <hr class="small">
+                    <div class="row">
+                        <div class="col-md-2 col-xs-6">
+                            <div class="service-item">
+                                <img class="no_large" src="img/placeholder.jpg">
+                                <h4 class="bl">
+                                    <strong>Existence Store</strong>
+                                </h4>
+                               
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-xs-6">
+                            <div class="service-item">
+                                <img class="no_large" src="img/placeholder.jpg">
+                                <h4 class="bl">
+                                    <strong>Rigzy Fashion Store</strong>
+                                </h4>
+                               
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-xs-6">
+                            <div class="service-item">
+                                <img class="no_large" src="img/placeholder.jpg">
+                                <h4 class="bl">
+                                    <strong>Frolyn's Gamerz Apparel</strong>
+                                </h4>
+                               
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-xs-6">
+                            <div class="service-item">
+                                <img class="no_large" src="img/placeholder.jpg">
+                                <h4 class="bl">
+                                    <strong>Little Macey's</strong>
+                                </h4>
+                               
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-xs-6">
+                            <div class="service-item">
+                                <img class="no_large" src="img/placeholder.jpg">
+                                <h4 class="bl">
+                                    <strong>Existence Store</strong>
+                                </h4>
+                               
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-xs-6">
+                            <div class="service-item">
+                                <img class="no_large" src="img/placeholder.jpg">
+                                <h4 class="bl">
+                                    <strong>Rigzy Fashion Store</strong>
+                                </h4>
+                               
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-xs-6">
+                            <div class="service-item">
+                                <img class="no_large" src="img/placeholder.jpg">
+                                <h4 class="bl">
+                                    <strong>Frolyn's Gamerz Apparel</strong>
+                                </h4>
+                               
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-xs-6">
+                            <div class="service-item">
+                                <img class="no_large" src="img/placeholder.jpg">
+                                <h4 class="bl">
+                                    <strong>Little Macey's</strong>
+                                </h4>
+                               
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-xs-6">
+                            <div class="service-item">
+                                <img class="no_large" src="img/placeholder.jpg">
+                                <h4 class="bl">
+                                    <strong>Existence Store</strong>
+                                </h4>
+                               
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-xs-6">
+                            <div class="service-item">
+                                <img class="no_large" src="img/placeholder.jpg">
+                                <h4 class="bl">
+                                    <strong>Rigzy Fashion Store</strong>
+                                </h4>
+                               
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-xs-6">
+                            <div class="service-item">
+                                <img class="no_large" src="img/placeholder.jpg">
+                                <h4 class="bl">
+                                    <strong>Frolyn's Gamerz Apparel</strong>
+                                </h4>
+                               
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-xs-6">
+                            <div class="service-item">
+                                <img class="no_large" src="img/placeholder.jpg">
+                                <h4 class="bl">
+                                    <strong>Little Macey's</strong>
+                                </h4>
+                               
+                            </div>
+                        </div>
+
+
+
+
+
+
+                    </div>
+                <div  id="allDiv">
+                    <div class="row">
+                        <div class="col-md-2 col-xs-6">
+                            <div class="service-item">
+                                <img class="no_large" src="img/placeholder.jpg">
+                                <h4 class="bl">
+                                    <strong>Existence Store</strong>
+                                </h4>
+                               
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-xs-6">
+                            <div class="service-item">
+                                <img class="no_large" src="img/placeholder.jpg">
+                                <h4 class="bl">
+                                    <strong>Rigzy Fashion Store</strong>
+                                </h4>
+                               
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-xs-6">
+                            <div class="service-item">
+                                <img class="no_large" src="img/placeholder.jpg">
+                                <h4 class="bl">
+                                    <strong>Frolyn's Gamerz Apparel</strong>
+                                </h4>
+                               
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-xs-6">
+                            <div class="service-item">
+                                <img class="no_large" src="img/placeholder.jpg">
+                                <h4 class="bl">
+                                    <strong>Little Macey's</strong>
+                                </h4>
+                               
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-xs-6">
+                            <div class="service-item">
+                                <img class="no_large" src="img/placeholder.jpg">
+                                <h4 class="bl">
+                                    <strong>Existence Store</strong>
+                                </h4>
+                               
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-xs-6">
+                            <div class="service-item">
+                                <img class="no_large" src="img/placeholder.jpg">
+                                <h4 class="bl">
+                                    <strong>Rigzy Fashion Store</strong>
+                                </h4>
+                               
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-xs-6">
+                            <div class="service-item">
+                                <img class="no_large" src="img/placeholder.jpg">
+                                <h4 class="bl">
+                                    <strong>Frolyn's Gamerz Apparel</strong>
+                                </h4>
+                               
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-xs-6">
+                            <div class="service-item">
+                                <img class="no_large" src="img/placeholder.jpg">
+                                <h4 class="bl">
+                                    <strong>Little Macey's</strong>
+                                </h4>
+                               
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-xs-6">
+                            <div class="service-item">
+                                <img class="no_large" src="img/placeholder.jpg">
+                                <h4 class="bl">
+                                    <strong>Existence Store</strong>
+                                </h4>
+                               
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-xs-6">
+                            <div class="service-item">
+                                <img class="no_large" src="img/placeholder.jpg">
+                                <h4 class="bl">
+                                    <strong>Rigzy Fashion Store</strong>
+                                </h4>
+                               
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-xs-6">
+                            <div class="service-item">
+                                <img class="no_large" src="img/placeholder.jpg">
+                                <h4 class="bl">
+                                    <strong>Frolyn's Gamerz Apparel</strong>
+                                </h4>
+                               
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-xs-6">
+                            <div class="service-item">
+                                <img class="no_large" src="img/placeholder.jpg">
+                                <h4 class="bl">
+                                    <strong>Little Macey's</strong>
+                                </h4>
+                               
+                            </div>
+                        </div>
+
+
+
+
+
+
+                    </div
+                </div>
+                    <!-- /.row (nested) -->
+                </div>
+                <!-- /.col-lg-10 -->
+                <a class="btn btn-light" onclick="$('#allDiv').show(1500);" align="center">Show More</a>
+            </div>
+            <!-- /.row -->
+
         </div>
-        <div class="size_fixed grpelem" id="u818" style="color: white; font-family: Century Gothic; font-size: 20px; padding: 5px;"><!-- custom html -->
-         
-<p align="right" style="padding-top: 20px">Stall 57 Citywalk Avenue, Mega Food Park, Zamora St., San Roque, Tarlac City, Philippines</p>
-<br><br>
-<p align="right" style="padding-top: 20px"><b>Landmarks:</b></p>
-<p align="right" style="padding-top: 20px">Tarlac State University</p>
-<p align="right" style="padding-top: 5px">Citywalk Mall</p>
-<p align="right" style="padding-top: 5px">Tarlac National High School</p>
-<br><br>
-<p align="center">Find us on <a href="https://www.google.com.ph/maps/place/Stilustrata+Fashion+Store/@15.4854895,120.586458,17z/data=!3m1!4b1!4m5!3m4!1s0x3396c63979692181:0x2f02668075145c62!8m2!3d15.4854843!4d120.5886467?hl=en" style="color:white" target="blank">GOOGLE MAPS</a>
-        </div>
-       </div>
-       <div class="clearfix colelem" id="u1053-4"><!-- content -->
+        <!-- /.container -->
+
+    </section>
+
+<style>
         
-       </div>
-      </div>
-     </div>
-    </div>
-   </div>
-   <div class="PamphletWidget clearfix" id="pamphletu412"><!-- none box -->
-    <div class="popup_anchor" id="u422popup">
-     <div class="ContainerGroup clearfix" id="u422"><!-- stack box -->
-      <div class="Container invi transition rgba-background clearfix grpelem" id="u423"><!-- group -->
-       <div class="clearfix grpelem" id="pu713"><!-- column -->
-        <div class="rounded-corners clearfix colelem" id="u713"><!-- group -->
-         <div class="clearfix grpelem" id="u746"><!-- column -->
-          <img class="colelem" id="u750-4" alt="STILUSTRATA" width="133" height="15" src="images/u750-4.png?crc=519157971"/><!-- rasterized frame -->
-          <div class="rounded-corners colelem" id="u747"><!-- simple frame --></div>
-          <img class="colelem" id="u749-4" alt="FASHION STORE" width="96" height="8" src="images/u749-4.png?crc=105016463"/><!-- rasterized frame -->
-          <div class="rounded-corners colelem" id="u748"><!-- simple frame --></div>
-         </div>
-        </div>
-        <a class="nonblock nontext anim_swing colelem" id="u710" href="index.html#brand-partners"><!-- state-based BG images --><img id="u710_states" alt="Brand Partners" src="images/blank.gif?crc=4208392903"/></a>
-        <a class="nonblock nontext anim_swing colelem" id="u622" href="index.html#about-us"><!-- state-based BG images --><img id="u622_states" alt="About Us" src="images/blank.gif?crc=4208392903"/></a>
-        <a class="nonblock nontext anim_swing colelem" id="u707" href="index.html#location"><!-- state-based BG images --><img id="u707_states" alt="Location" src="images/blank.gif?crc=4208392903"/></a>
-        <a class="nonblock nontext anim_swing colelem" id="u641" href="index.html#contact-us"><!-- state-based BG images --><img id="u641_states" alt="Contact Us" src="images/blank.gif?crc=4208392903"/></a>
-       </div>
-       <a class="nonblock nontext grpelem" id="u653" href="login.php"><!-- state-based BG images --><img id="u653_states" alt="Login" src="images/blank.gif?crc=4208392903"/></a>
-      </div>
-     </div>
-    </div>
-    <div class="ThumbGroup clearfix grpelem" id="u418"><!-- none box -->
-     <div class="popup_anchor" id="u419popup">
-      <div class="Thumb popup_element clearfix" id="u419"><!-- group -->
-       <div class="clip_frame clearfix grpelem" id="u462"><!-- image -->
-        <img class="position_content" id="u462_img" src="images/menu%203.png?crc=345537581" alt="" width="38" height="38"/>
-       </div>
-      </div>
-     </div>
-    </div>
-    <div class="popup_anchor" id="u415popup">
-     <div class="PamphletCloseButton PamphletLightboxPart popup_element" id="u415"><!-- simple frame --></div>
-    </div>
-   </div>
-   <div class="verticalspacer" data-offset-top="2627" data-content-above-spacer="2626" data-content-below-spacer="62"></div>
-   <div class="browser_width grpelem" id="u1067-bw">
-    <div id="u1067"><!-- group -->
-     <div class="clearfix" id="u1067_align_to_page">
-      <div class="clearfix grpelem" id="u1070-6"><!-- content -->
-       <p style="color: white; font-family: Century Gothic;">&copy;<script>document.write(new Date().getFullYear())</script> developed by <a class="nonblock" href="http://www.exs-innovations.co.nf/"><span id="u1070-2"  style="color: #3498db; font-family: Century Gothic;">Existence IT Research and Development</span></a></p>
-      </div>
-     </div>
-    </div>
-   </div>
-  </div>
-  <div class="preload_images">
-   <img class="preload" src="images/u710_states-r.png?crc=34875646" alt=""/>
-   <img class="preload" src="images/u622_states-r.png?crc=3838902809" alt=""/>
-   <img class="preload" src="images/u707_states-r.png?crc=4018360867" alt=""/>
-   <img class="preload" src="images/u641_states-r.png?crc=33548014" alt=""/>
-   <img class="preload" src="images/u653_states-r.png?crc=386815727" alt=""/>
-  </div>
-  <!-- Other scripts -->
-  <script type="text/javascript">
-   // Decide weather to suppress missing file error or not based on preference setting
-var suppressMissingFileError = false
-</script>
-  <script type="text/javascript">
-   window.Muse.assets.check=function(d){if(!window.Muse.assets.checked){window.Muse.assets.checked=!0;var b={},c=function(a,b){if(window.getComputedStyle){var c=window.getComputedStyle(a,null);return c&&c.getPropertyValue(b)||c&&c[b]||""}if(document.documentElement.currentStyle)return(c=a.currentStyle)&&c[b]||a.style&&a.style[b]||"";return""},a=function(a){if(a.match(/^rgb/))return a=a.replace(/\s+/g,"").match(/([\d\,]+)/gi)[0].split(","),(parseInt(a[0])<<16)+(parseInt(a[1])<<8)+parseInt(a[2]);if(a.match(/^\#/))return parseInt(a.substr(1),
-16);return 0},g=function(g){for(var f=document.getElementsByTagName("link"),h=0;h<f.length;h++)if("text/css"==f[h].type){var i=(f[h].href||"").match(/\/?css\/([\w\-]+\.css)\?crc=(\d+)/);if(!i||!i[1]||!i[2])break;b[i[1]]=i[2]}f=document.createElement("div");f.className="version";f.style.cssText="display:none; width:1px; height:1px;";document.getElementsByTagName("body")[0].appendChild(f);for(h=0;h<Muse.assets.required.length;){var i=Muse.assets.required[h],l=i.match(/([\w\-\.]+)\.(\w+)$/),k=l&&l[1]?
-l[1]:null,l=l&&l[2]?l[2]:null;switch(l.toLowerCase()){case "css":k=k.replace(/\W/gi,"_").replace(/^([^a-z])/gi,"_$1");f.className+=" "+k;k=a(c(f,"color"));l=a(c(f,"backgroundColor"));k!=0||l!=0?(Muse.assets.required.splice(h,1),"undefined"!=typeof b[i]&&(k!=b[i]>>>24||l!=(b[i]&16777215))&&Muse.assets.outOfDate.push(i)):h++;f.className="version";break;case "js":h++;break;default:throw Error("Unsupported file type: "+l);}}d?d().jquery!="1.8.3"&&Muse.assets.outOfDate.push("jquery-1.8.3.min.js"):Muse.assets.required.push("jquery-1.8.3.min.js");
-f.parentNode.removeChild(f);if(Muse.assets.outOfDate.length||Muse.assets.required.length)f="Some files on the server may be missing or incorrect. Clear browser cache and try again. If the problem persists please contact website author.",g&&Muse.assets.outOfDate.length&&(f+="\nOut of date: "+Muse.assets.outOfDate.join(",")),g&&Muse.assets.required.length&&(f+="\nMissing: "+Muse.assets.required.join(",")),suppressMissingFileError?(f+="\nUse SuppressMissingFileError key in AppPrefs.xml to show missing file error pop up.",console.log(f)):alert(f)};location&&location.search&&location.search.match&&location.search.match(/muse_debug/gi)?
-setTimeout(function(){g(!0)},5E3):g()}};
-var muse_init=function(){require.config({baseUrl:""});require(["jquery","museutils","whatinput","jquery.watch","webpro","musewpslideshow","jquery.museoverlay","touchswipe","jquery.musepolyfill.bgsize"],function(d){var $ = d;$(document).ready(function(){try{
-window.Muse.assets.check($);/* body */
-Muse.Utils.transformMarkupToFixBrowserProblemsPreInit();/* body */
-Muse.Utils.prepHyperlinks(true);/* body */
-Muse.Utils.resizeHeight('.browser_width');/* resize height */
-Muse.Utils.requestAnimationFrame(function() { $('body').addClass('initialized'); });/* mark body as initialized */
-Muse.Utils.makeButtonsVisibleAfterSettingMinWidth();/* body */
-Muse.Utils.initWidget('#pamphletu412', ['#bp_infinity'], function(elem) { return new WebPro.Widget.ContentSlideShow(elem, {contentLayout_runtime:'stack',event:'click',deactivationEvent:'mouseout_click',autoPlay:false,displayInterval:3000,transitionStyle:'horizontal',transitionDuration:500,hideAllContentsFirst:true,shuffle:false,enableSwipe:true,resumeAutoplay:false,resumeAutoplayInterval:3000,playOnce:false,autoActivate_runtime:false,isResponsive:false}); });/* #pamphletu412 */
-Muse.Utils.fullPage('#page');/* 100% height page */
-Muse.Utils.showWidgetsWhenReady();/* body */
-Muse.Utils.transformMarkupToFixBrowserProblems();/* body */
-}catch(b){if(b&&"function"==typeof b.notify?b.notify():Muse.Assert.fail("Error calling selector function: "+b),false)throw b;}})})};
+</style>
 
-</script>
-  <!-- RequireJS script -->
-  <script src="scripts/require.js?crc=4157109226" type="text/javascript" async data-main="scripts/museconfig.js?crc=380897831" onload="if (requirejs) requirejs.onError = function(requireType, requireModule) { if (requireType && requireType.toString && requireType.toString().indexOf && 0 <= requireType.toString().indexOf('#scripterror')) window.Muse.assets.check(); }" onerror="window.Muse.assets.check();"></script>
-   </body>
+   
+
+    
+    <style type="text/css">
+    .blackbg{
+        background-color: #212121 !important;
+    }
+    .no_large{
+    	max-width: 120px;
+    }
+    .bl{
+        color: white;
+        }
+        @media screen and (max-width: 1000px) {
+            .paddd{
+               visibility: hidden;
+            clear: both;
+            
+            display: none;
+            }
+          .main_h{
+            font-size: 7vw;
+            white-space: nowrap;
+        }
+          #navv{
+            visibility: hidden;
+            clear: both;
+            float: left;
+            margin: 10px auto 5px 20px;
+            width: 28%;
+            display: none;
+          }
+        
+        }
+            .services{
+                background-color: #212121;
+                background-repeat: no-repeat;
+            }
+            .mission-alpha{
+                color: white;
+                font-size: 20px;
+                float: left;
+                width: 50%;
+            }
+            .fb-page{
+                float: left;
+                width: 50%;
+            }
+    </style>
+
+
+
+    <!-- Footer -->
+    <footer class="blackbg">
+        <div id="foots" class="container blackbg bl">
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1 text-center">
+                    <h4><strong>Stilustrata Fashion Store</strong>
+                    </h4>
+                    <p>Stall 57 Citywalk Avenue, Mega Food Park, Zamora St., San Roque, Tarlac City, Philippines</p>
+                    <ul class="list-unstyled">
+                        <li><i class="fa fa-phone fa-fw"></i> (+63)917-857-4461 / (+63)997-633-5391</li>
+                        <li><i class="fa fa-envelope-o fa-fw"></i> <a href="mailto:admin01@stilustrata.com">admin01@stilustrata.com</a>
+                        </li><br><hr class="small"><br>
+                        <li><h4><i class="fa fa-map fa-fw"></i> <a href="https://www.google.com.ph/maps/place/Stilustrata+Fashion+Store/@15.4854895,120.586458,17z/data=!3m1!4b1!4m5!3m4!1s0x3396c63979692181:0x2f02668075145c62!8m2!3d15.4854843!4d120.5886467?hl=en">Find us on Google Maps</a></h4>
+                        </li>
+                    </ul>
+                    <br>
+                    <hr class="small">
+                    <h4>Follow us!</h4><br>
+                    <ul class="list-inline">
+                        <li>
+                            <a href="https://www.facebook.com/stilustrata/" target="blank"><i class="fa fa-facebook fa-fw fa-3x"></i></a>
+                        </li>
+                        <li>
+                            <a href="https://instagram.com/stilustratafashionstore" target="blank"><i class="fa fa-instagram fa-fw fa-3x"></i></a>
+                        </li>
+                        
+                    </ul>
+                    <hr class="small"><br><br><br>
+                    <p class="text-muted">Web Design by<br><span onclick="window.location.href='exs-innovation.co.nf'" class="bl">Existence IT Research and Development</span><br>&copy; 2018</p>
+                </div>
+            </div>
+        </div>
+        <a id="to-top" href="#top" class="btn btn-dark btn-lg"><i class="fa fa-chevron-up fa-fw fa-1x"></i></a>
+    </footer>
+
+    <!-- jQuery -->
+   
+
+    <!-- Custom Theme JavaScript -->
+    <script>
+        const mq = window.matchMedia( "(min-width: 1000px)" );
+        if (mq.matches) {
+          // window width is at least 500px
+        } else {
+            $("#paddd").hide();
+        }
+        $("#about_p").hide();
+        $("#allDiv").hide();
+        $("#about_p").slideDown(800);
+        
+        // Closes the sidebar menu
+        $("#menu-close").click(function(e) {
+            e.preventDefault();
+            $("#sidebar-wrapper").toggleClass("active");
+        });
+        // Opens the sidebar menu
+        $("#menu-toggle").click(function(e) {
+            e.preventDefault();
+            $("#sidebar-wrapper").toggleClass("active");
+        });
+        // Scrolls to the selected menu item on the page
+        $(function() {
+            $('a[href*=#]:not([href=#],[data-toggle],[data-target],[data-slide])').click(function() {
+                if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
+                    var target = $(this.hash);
+                    target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                    if (target.length) {
+                        $('html,body').animate({
+                            scrollTop: target.offset().top
+                        }, 1000);
+                        return false;
+                    }
+                }
+            });
+        });
+        //#to-top button appears after scrolling
+        var fixed = false;
+        $(document).scroll(function() {
+            if ($(this).scrollTop() > 250) {
+                if (!fixed) {
+                    fixed = true;
+                    // $('#to-top').css({position:'fixed', display:'block'});
+                    $('#to-top').show("slow", function() {
+                        $('#to-top').css({
+                            position: 'fixed',
+                            display: 'block'
+                        });
+                    });
+                }
+            } else {
+                if (fixed) {
+                    fixed = false;
+                    $('#to-top').hide("slow", function() {
+                        $('#to-top').css({
+                            display: 'none'
+                        });
+                    });
+                }
+            }
+        });
+    </script>
+
+</body>
+
 </html>

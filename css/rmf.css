@@ -1,0 +1,49 @@
+
+li{
+  list-style: circle;
+
+}
+
+
+dt{
+  font-size: 20px;
+}
+
+dd{
+  text-align: center;
+  font-family: "times new roman";
+  font-size: 15px;
+
+}
+
+img{
+  box-shadow:0px 2px 2px black;
+}
+
+html{
+  background-color: brown;
+  padding-left: 0%;
+  color: white;
+  text-shadow: 2px 2px 4px black;
+    }
+
+hr {
+      border: 0;
+      height: 1px;
+      background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+      }
+
+h1{
+ background-color: papayawhip;
+ text-shadow: none;
+ text-decoration: none;
+ color: black;
+ box-shadow: 2px gray
+}
+a{
+  color: white;
+
+}
+a:hover{
+ color: green;
+}
