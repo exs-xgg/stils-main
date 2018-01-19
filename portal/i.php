@@ -70,7 +70,7 @@ if ($result->num_rows > 0) {
     }
     ?></td></tr>
     <tr><th>Date Last Updated</th><td><?php echo $row['date_last_update']; ?></td></tr>
-    <tr><th></th><td><!-- <input type="submit" class="btn btn-primary" value="Update" disabled> --></td></tr>
+    <tr><th></th><td><input type="submit" class="btn btn-primary" value="Update" <?php echo ($row['allow_edit'] > 0)?"disabled":""; ?>disabled></td></tr>
 </form>
 </table>
 <!-- <h4>Actions</h4> -->

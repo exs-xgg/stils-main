@@ -45,7 +45,7 @@ include '../genfunctions/db_con.php';
 From: <input type="date" name="" id="datefrom"> To: <input type="date" name="" id="dateto"> <button class="btn btn-primary btn-simple" onclick="getReport()">Submit</button><button class="btn btn-primary btn-simple" onclick="getToday()">View Sales Today</button>
                                     <table class="tbl" id="itemTbl">
                                         <thead>
-                                            <tr><th>Item Serial #</th><th>Item Name</th><th>Quantity</th><th>Unit Price</th><th>Total Price</th><th>Date & Time</th></tr>
+                                            <tr><th>Item Code</th><th>Item Name</th><th>Quantity</th><th>Unit Price</th><th>Total Price</th><th>Date & Time</th></tr>
                                         </thead>
                                         <tbody>
                                             

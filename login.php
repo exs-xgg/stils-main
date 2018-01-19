@@ -11,7 +11,7 @@ if (isset($_SESSION['user_priv'])) {
 
 include 'genfunctions/db_con.php';
 
-if (isset($_POST['submit'])) {
+if (isset($_POST['submit']) && ($_SERVER['HTTP_ORIGIN']=="http://192.168.0.17")) {
     $usn = $_POST['usn'];
     $pw = $_POST['pw'];
     $sql = "select * from users where login_token='$usn' and pin='$pw' limit 1";

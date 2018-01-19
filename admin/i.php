@@ -77,7 +77,8 @@ if ($result->num_rows > 0) {
 <h4>Actions</h4>
 <table class="table">
     
-    <tr><th>Delete Item (Dont Click this for "Testing Purposes". <br>This Action cant be undone YET.)</th><td><a href="function/deleteItem.php?id=<?php echo $_REQUEST['s']; ?>" class="btn btn-warning">Delete</a></td><td></td></tr>     
+    <tr><th>Allow Editing</th><td><a href="function/allowEdit.php?id=<?php echo $_REQUEST['s']; ?>" class="btn btn-info"><?php echo ($row['allow_edit']=="-1")?"Allow Editing":"Disable Editing";?></a></td><td></td></tr> 
+    <tr><th>Delete Item (Dont Click this for "Testing Purposes". <br>This Action cant be undone YET.)</th><td><a href="function/deleteItem.php?id=<?php echo $_REQUEST['s']; ?>" class="btn btn-warning">Delete</a></td><td></td></tr>    
 
 
     <?php

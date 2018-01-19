@@ -104,16 +104,22 @@ if ($result->num_rows > 0) {
                                     
 
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>First Name</label>
                                                 <input type="text" class="form-control border-input" name="fname" placeholder="First Name" value="<?php echo $fname; ?>">
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Last Name</label>
                                                 <input type="text" class="form-control border-input" name="lname" placeholder="Last Name" value="<?php echo $lname; ?>">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                    <label>Landline</label>
+                                                    <input type="text" class="form-control border-input" name="tel" placeholder="City" value="<?php echo $tel; ?>">
                                             </div>
                                         </div>
                                     </div>
@@ -121,7 +127,7 @@ if ($result->num_rows > 0) {
                                     
 
                                     <div class="row">
-                                        <div class="col-md-3">
+                                        <div class="col-md-5">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Email address</label>
                                                 <input type="email" class="form-control border-input" name="email" placeholder="Email" value="<?php echo $email; ?>" required>
@@ -139,12 +145,7 @@ if ($result->num_rows > 0) {
 													<input type="text" class="form-control border-input" name="num2" placeholder="City" value="<?php echo $sms2; ?>">
 											</div>
                                         </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                    <label>Landline</label>
-                                                    <input type="text" class="form-control border-input" name="tel" placeholder="City" value="<?php echo $tel; ?>">
-                                            </div>
-                                        </div>
+                                        
 
                                     </div>
                                     <div class="row">
