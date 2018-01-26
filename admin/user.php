@@ -32,6 +32,25 @@ if ($result->num_rows > 0) {
         $tag = $row['tag'];
     }
 }
+$sold_today = "";
+$instock = "";
+$qry = "select (select sum(sale.qty) from sale inner join item on item.id = sale.item_id where item.supplier = $id and date(time_sale) = date(current_timestamp)) as sold_today, (select sum(qty)from item where supplier = $id and rcvd=1) as instock ";
+$res = $conn->query($qry);
+if ($res->num_rows > 0) {
+    while ($r = $res->fetch_assoc()) {
+        if ($r['sold_today']===NULL) {
+            $sold_today = "none";
+        }else{
+                    $sold_today = $r['sold_today'];
+
+        }
+        if ($r['instock']===NULL) {
+            $instock = "none";
+        }else{
+        $instock = $r['instock'];
+    }
+    }
+}
  ?>
 <div class="main-panel">
 		<nav class="navbar navbar-default">
@@ -83,10 +102,10 @@ if ($result->num_rows > 0) {
                             <div class="text-center">
                                 <div class="row">
                                     <div class="col-md-4 col-md-offset-1">
-                                        <h5>145<br /><small>In Stock</small></h5>
+                                        <h5><?php echo $instock ?><br /><small>In Stock</small></h5>
                                     </div>
                                     <div class="col-md-4">
-                                        <h5>22<br /><small>Sold Today</small></h5>
+                                        <h5><?php echo $sold_today ?><br /><small>Sold Today</small></h5>
                                     </div>
 
                                 </div>
