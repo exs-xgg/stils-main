@@ -264,7 +264,7 @@ if ($res->num_rows > 0) {
     if ($result->num_rows > 0) {
     while ($row=$result->fetch_assoc()) {
     echo '<tr id="item_' . $row['id'] . '">';
-    echo '<td><button class="btn btn-success btn-fill" onclick="conf(' . $row['id'] . ')">I received this</button></td>';
+    echo '<td><button class="btn btn-success btn-fill" onclick="conf(' . $row['id'] . ')">I received this</button>&nbsp;&nbsp;&nbsp;<button class="btn btn-danger btn-fill" onclick="del(' . $row['id'] . ')"> X </button></td>';
     echo '<td>' . $row['serial_no'] . "</td>";
     echo '<td>' . $row['item_name'] . "</td>";
     echo '<td>' . $row['init_qty'] . "</td>";
@@ -312,6 +312,22 @@ if ($res->num_rows > 0) {
     <!-- Paper Dashboard Core javascript and methods for Demo purpose -->
 	<script src="assets/js/paper-dashboard.js"></script>
 <script>
+    function del(e){
+        $.ajax({
+            url: "function/deleteItem.php?id=" + e,
+            success: function(){
+ $.notify({
+                        message:"<p><h4>Item Deleted!</h4></p>" 
+
+                    },{
+                        type: 'success',
+                        timer: 2000
+                    });
+                    $("#item_" + e).remove();
+            }
+
+        });
+    }
     function conf(e){
         $.ajax({
             url: "function/rcvItemAPI.php?id=" + e,

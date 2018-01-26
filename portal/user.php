@@ -205,7 +205,7 @@ if ($res->num_rows > 0) {
                         <thead><tr><th>Item ID</th><th>Item Code</th><th>Item Name</th><th>Quantity(Initial/Present)</th><th>Item Price</th><th>Status</th><th>Date Last Updated</th></tr></thead>
                         <tbody>
 <?php
-$sql = "select * from item where supplier=" .  $id . " and supplier=$user_id order by date_last_update desc";
+$sql = "select * from item where and supplier=" .  $id . " and supplier=$user_id order by date_last_update desc";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     while ($row=$result->fetch_assoc()) {

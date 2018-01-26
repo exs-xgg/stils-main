@@ -17,7 +17,16 @@ function generateRandomString($length = 7) {
     return ($randomString);
 }
 function fin($str){
-	return mysql_real_escape_string($str);
+	$str = str_replace("'", "", $str); 
+    $str = str_replace(" ", "_", $str); 
+    $str = str_replace("(", "-",  $str); 
+    $str = str_replace(")", "-",  $str); 
+    $str = str_replace("[", "-",  $str); 
+    $str = str_replace("]", "-",  $str); 
+    $str = str_replace("{", "-",  $str); 
+    $str = str_replace("}", "-",  $str); 
+    $str = strip_tags($str);
+	return str_replace("--", "", $str);
 }
 
 ?>
