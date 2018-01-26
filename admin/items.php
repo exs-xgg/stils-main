@@ -147,7 +147,7 @@ if (!(isset($_REQUEST['cat']))) {
     $sql = "select *, item.id as itid from item  inner join users on item.supplier = users.id where qty > 0 and rcvd=1 order by date_last_update desc limit 20";
 }else{
     $cat = $_REQUEST['cat'];
-    $sql1= "select *, item.id as itid  from item inner join users on item.supplier = users.id where rcvd=1 and ";
+    $sql1= "select *, item.id as itid  from item inner join users on item.supplier = users.id where qty > 0 and rcvd=1 and ";
     switch ($cat) {
         case 'ac':
             $sql2 = " ( (item_name like 'a%') or (item_name like 'b%') or (item_name like 'c%'))";
