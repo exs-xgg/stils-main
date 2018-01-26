@@ -6,18 +6,17 @@ include '../../genfunctions/db_con.php';
 include '../../genfunctions/crypto.php';
 $id = $_REQUEST['id'];
 $return = false;
-$sql = "delete from item where id=" . $id;
+
+	$sql = "update item set date_last_update=now(), rcvd=3 where id=" . $id;
+
+
 if ($conn->query($sql) === true) {
   $return = true;
 } else {
    $return = false;
 }
-if ($return) {
-	header("location: ../dashboard.php?action=done");
-}else{
 
-	header("location: ../dashboard.php?action=fail");
-}
+	return $return;
 	
 
 

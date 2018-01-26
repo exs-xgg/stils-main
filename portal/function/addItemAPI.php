@@ -13,11 +13,9 @@ if (isset($_POST['submit'])) {
 		$serial = fin($_POST['serial']);
 		$sql = "insert into item (supplier, serial_no, item_name, unit_price, init_qty, qty) values($supplier_id,'$serial','$item_name',$item_price,$item_qty,$item_qty)";
 		if ($conn->query($sql) === true) {
-			echo $sql;
-		// header("location:". $uri . "?action=done");
+		 header("location:". $uri . "?action=done");
 			}else{
-				echo "$sql";
-						// header("location:". $uri . "?action=fail");
+						header("location:". $uri . "?action=fail");
 
 			}
 }else{

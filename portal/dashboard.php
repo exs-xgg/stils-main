@@ -42,6 +42,7 @@ if ($result->num_rows > 0) {
 <script>
     function addItem(){
         $('#body_content').load('pages/addItems.php');
+               
     }
     
 </script>
@@ -69,7 +70,7 @@ if ($rst->num_rows > 0) {
     }
 }
 ?>                                          
-                                            <h2>Admin's Bulletin</h2>
+                                            <h3>Admin's Bulletin</h3>
                                             <h4><?php echo $title ?></h4>
                                             <p ><?php echo $content ?></p><span><?php echo $date ?></span>
                                         
@@ -221,7 +222,7 @@ if ($rst->num_rows > 0) {
 
             </div>
             
-<div id="body_content">
+<div id="body_content" class="body_content">
 															
 <?php
 ini_set('error_reporting', E_ALL & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED);

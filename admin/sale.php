@@ -58,7 +58,7 @@ include '../genfunctions/db_con.php';
                                              </table>
                                         </div>
                                         <hr>
-                                        Item ID:&nbsp;&nbsp;&nbsp;&nbsp;<b><pre id="rs" ></pre></b><br>
+                                        Item Name:&nbsp;&nbsp;&nbsp;&nbsp;<b><span id="rs" hidden></span><span id="hr"></span></b><br><br>
                                         <span>Quantity:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><input class="numer" type="number" name="" id="itemQty" onkeypress='return event.charCode >= 48 && event.charCode <= 57' placeholder="Quantity" value="1" width="100" min="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         <button id="btnsink" class="btn btn-success" onclick="sink()">Go</button>
                                         </div>
@@ -92,7 +92,9 @@ include '../genfunctions/db_con.php';
                             var i = $("#rs").html();
                             
                             var q = $("#itemQty").val();
-
+                            if(parseInt($("#qty_" + i).text()) < parseInt($("#itemQty").val())){
+                                 $.notify({ message: "<p><h4>Request failed. Inputs may be invalid.</h4></p>" },{type: 'danger',timer: 3000});
+                            }else{
                             $.ajax({
                                 
                                 url: "function/saleAPI.php?i=" + i + "&q=" + q,
@@ -107,7 +109,7 @@ include '../genfunctions/db_con.php';
                                             $("#btnsink").disabled = false;
                                             search();
                                         }else{
-                                            $.notify({ message: "<p><h4>Request failed. The website may be experiencing errors or the internet is down.</h4></p>" },{type: 'danger',timer: 3000});
+                                            $.notify({ message: "<p><h4>Request failed. Inputs may be invalid.</h4></p>" },{type: 'danger',timer: 3000});
                                             $("#btnsink").text("Go");
                                             $("#btnsink").disabled = false;
                                         }
@@ -120,6 +122,7 @@ include '../genfunctions/db_con.php';
                                     $("#btnsink").disabled = false;
                                 }
                             });
+                        }
                             
                         }
                     }
@@ -137,7 +140,7 @@ include '../genfunctions/db_con.php';
                                     for(var i = 0; i < rss.length; i++) {
                                         var obj = rss[i];
 
-                                        $('#itemTbl').append('<tr><td>'+ obj.serial_no +'</td><td>'+ obj.item_name +'</td><td>'+ obj.qty +'</td><td>' + obj.store + '</td><td><button onclick="fsa('+ obj.ids +',' + obj.qty +')">Select</button></tr>');
+                                        $('#itemTbl').append('<tr><td>'+ obj.serial_no +'</td><td id="item_' + obj.ids + '">'+ obj.item_name +'</td><td id="qty_' + obj.ids + '">'+ obj.qty +'</td><td>' + obj.store + '</td><td><button onclick="fsa('+ obj.ids +',' + obj.qty +')">Select</button></tr>');
                                     }
                                 }
                             });
@@ -145,6 +148,8 @@ include '../genfunctions/db_con.php';
                        }
                        function fsa(e,g){
                         $("#rs").text(e);
+                        var tr = $("#item_" + e).text();
+                        $("#hr").text(tr);
                         $("#itemQty").attr({
                            "max" : g 
                         });

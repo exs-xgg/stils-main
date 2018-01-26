@@ -27,8 +27,8 @@ if (isset($_REQUEST['s'])) {
 
                         <li>
                             <a href="../genfunctions/logout.php">
-								<i class="ti-close"></i>
-								<p>Log Out</p>
+                                <i class="ti-close"></i>
+                                <p>Log Out</p>
                             </a>
                         </li>
                     </ul>
@@ -62,21 +62,25 @@ if ($result->num_rows > 0) {
     <tr><th>Item Price</th><td><input class="form form-control" type="text" name="unit_price" id="price" value="<?php echo $row['unit_price']; ?>"></td></tr>
     <tr><th>Initial Quantity</th><td><input class="form form-control" readonly type="text" name="init_qty" value="<?php echo $row['init_qty']; ?>"></td></tr>
     <tr><th>Current Quantity</th><td><input class="form form-control" readonly type="text" name="qty" value="<?php echo $row['qty']; ?>"></td></tr>
+    <tr><th>Partner</th><td><?php echo '<a href ="user.php?id='. $row['dd'] . '">' . $row['store']; ?></a></td></tr>
     <tr><th>Status</th><td><?php 
-    if($row['rcvd']=="0"){
+     if($row['rcvd']=="0"){
         echo "Not Yet Received";
+    }elseif($row['rcvd']=="3"){
+        echo "Archived";
     }else{
         echo("Received");
     }
     ?></td></tr>
     <tr><th>Date Last Updated</th><td><?php echo $row['date_last_update']; ?></td></tr>
-    <tr><th></th><td><input type="submit" class="btn btn-primary" value="Update" <?php echo ($row['allow_edit'] > 0)?"disabled":""; ?>disabled></td></tr>
+    <tr><th></th><td><input type="submit" class="btn btn-primary" value="Update" <?php if($row['allow_edit']==-1) { echo " disabled ";} ?></td></tr>
 </form>
 </table>
-<!-- <h4>Actions</h4> -->
+<h4>Actions</h4>
 <table class="table">
     
-    <!-- <tr><th>Delete Item (Dont Click this for "Testing Purposes". <br>This Action cant be undone YET.)</th><td><a href="function/deleteItem.php?id=<?php echo $_REQUEST['s']; ?>" class="btn btn-warning">Delete</a></td><td></td></tr>      -->
+   
+    <tr><th>Delete Item</th><td><span onclick="del(<?php echo $_REQUEST['s']; ?>)" class="btn btn-warning">Delete</span></td><td></td></tr>    
 
 
     <?php
@@ -84,15 +88,27 @@ if ($result->num_rows > 0) {
 }else{
     echo "No such item is found.";
 }
-?></table>
-                                     
+?>
+                                     </table>
                                     </div>
                                 </div>
                                 
                             </div>
                         </div>
-
-					
+<script>
+    function del(e){
+        if(confirm("Delete Item?")){
+            $.ajax({
+            url: "function/deleteItem.php?id=" + e,
+            success: function(result){
+$.notify({ message: "<p><h3>Item Deleted</h3></p>" },{type: 'success',timer: 3000});
+            }
+        });
+        }
+        
+    }
+</script>
+                    
 
                 </div>
 
@@ -102,8 +118,8 @@ if ($result->num_rows > 0) {
         </div>
 
 
-       
- <footer class="footer">
+        
+<footer class="footer">
     <div class="container-fluid">
         
         <div class="copyright pull-right">
@@ -119,22 +135,22 @@ if ($result->num_rows > 0) {
 
     <!--   Core JS Files   -->
     <script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
-	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
 
-	<!--  Checkbox, Radio & Switch Plugins -->
-	<script src="assets/js/bootstrap-checkbox-radio.js"></script>
+    <!--  Checkbox, Radio & Switch Plugins -->
+    <script src="assets/js/bootstrap-checkbox-radio.js"></script>
 
-	<!--  Charts Plugin -->
-	<script src="assets/js/chartist.min.js"></script>
+    <!--  Charts Plugin -->
+    <script src="assets/js/chartist.min.js"></script>
 
     <!--  Notifications Plugin    -->
     <script src="assets/js/bootstrap-notify.js"></script>
 
     <!-- Paper Dashboard Core javascript and methods for Demo purpose -->
-	<script src="assets/js/paper-dashboard.js"></script>
+    <script src="assets/js/paper-dashboard.js"></script>
 
-	<!-- Paper Dashboard DEMO methods, don't include it in your project! -->
-	<script src="assets/js/demo.js"></script>
+    <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
+    <script src="assets/js/demo.js"></script>
     <script>
 <?php
 
@@ -173,6 +189,6 @@ $.notify({ message: "<p><h4>Request failed. The website may be experiencing erro
 
                             });
     </script>
-	
+    
 
 </html>

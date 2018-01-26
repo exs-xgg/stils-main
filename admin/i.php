@@ -66,6 +66,8 @@ if ($result->num_rows > 0) {
     <tr><th>Status</th><td><?php 
     if($row['rcvd']=="0"){
         echo "Not Yet Received";
+    }elseif($row['rcvd']=="3"){
+        echo "Archived";
     }else{
         echo("Received");
     }
@@ -78,7 +80,7 @@ if ($result->num_rows > 0) {
 <table class="table">
     
     <tr><th>Allow Editing</th><td><a href="function/allowEdit.php?id=<?php echo $_REQUEST['s']; ?>" class="btn btn-info"><?php echo ($row['allow_edit']=="-1")?"Allow Editing":"Disable Editing";?></a></td><td></td></tr> 
-    <tr><th>Delete Item (Dont Click this for "Testing Purposes". <br>This Action cant be undone YET.)</th><td><span onclick="del(<?php echo $_REQUEST['s']; ?>)" class="btn btn-warning">Delete</span></td><td></td></tr>    
+    <tr><th>Delete Item</th><td><span onclick="del(<?php echo $_REQUEST['s']; ?>)" class="btn btn-warning">Delete</span></td><td></td></tr>    
 
 
     <?php
