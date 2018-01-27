@@ -168,7 +168,7 @@ if ($res->num_rows > 0) {
 
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-4">
+                                        <div class="col-md-5">
                                             <div class="form-group">
                                                 <label>Store Name</label>
                                                 <input type="text" class="form-control border-input" name="store_name" placeholder="Company" value="<?php echo $store; ?>">
@@ -180,20 +180,23 @@ if ($res->num_rows > 0) {
                                                 <input type="text" class="form-control border-input" name="logintoken" placeholder="Username" value="<?php echo $token; ?>">
                                             </div>
                                         </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail1">Unique Tag</label>
-                                                <input type="text" class="form-control border-input" name="tag" placeholder="Tag" value="<?php echo $tag; ?>" required>
-                                            </div>
-                                        </div>
+                                        
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Pin</label>
                                                 <input type="password" class="form-control border-input" name="pin" placeholder="Tag" value="<?php echo '000000'; ?>" required>
                                             </div>
                                         </div>
+                                        
                                     </div>
-
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Brand Identification Code</label>
+                                                <input type="text" class="form-control border-input" name="tag" placeholder="Tag" value="<?php echo $tag; ?>" required>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="text-center">
                                         <button type="submit"  name="submit" class="btn btn-success">Update Profile</button>&nbsp;&nbsp;<a class="btn btn-info" onclick="resetPin(<?php echo $id; ?>)">Reset Pin</a><?php
                                         if (isset($_REQUEST['id'])) {
