@@ -15,11 +15,13 @@ $rsj = array();
 		
 		$f = $_REQUEST['f'];
 		$t = $_REQUEST['t'];
-		$sql = "select serial_no,item_name,sale.qty as qty,time_sale,unit_price as price,(unit_price * sale.qty) as total from sale inner join item on item.id=sale.item_id where date('$f') < date(time_sale) <= date('$t')" ;
+		$sql = "select store,serial_no,item_name,sale.qty as qty,time_sale,unit_price as price,(unit_price * sale.qty) as total from sale inner join item on item.id=sale.item_id inner join users on item.supplier=users.id where date('$f') < date(time_sale) <= date('$t') order by store asc" ;
 		
 	}elseif (isset($_REQUEST['today'])) {
-		$sql = "select serial_no,item_name,sale.qty as qty,time_sale,unit_price as price,(unit_price * sale.qty) as total from sale inner join item on item.id=sale.item_id where date(time_sale) = curdate()" ;
+		$sql = "select store,serial_no,item_name,sale.qty as qty,time_sale,unit_price as price,(unit_price * sale.qty) as total from sale inner join item on item.id=sale.item_id inner join users on item.supplier=users.id where date(time_sale) = curdate() order by store asc" ;
+
 	}
+
 	$result = $conn->query($sql);
 	if ($result->num_rows > 0) {
 		while ($row = $result->fetch_assoc()) {

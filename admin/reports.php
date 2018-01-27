@@ -45,7 +45,7 @@ include '../genfunctions/db_con.php';
 From: <input type="date" name="" id="datefrom"> To: <input type="date" name="" id="dateto"> <button class="btn btn-primary btn-simple" onclick="getReport()">Submit</button><button class="btn btn-primary btn-simple" onclick="getToday()">View Sales Today</button>
                                     <table class="tbl" id="itemTbl">
                                         <thead>
-                                            <tr><th>Item Code</th><th>Item Name</th><th>Quantity</th><th>Unit Price</th><th>Total Price</th><th>Date & Time</th></tr>
+                                            <tr><th>Item Code</th><th>Item Name</th><th>Store</th><th>Quantity</th><th>Unit Price</th><th>Total Price</th><th>Date & Time</th></tr>
                                         </thead>
                                         <tbody>
                                             
@@ -65,6 +65,7 @@ From: <input type="date" name="" id="datefrom"> To: <input type="date" name="" i
                     </div>
 					
 <script>
+    
     function getReport(){
         var from = $("#datefrom").val();
         var to = $("#dateto").val();
@@ -75,14 +76,14 @@ From: <input type="date" name="" id="datefrom"> To: <input type="date" name="" i
 
             timeout: 5000,
             success: function(result){
-                console.log(result);
+                //console.log(result);
                 var rss = JSON.parse(result);
                 var sum = 0;
                 var ded = 0;
                 for(var i = 0; i < rss.length; i++) {
                     var obj = rss[i];
 
-                    $('#itemTbl').append('<tr><td>'+ obj.serial_no +'</td><td>'+ obj.item_name +'</td><td>'+ obj.qty+'</td><td>' + obj.price+'</td><td>' + obj.total +'</td><td>' + obj.time_sale + '</td></tr>');
+                    $('#itemTbl').append('<tr><td>'+ obj.serial_no +'</td><td>'+ obj.item_name +'</td><td>'+ obj.store +'</td><td>'+ obj.qty+'</td><td>' + obj.price+'</td><td>' + obj.total +'</td><td>' + obj.time_sale + '</td></tr>');
                   
                 }
                 for(var i = 0; i < rss.length; i++) {
@@ -107,14 +108,14 @@ From: <input type="date" name="" id="datefrom"> To: <input type="date" name="" i
 
             timeout: 5000,
             success: function(result){
-                console.log(result);
+                //console.log(result);
                 var rss = JSON.parse(result);
                 var sum = 0;
                 var ded = 0;
                 for(var i = 0; i < rss.length; i++) {
                     var obj = rss[i];
 
-                    $('#itemTbl').append('<tr><td>'+ obj.serial_no +'</td><td>'+ obj.item_name +'</td><td>'+ obj.qty+'</td><td>' + obj.price+'</td><td>' + obj.total +'</td><td>' + obj.time_sale + '</td></tr>');
+                    $('#itemTbl').append('<tr><td>'+ obj.serial_no +'</td><td>'+ obj.item_name +'</td><td>'+ obj.store +'</td><td>'+ obj.qty+'</td><td>' + obj.price+'</td><td>' + obj.total +'</td><td>' + obj.time_sale + '</td></tr>');
                   
                 }
                 for(var i = 0; i < rss.length; i++) {
@@ -129,6 +130,7 @@ From: <input type="date" name="" id="datefrom"> To: <input type="date" name="" i
         });
 
     }
+
 </script>
                 </div>
 

@@ -149,7 +149,7 @@ if ($res->num_rows > 0) {
                                         <div class="col-md-5">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Email address</label>
-                                                <input type="email" class="form-control border-input" name="email" placeholder="Email" value="<?php echo $email; ?>" required>
+                                                <input type="email" class="form-control border-input" name="email" placeholder="Email" value="<?php echo $email; ?>" >
                                             </div>
                                         </div>
                                         <div class="col-md-3">
@@ -177,7 +177,7 @@ if ($res->num_rows > 0) {
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Username</label>
-                                                <input type="text" class="form-control border-input" name="login_token" placeholder="Username" value="<?php echo $token; ?>">
+                                                <input type="text" class="form-control border-input" name="logintoken" placeholder="Username" value="<?php echo $token; ?>">
                                             </div>
                                         </div>
                                         <div class="col-md-2">
@@ -207,7 +207,7 @@ if ($res->num_rows > 0) {
                                        }
                                         
                                         ?>
-                                        
+                                        &nbsp;&nbsp;<a class="btn btn-danger" onclick="delUser(<?php echo $_REQUEST['id'];?>)">Delete User</a>
 
                                         <?php
                                          }
@@ -312,6 +312,11 @@ if ($res->num_rows > 0) {
     <!-- Paper Dashboard Core javascript and methods for Demo purpose -->
 	<script src="assets/js/paper-dashboard.js"></script>
 <script>
+    function delUser(e){
+        if(confirm("Do you want to delete this user? THIS ACTION IS PERMANENT AND CAN'T BE UNDONE!")){
+          window.location.href = "function/deleteUser.php?id=" + e;
+        }
+    }
     function del(e){
         $.ajax({
             url: "function/deleteItem.php?id=" + e,

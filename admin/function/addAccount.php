@@ -12,7 +12,7 @@ $tel = fin($_POST['tel']);
 $token = fin($_POST['token']);
 $pin = fin($_POST['pin']);
 $tag = fin($_POST['tag']);
-$sql = "insert into users(lname,fname,store,email,sms1,sms2,tel,login_token,pin,tag) values('$lname','$fname','$store','$email','$sms1','$sms2','$tel','$token','$pin'.'$tag')";
+$sql = "insert into users(lname,fname,store,email,sms1,sms2,tel,login_token,pin,tag) values('$lname','$fname','$store','$email','$sms1','$sms2','$tel','$token','$pin','$tag')";
 $result = $conn->query($sql);
 
    
