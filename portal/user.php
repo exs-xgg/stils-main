@@ -26,6 +26,8 @@ if ($result->num_rows > 0) {
         $email = $row['email'];
         $token = $row['login_token'];
         $lock = $row['user_lock'];
+        $pin = $row['pin'];
+        $tag = $row['tag'];
     }
 }
 $sold_today = "";
@@ -115,39 +117,26 @@ if ($res->num_rows > 0) {
                                 <h4 class="title">Edit Profile</h4>
                             </div>
                             <div class="content">
-                                <form>
+                                <form action="../admin/function/updateUser.php" method="post">
+                                    
+
                                     <div class="row">
-                                        <div class="col-md-5">
+                                        <div class="col-md-4">
                                             <div class="form-group">
-                                                <label>Store Name</label>
-                                                <input type="text" class="form-control border-input" placeholder="Company" value="<?php echo $store; ?>">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label>Username</label>
-                                                <input type="text" class="form-control border-input" placeholder="Username" disabled value="<?php echo $token; ?>">
+                                                <label>First Name</label>
+                                                <input type="text" class="form-control border-input" name="fname" placeholder="First Name" value="<?php echo $fname; ?>">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1">Email address</label>
-                                                <input type="email" class="form-control border-input" placeholder="Email" value="<?php echo $email; ?>" required>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>First Name</label>
-                                                <input type="text" class="form-control border-input" placeholder="First Name" value="<?php echo $fname; ?>">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
                                                 <label>Last Name</label>
-                                                <input type="text" class="form-control border-input" placeholder="Last Name" value="<?php echo $lname; ?>">
+                                                <input type="text" class="form-control border-input" name="lname" placeholder="Last Name" value="<?php echo $lname; ?>">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                    <label>Landline</label>
+                                                    <input type="text" class="form-control border-input" name="tel" placeholder="City" value="<?php echo $tel; ?>">
                                             </div>
                                         </div>
                                     </div>
@@ -155,24 +144,58 @@ if ($res->num_rows > 0) {
                                     
 
                                     <div class="row">
-                                        <div class="col-md-4">
+                                        <div class="col-md-5">
                                             <div class="form-group">
-                                                <label>Phone Number 1</label>
-                                                <input type="text" class="form-control border-input" placeholder="City" value="<?php echo $sms1; ?>">
+                                                <label for="exampleInputEmail1">Email address</label>
+                                                <input type="email" class="form-control border-input" name="email" placeholder="Email" value="<?php echo $email; ?>" >
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
-																					<div class="form-group">
-																							<label>Phone Number 2</label>
-																							<input type="text" class="form-control border-input" placeholder="City" value="<?php echo $sms2; ?>">
-																					</div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Phone Number 1</label>
+                                                <input type="text" class="form-control border-input" name="num1" placeholder="City" value="<?php echo $sms1; ?>">
+                                            </div>
                                         </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                    <label>Phone Number 2</label>
+                                                    <input type="text" class="form-control border-input" name="num2" placeholder="City" value="<?php echo $sms2; ?>">
+                                            </div>
+                                        </div>
+                                        
 
                                     </div>
-
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Store Name</label>
+                                                <input type="text" class="form-control border-input" name="store_name" placeholder="Company" value="<?php echo $store; ?>">
+                                            </div>
+                                        </div>
+                                        
+                                                <input type="hidden" class="form-control border-input" name="logintoken" placeholder="Username" value="<?php echo $token; ?>">
+                                           
+                                        
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Pin</label>
+                                                <input type="password" class="form-control border-input" name="pin" placeholder="Tag" value="<?php echo $pin; ?>" required>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Username: <b><?php echo $token; ?></b></label><br>
+                                                <label for="exampleInputEmail1">Brand Identification Code: <b><?php echo $tag; ?></b></label>
+                                                <input type="hidden" class="form-control border-input" name="tag" placeholder="Tag" value="<?php echo $tag; ?>">
+                                            </div>
+                                        </div>
+                                    </div>
 
                                     <div class="text-center">
-                                        <button type="submit" class="btn btn-success" disabled>Update Profile</button>&nbsp;&nbsp;<a class="btn btn-info" onclick="resetPin(<?php echo $id; ?>)">Reset Pin</a><?php
+                                        <button type="submit" class="btn btn-success">Update Profile</button>&nbsp;&nbsp;<?php
                                         if (isset($_REQUEST['id'])) {
                                             ?>
                                             &nbsp;&nbsp;<a class="btn btn-warning" 
