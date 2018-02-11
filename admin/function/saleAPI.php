@@ -15,7 +15,7 @@ function doMe(){
 		if ($i <= 0) {
 			$return = false;
 		}else{
-			$sql = "update item set date_last_update = CONVERT_TZ(current_timestamp(),'+04:00','+8:00'), qty=qty-$q where id=$i";
+			$sql = "update item set date_last_update = CONVERT_TZ(current_timestamp(),'+0:00','+08:00'), qty=qty-$q where id=$i";
 			if ($conn->query($sql) === true) {
 			   $ssql = "insert into sale(item_id,qty,time_sale) values($i, $q,CONVERT_TZ(current_timestamp(),'+04:00','+8:00'))";
 			   if ($conn->query($ssql) === true) {

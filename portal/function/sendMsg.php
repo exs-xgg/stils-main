@@ -11,7 +11,7 @@ function doMe(){
 	
 		$q = $_SESSION['id'];
 		$msg = $_POST['msg'];
-		$sql = "insert into msg(sw,user_id,body,_time) values(0,$q,'$msg',CONVERT_TZ(current_timestamp(),'+04:00','+8:00'))";
+		$sql = "insert into msg(sw,user_id,body,_time) values(0,$q,'$msg',CONVERT_TZ(current_timestamp(),'+0:00','+08:00'))";
 		if ($conn->query($sql) === true) {
 		   header("location: ". $_SERVER['HTTP_REFERER']);
 		} else {

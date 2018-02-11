@@ -15,7 +15,7 @@ $uri = ($_SERVER['HTTP_REFERER']);
 	if ($price > '100000') {
 		 header("location: ". $uri . "&done=false");
 	}else {
-		$sql = "update item set date_last_update = CONVERT_TZ(current_timestamp(),'+04:00','+8:00'), serial_no='" . $serial . "', item_name='" . $name . "', unit_price = " . $price . " where id=" . $item_id;
+		$sql = "update item set date_last_update = CONVERT_TZ(current_timestamp(),'+0:00','+08:00'), serial_no='" . $serial . "', item_name='" . $name . "', unit_price = " . $price . " where id=" . $item_id;
 		if ($conn->query($sql) === true) {
 			   header("location: ". $uri . "&done=true");
 			} else {

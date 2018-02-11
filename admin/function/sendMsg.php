@@ -12,7 +12,7 @@ function doMe(){
 		$q = ($_REQUEST['to']);
 		$q = $conn->real_escape_string($q);
 		$msg = $_POST['msg'];
-		$sql = "insert into msg(sw,user_id,body,_time) values(1,$q,'$msg',CONVERT_TZ(current_timestamp(),'+04:00','+8:00'))";
+		$sql = "insert into msg(sw,user_id,body,_time) values(1,$q,'$msg',CONVERT_TZ(current_timestamp(),'+0:00','+08:00'))";
 		if ($conn->query($sql) === true) {
 		   header("location: ../thread.php?id=". $q);
 		} else {
