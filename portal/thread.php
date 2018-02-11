@@ -91,7 +91,7 @@ if (true) {
                                 <h3>Send Your First Message</h3>
                                 <br>
                                 <span class="col-lg-12"> Reply </span> 
-                                <form method="post" action="function/sendMsg.php" autofill="off">
+                                <form method="post" action="function/sendMsg.php" autocomplete="off" >
                                     <input class="form form-control col-lg-8" type="text" placeholder="Text here..." style="background-color: beige" maxlength="120" name="msg"><br>
                                     <input class="btn btn-primary" type="submit" name="">
                                 </form>

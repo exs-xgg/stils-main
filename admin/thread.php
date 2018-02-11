@@ -131,7 +131,7 @@ $sql = "select * from msg inner join users on msg.user_id = users.id where user_
                                                              <br><span class="col-lg-12"> Reply </span> 
                                                         
                                                     </div>  
-                                                    <form method="post" action="function/sendMsg.php?to=<?php echo $_REQUEST['id'];?>" autofill="off">
+                                                    <form method="post" action="function/sendMsg.php?to=<?php echo $_REQUEST['id'];?>" autocomplete="off">
                                                         <input class="form form-control" type="text" placeholder="Text here..." style="background-color: beige" maxlength="120" name="msg"><br>
                                                         <input class="btn btn-primary" type="submit" name=""></form>
                                                    

@@ -11,7 +11,7 @@ if (isset($_POST['submit'])) {
 		$item_price = $_POST['item_price'];
 		$item_qty = $_POST['item_qty'];
 		$serial = fin($_POST['serial']);
-		$sql = "insert into item (supplier, serial_no, item_name, unit_price, init_qty, qty) values($supplier_id,'$serial','$item_name',$item_price,$item_qty,$item_qty)";
+		$sql = "insert into item (supplier, serial_no, item_name, unit_price, init_qty, qty,date_added,date_last_update) values($supplier_id,'$serial','$item_name',$item_price,$item_qty,$item_qty,CONVERT_TZ(current_timestamp(),'+04:00','+8:00'),CONVERT_TZ(current_timestamp(),'+04:00','+8:00'))";
 		if ($conn->query($sql) === true) {
 		 header("location:". $uri . "?action=done");
 			}else{

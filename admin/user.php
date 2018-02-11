@@ -55,32 +55,32 @@ if ($res->num_rows > 0) {
 }
  ?>
 <div class="main-panel">
-        <nav class="navbar navbar-default">
-                <div class="container-fluid">
-                        <div class="navbar-header">
-                                <button type="button" class="navbar-toggle">
-                                        <span class="sr-only">Toggle navigation</span>
-                                        <span class="icon-bar bar1"></span>
-                                        <span class="icon-bar bar2"></span>
-                                        <span class="icon-bar bar3"></span>
-                                </button>
-                                <a class="navbar-brand" href="#">Partner Info</a>
-                        </div>
-                        <div class="collapse navbar-collapse">
-                                <ul class="nav navbar-nav navbar-right">
+		<nav class="navbar navbar-default">
+				<div class="container-fluid">
+						<div class="navbar-header">
+								<button type="button" class="navbar-toggle">
+										<span class="sr-only">Toggle navigation</span>
+										<span class="icon-bar bar1"></span>
+										<span class="icon-bar bar2"></span>
+										<span class="icon-bar bar3"></span>
+								</button>
+								<a class="navbar-brand" href="#">Partner Info</a>
+						</div>
+						<div class="collapse navbar-collapse">
+								<ul class="nav navbar-nav navbar-right">
 
-                                        
-                                        <li>
-                                            <a href="../genfunctions/logout.php">
+										
+										<li>
+											<a href="../genfunctions/logout.php">
                                                 <i class="ti-close"></i>
                                                 <p>Log Out</p>
                                             </a>
-                                        </li>
-                                </ul>
+										</li>
+								</ul>
 
-                        </div>
-                </div>
-        </nav>
+						</div>
+				</div>
+		</nav>
 
 
 
@@ -92,11 +92,11 @@ if ($res->num_rows > 0) {
 
                             <div class="content">
 
-                                                                <h4><?php echo $fname . " " . $lname; ?></h4>
-                                                                <span><?php echo $store; ?></span><br>
-                                                                <span><?php echo $sms1; ?></span><br>
-                                                                <span><?php echo $sms2; ?></span><br>
-                                                                <span><?php echo $email; ?></span>
+																<h4><?php echo $fname . " " . $lname; ?></h4>
+																<span><?php echo $store; ?></span><br>
+																<span><?php echo $sms1; ?></span><br>
+																<span><?php echo $sms2; ?></span><br>
+																<span><?php echo $email; ?></span>
 
 
                             </div>
@@ -161,10 +161,10 @@ if ($res->num_rows > 0) {
                                             </div>
                                         </div>
                                         <div class="col-md-3">
-                                            <div class="form-group">
-                                                    <label>Phone Number 2</label>
-                                                    <input type="text" class="form-control border-input" name="num2" placeholder="City" value="<?php echo $sms2; ?>">
-                                            </div>
+											<div class="form-group">
+													<label>Phone Number 2</label>
+													<input type="text" class="form-control border-input" name="num2" placeholder="City" value="<?php echo $sms2; ?>">
+											</div>
                                         </div>
                                         
 
@@ -307,7 +307,7 @@ if ($res->num_rows > 0) {
 
     <!--   Core JS Files   -->
     <script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
-    <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
 
 
     <!--  Notifications Plugin    -->
@@ -315,7 +315,7 @@ if ($res->num_rows > 0) {
 
 
     <!-- Paper Dashboard Core javascript and methods for Demo purpose -->
-    <script src="assets/js/paper-dashboard.js"></script>
+	<script src="assets/js/paper-dashboard.js"></script>
 <script>
     function delUser(e){
         if(confirm("Do you want to delete this user? THIS ACTION IS PERMANENT AND CAN'T BE UNDONE!")){
