@@ -88,10 +88,12 @@ if ($result->num_rows > 0) {
 							<div class="content table-responsive table-full-width">
 									<table class="table table-striped">
 											<thead>
-
-												<th>Name</th>
+                                                <th>Item Code</th>
+												<th>Item Name</th>
 												<th>Quantity</th>
+                                                <th>Item Price</th>
                                                 <th>Last Updated</th>
+                                                <th></th>
 											</tr></thead>
 											<tbody>
 <?php
@@ -100,9 +102,12 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         echo '<tr id="itemRow' . $row['idd'] . '">';
+        echo '<td>' . $row['serial_no'] . '</td>';
         echo '<td>' . $row['item_name'] . '</td>';
         echo '<td>' . $row['init_qty'] . '</td>';
+        echo '<td>' . $row['unit_price'] . '</td>';
         echo '<td>' . $row['date_last_update'] . '</td>';
+        echo '<td><span onclick="del(' . $row['idd'].')" class="btn btn-warning">Delete</span></td>';
         echo '</tr>';
     }
 }
@@ -111,7 +116,20 @@ if ($result->num_rows > 0) {
 
 											</tbody>
 									</table>
-
+<script>
+    function del(e){
+        if(confirm("Delete Item?")){
+            $.ajax({
+            url: "function/superdelete.php?id=" + e,
+            success: function(result){
+$("#itemRow" + e).remove();
+$.notify({ message: "<p><h3>Item Deleted</h3></p>" },{type: 'success',timer: 3000});
+            }
+        });
+        }
+        
+    }
+</script>
 							</div>
 					</div>
 			</div>

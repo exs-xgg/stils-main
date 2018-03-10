@@ -5,8 +5,8 @@ if (isset($_SERVER['HTTP_REFERER'])) {
 	include '../../genfunctions/crypto.php';
 	$t = $_REQUEST['t'];
 	$c = $_REQUEST['c'];
-	$t = $conn->real_escape_string(strip_tags($t));
-	$c = $conn->real_escape_string(strip_tags($c));
+	$t = $conn->real_escape_string(($t));
+	$c = $conn->real_escape_string(($c));
 	$sql = "insert into bulletin (bul_title,bul_body) values('$t','$c')";
 	$return = false;
 	if ($conn->query($sql) === true) {
