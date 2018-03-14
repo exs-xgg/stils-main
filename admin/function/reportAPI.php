@@ -12,13 +12,16 @@ function doMe(){
 include '../../genfunctions/crypto.php';
 $rsj = array();
 	if (isset($_REQUEST['f']) && isset($_REQUEST['t'])) {
-		
+		$store = "";
 		$f = $_REQUEST['f'];
 		$t = $_REQUEST['t'];
-		$sql = "select store,serial_no,item_name,sale.qty as qty,time_sale,unit_price as price,(unit_price * sale.qty) as total from sale inner join item on item.id=sale.item_id inner join users on item.supplier=users.id where date('$f') < date(time_sale) <= date('$t') order by store asc" ;
+		if (isset($_REQUEST['st']) && ($_REQUEST['st'] !== "")) {
+			$store = "and item.supplier=" . $_REQUEST['st'];
+		}
+		$sql = "select item.supplier,store,serial_no,item_name,sale.qty as qty,time_sale,sale.sale_price as price,(sale.sale_price * sale.qty) as total from sale inner join item on item.id=sale.item_id inner join users on item.supplier=users.id where date('$f') < date(time_sale) <= date('$t') $store order by store asc" ;
 		
 	}elseif (isset($_REQUEST['today'])) {
-		$sql = "select store,serial_no,item_name,sale.qty as qty,time_sale,unit_price as price,(unit_price * sale.qty) as total from sale inner join item on item.id=sale.item_id inner join users on item.supplier=users.id where date(time_sale) = curdate() order by store asc" ;
+		$sql = "select item.supplier,store,serial_no,item_name,sale.qty as qty,time_sale,sale.sale_price as price,(sale.sale_price * sale.qty) as total from sale inner join item on item.id=sale.item_id inner join users on item.supplier=users.id where date(time_sale) = curdate() $store order by store asc" ;
 
 	}
 
