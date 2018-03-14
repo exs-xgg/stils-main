@@ -1,5 +1,10 @@
 <?php
 session_start();
+
+//ACTIVATE THESE LINES AND COMMENT LINE 8 TO DEACTIVATE PORTAL
+//header("location: down.html");
+//if (isset($_SESSION['user_priv']) && false) {
+
 if (isset($_SESSION['user_priv'])) {
     if ($_SESSION['user_priv']==1) {
         header("location: admin/dashboard.php");
@@ -105,9 +110,9 @@ if (isset($_POST['submit'])) {
         </div><br><br>
             <form action="login.php" method="post" autocomplete="off">
                 <p><span>Username</span></p>
-                    <input class="form form-control" type="text" name="usn" placeholder="Username"><br>
+                    <input class="forma" type="text" name="usn" placeholder="Username"><br><br>
             <p><span>Password</span></p>
-                    <input class="form form-control" type="password" name="pw" placeholder="Password"><br>
+                    <input class="forma" type="password" name="pw" placeholder="Password"><br><br><br>
                     <input class="form form-control btn btn-primary btn-fill" type="submit" name="submit" value="Log In">
             </form>
                     
@@ -115,7 +120,14 @@ if (isset($_POST['submit'])) {
     </div>
 
        
-
+<style>
+.forma{
+border-width: 1px;
+    border-color: #afaeaa !important;
+    border-radius: 5px;
+    padding: 6px;
+    width: 100%;
+}
 
         
 

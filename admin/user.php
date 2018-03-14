@@ -186,7 +186,7 @@ if ($res->num_rows > 0) {
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Pin</label>
-                                                <input type="password" class="form-control border-input" name="pin" placeholder="Tag" value="<?php echo $pin; ?>" required>
+                                                <input type="text" class="form-control border-input" name="pin" placeholder="Tag" value="<?php echo $pin; ?>" required>
                                             </div>
                                         </div>
                                         

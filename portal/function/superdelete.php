@@ -1,4 +1,7 @@
 <?php
+session_start();
+
+$uri = ($_SERVER['HTTP_REFERER']);
 include '../../genfunctions/db_con.php';
 include '../../genfunctions/crypto.php';
 $id = $_REQUEST['id'];
